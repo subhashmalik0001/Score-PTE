@@ -11,7 +11,7 @@ const Page7 = () => {
       {/* Main Title */}
       <h1 className="text-3xl md:text-5xl font-light">
       Seen Score 
-      <span className="font-medium text-white"> PTE Lately?</span> 
+      <span className="grey-gradient-animation heading-block-template--15485701095535__9edc3c33-102e-439f-a880-888eac95cb21-heading-1"> PTE Lately?</span> 
       </h1>
 
       {/* Description */}

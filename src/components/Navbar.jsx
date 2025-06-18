@@ -17,19 +17,23 @@ const Navbar = () => {
       {/* Main Navbar */}
       <nav className="fixed top-0 left-0 w-full h-[110px] flex items-center justify-between bg-transparent px-10 z-50">
         {/* Left: Logo */}
-        <div className="flex flex-col items-start">
-          <div className="flex items-baseline">
-          <img src={logo} alt="ScorePTE Logo" className="mt-[10px] ml-2 h-16 w-20" />
-          <div className="flex items-center">
-          
-          </div>
-            <span className="-mt-none ml-2 font-black text-5xl text-blue-500 tracking-wider leading-none">SCORE</span>
-            
-          </div>
-          <span className=" text-xl text-black -mt-2 ml-22" style={{ fontFamily: "Dancing Script, cursive" }}>
-            PTE
-          </span>
-        </div>
+        <div className="flex flex-col justify-center">
+    {/* Logo and SCORE */}
+    <div className="flex items-center">
+      <img src={logo} alt="ScorePTE Logo" className="h-16 w-20 mt-[10px]" />
+      <span className="ml-2 font-black text-5xl text-blue-500 tracking-wider leading-none">
+        SCORE
+      </span>
+    </div>
+
+    {/* PTE */}
+    <span
+      className="text-xl text-black ml-[90px] -mt-1"
+      style={{ fontFamily: "Dancing Script, cursive" }}
+    >
+      PTE
+    </span>
+  </div>
 
         {/* Center: Arch MENU button */}
         <div className="absolute left-1/2 transform -translate-x-1/2 top-0 h-[100px] w-[100px] flex items-center justify-center z-20">
@@ -56,8 +60,8 @@ const Navbar = () => {
 
       {/* Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-black transition-all duration-500 z-[100] flex items-center justify-center ${
-          isMenuOpen ? "bg-opacity-80 visible" : "bg-opacity-0 invisible"
+        className={`fixed inset-0 transition-all duration-500 z-[100] flex items-center justify-center ${
+          isMenuOpen ? "visible" : "invisible"
         }`}
       >
         <div
