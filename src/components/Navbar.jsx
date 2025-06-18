@@ -41,7 +41,7 @@ const Navbar = ({ onNavigate }) => {
 
           {/* University Name and Info */}
           <div className="flex-1">
-            <h1 className="text-2xl md:text-4xl font-bold text-red-800 tracking-wide">Scaler PTE</h1>
+            <h1 className="text-2xl md:text-4xl font-bold text-red-800 tracking-wide">Score PTE</h1>
             <p className="text-xs md:text-sm text-gray-600 mt-1">
               Established by Experts
               <br />- Score must grow
