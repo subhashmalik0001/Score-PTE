@@ -7,8 +7,8 @@ const Page10 = ({ onTermsClick }) => {
 
       {/* Large Heading */}
       <div className="text-center">
-        <h1 className="text-6xl md:text-8xl font-light text-gray-600">Build More</h1>
-        <h2 className="text-4xl md:text-5xl font-light text-gray-500 mt-2">Than Scores</h2>
+        <h1 className="text-6xl md:text-8xl font-light text-gray-600">Invest</h1>
+        <h2 className="text-4xl md:text-5xl font-light text-gray-500 mt-2">In Scores</h2>
       </div>
 
       {/* Where to Next Navigation */}
@@ -17,10 +17,8 @@ const Page10 = ({ onTermsClick }) => {
         <div className="flex flex-wrap justify-center gap-6 text-lg">
           <a href="#" className="hover:text-white">Home</a>
           <a href="#" className="hover:text-white">About</a>
-          <a href="#" className="hover:text-white">
-          PTE Academic</a>
-          <a href="#" className="hover:text-white">PTE Core</a>
-          <a href="#" className="hover:text-white">PTE UVKI</a>
+          
+          
        
           <a href="#" className="hover:text-white">Support</a>
           <a href="#" className="hover:text-white">Contact</a>

@@ -26,7 +26,7 @@ const Page5 = () => {
       <sup className="text-base align-super text-gray-500"></sup>,
       </p>
       <p className="text-3xl md:text-4xl font-semibold text-gray-900">
-      No fluff. <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-300 font-extrabold">Just results.</span> 
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-300 font-extrabold">Just results.</span> 
       </p>
       <p className="text-3xl md:text-4xl font-semibold text-gray-900">
       Because here, your score must grow.

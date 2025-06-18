@@ -47,7 +47,7 @@ const Page2 = () => {
       {/* Bottom Text */}
       <div className="text-center px-4 max-w-3xl">
         <p className="uppercase text-sm text-gray-500 tracking-widest mb-4">
-          Polished Prepared PowerFull
+          . Polished . Prepared . PowerFull 
         </p>
         <h3 className="text-5xl sm:text-6xl font-light text-gray-800 mb-6">
           From Practice to <span className="font-medium">Perfection</span>
