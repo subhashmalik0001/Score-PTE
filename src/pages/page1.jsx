@@ -15,80 +15,11 @@ const Page1 = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Illustration */}
           <div className="relative">
-            {/* Score bubbles */}
-            <div className="absolute -top-4 left-8 w-16 h-16 bg-teal-400 rounded-full flex items-center justify-center text-white font-bold text-xl z-10">
-              79
-            </div>
-            <div className="absolute top-8 right-12 w-16 h-16 bg-teal-400 rounded-full flex items-center justify-center text-white font-bold text-xl z-10">
-              90
-            </div>
-            <div className="absolute bottom-16 left-4 w-14 h-14 bg-teal-400 rounded-full flex items-center justify-center text-white font-bold text-lg z-10">
-              65
-            </div>
-
-            {/* Main illustration container */}
-            <div className="relative bg-white rounded-2xl p-8 shadow-lg">
-              {/* Desktop/Monitor */}
-              <div className="flex justify-center mb-6">
-                <div className="relative">
-                  <div className="w-48 h-32 bg-blue-500 rounded-lg flex items-center justify-center relative overflow-hidden">
-                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                      <Bot className="w-6 h-6 text-blue-500" />
-                    </div>
-                    {/* AI character with headphones */}
-                    <div className="absolute -right-2 -top-2 w-8 h-8 bg-teal-400 rounded-full flex items-center justify-center">
-                      <Headphones className="w-4 h-4 text-white" />
-                    </div>
-                  </div>
-                  <div className="w-52 h-4 bg-gray-300 rounded-b-lg"></div>
-                  <div className="w-16 h-8 bg-gray-400 mx-auto rounded-b-lg"></div>
-                </div>
-              </div>
-
-              {/* Laptop */}
-              <div className="flex justify-center mb-6">
-                <div className="relative transform -rotate-12">
-                  <div className="w-32 h-20 bg-gray-800 rounded-t-lg flex items-center justify-center">
-                    <div className="w-24 h-16 bg-teal-400 rounded flex items-center justify-center">
-                      <div className="grid grid-cols-3 gap-1">
-                        {[...Array(9)].map((_, i) => (
-                          <div key={i} className="w-1 h-1 bg-white rounded-full"></div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-36 h-2 bg-gray-600 rounded-b-lg"></div>
-                </div>
-              </div>
-
-              {/* Smartphone */}
-              <div className="absolute bottom-4 right-4">
-                <div className="w-12 h-20 bg-blue-600 rounded-lg flex flex-col items-center justify-center">
-                  <div className="w-8 h-12 bg-blue-400 rounded flex items-center justify-center">
-                    <div className="grid grid-cols-2 gap-1">
-                      {[...Array(4)].map((_, i) => (
-                        <div key={i} className="w-1 h-1 bg-white rounded-full"></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Small people figures */}
-              <div className="absolute bottom-8 left-8 flex space-x-2">
-                <div className="w-6 h-8 bg-blue-400 rounded-t-full"></div>
-                <div className="w-6 h-8 bg-teal-400 rounded-t-full"></div>
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute top-4 right-4 w-4 h-4 bg-gray-300 rounded"></div>
-              <div className="absolute bottom-12 right-12 w-3 h-3 bg-teal-300 rounded-full"></div>
-            </div>
-
-            {/* Cursor pointer */}
-            <div className="absolute -bottom-4 left-12 transform rotate-12">
-              <div className="w-6 h-8 bg-gray-800 clip-path-cursor"></div>
-            </div>
+            <img 
+              src="https://cdn.prod.website-files.com/62babb554236d9c8c7236fec/6788b97d64815ea082a9dba8_student%20(2).webp" 
+              alt="Exam Pattern" 
+              className="w-full h-auto max-w-lg mx-auto"
+            />
           </div>
 
           {/* Right side - Content */}

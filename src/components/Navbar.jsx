@@ -1,122 +1,146 @@
-import React, { useState } from "react";
+"use client"
 import logo from "../assets/image.png";
 
+
+import { useState } from "react"
+import { Search, Star, ShoppingCart, X } from "lucide-react"
+
 const Navbar = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+    <>
+      {/* Main Navbar */}
+      <nav className="fixed top-0 left-0 w-full h-[110px] flex items-center justify-between bg-transparent px-10 z-50">
+        {/* Left: Logo */}
+        <div className="flex flex-col items-start">
+          <div className="flex items-baseline">
+          <img src={logo} alt="ScorePTE Logo" className="mt-[10px] ml-2 h-16 w-20" />
           <div className="flex items-center">
-            <img src={logo} alt="ScorePTE Logo" className="h-15 w-20" />
+          
           </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">
-              Home
-            </a>
-            <div className="relative">
-              <button
-                onClick={toggleDropdown}
-                className="text-gray-700 hover:text-blue-600 transition-colors flex items-center"
-              >
-                About
-                <svg
-                  className={`ml-2 w-4 h-4 transition-transform ${isDropdownOpen ? "rotate-180" : ""}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-                  <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                    PTE Academic
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                    PTE Core
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                    PTE VIKI
-                  </a>
-                </div>
-              )}
-            </div>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">
-              Services
-            </a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">
-              Contact
-            </a>
+            <span className="-mt-none ml-2 font-black text-5xl text-blue-500 tracking-wider leading-none">SCORE</span>
+            
           </div>
+          <span className=" text-xl text-black -mt-2 ml-22" style={{ fontFamily: "Dancing Script, cursive" }}>
+            PTE
+          </span>
+        </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+        {/* Center: Arch MENU button */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-0 h-[100px] w-[100px] flex items-center justify-center z-20">
+          <button
+            onClick={toggleMenu}
+            className="bg-[#181511] w-[100px] h-[100px] rounded-t-[50px] rounded-b-2xl flex flex-col items-center justify-center text-white font-serif text-xl tracking-[4px] shadow-lg hover:bg-[#252017] transition-all duration-300 hover:scale-105"
+          >
+            <span className="leading-tight">ME</span>
+            <span className="leading-tight">NU</span>
+          </button>
+        </div>
+
+        {/* Right: Icons and text */}
+        {/* Right: Login and Signup buttons */}
+        <div className="flex items-center gap-4">
+          <button className="px-6 py-2 text-black font-medium hover:bg-[#181511] hover:text-white rounded-full transition-all duration-300">
+            Login
+          </button>
+          <button className="px-6 py-2  text-black font-medium rounded-full hover:bg-[#252017] hover:text-white transition-colors duration-300">
+            Sign Up
+          </button>
+        </div>
+      </nav>
+
+      {/* Menu Overlay */}
+      <div
+        className={`fixed inset-0 bg-black transition-all duration-500 z-[100] flex items-center justify-center ${
+          isMenuOpen ? "bg-opacity-80 visible" : "bg-opacity-0 invisible"
+        }`}
+      >
+        <div
+          className={`relative bg-gray-800 bg-opacity-90 w-[90vw] max-w-lg h-[100vh] p-8 flex flex-col transition-all duration-500 transform ${
+            isMenuOpen ? "scale-100 opacity-100 translate-y-0" : "scale-75 opacity-0 translate-y-8"
+          }`}
+          style={{
+            borderRadius: "150px 150px 24px 24px",
+            clipPath: isMenuOpen ? "none" : "inset(0 0 100% 0)",
+          }}
+        >
+          {/* Close button */}
+         
+
+          {/* BACK text */}
+          <div className="text-center mt-4 mb-8">
+            <span className="text-white text-lg font-medium tracking-[4px]">
             <button
-              onClick={toggleMobileMenu}
-              className="text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            onClick={toggleMenu}
+            
+            
+          >
+            BA
+              <br />
+              CK
+            
+          </button>
+
+              
+            </span>
+          </div>
+
+          {/* Search bar */}
+          <div className="relative mb-8">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search"
+              className="w-full bg-transparent border-b border-gray-400 pb-2 pl-12 text-white placeholder-gray-400 focus:outline-none focus:border-white transition-colors duration-300"
+            />
+          </div>
+
+          {/* Menu items */}
+          <div className="flex-1 flex flex-col justify-center space-y-6 text-center">
+            {[
+              { text: "Home", active: true },
+              { text: "About", active: false },
+              { text: "PTE Academic ", active: false },
+              { text: "PTE Core", active: false, special: true },
+              { text: "PTE UVKI", active: false },
+              { text: "Bestsellers", active: false },
+              { text: "Contact", active: false },
+              { text: "Support", active: false },
+            ].map((item, index) => (
+              <a
+                key={item.text}
+                href="#"
+                className={`transition-all duration-300 hover:scale-105 ${
+                  item.active
+                    ? "text-gray-400 text-2xl"
+                    : item.special
+                      ? "text-white text-2xl font-bold whitespace-pre-line"
+                      : "text-white text-3xl font-medium hover:text-gray-300"
+                }`}
+                style={{
+                  transitionDelay: isMenuOpen ? `${index * 50}ms` : "0ms",
+                }}
               >
-                {isMobileMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
+                {item.text}
+              </a>
+            ))}
+          </div>
+
+          {/* Bottom section */}
+          <div className="mt-8 space-y-4 text-center">
+            
+            <div className="text-gray-400 text-sm">
+            @scorepte_explains telegram handle</div>
           </div>
         </div>
       </div>
+    </>
+  )
+}
 
-      {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-white">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <a href="#" className="block px-3 py-2 text-gray-700 hover:bg-gray-100">
-              Home
-            </a>
-            <a href="#" className="block px-3 py-2 text-gray-700 hover:bg-gray-100">
-              About
-            </a>
-            <a href="#" className="block px-3 py-2 text-gray-700 hover:bg-gray-100">
-              Services
-            </a>
-            <a href="#" className="block px-3 py-2 text-gray-700 hover:bg-gray-100">
-              Contact
-            </a>
-          </div>
-        </div>
-      )}
-    </nav>
-  );
-};
-
-export default Navbar;
+export default Navbar

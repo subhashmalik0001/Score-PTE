@@ -2,7 +2,7 @@ import React from "react";
 
 const images = [
   "https://educationvibes.in/assets/images/Test_centres.png",
-  "https://cdn.prod.website-files.com/62babb554236d9c8c7236fec/6788b97d64815ea082a9dba8_student%20(2).webp",
+  "https://www.edulyte.com/wp-content/uploads/2022/11/International-English-Language-Tests.png",
   "https://www.gurully.com/assets-new/images/exam-pattern.svg",
   "https://www.gurully.com/assets-new/images/complete-guide-pte-exam.svg",
   "https://ptenote.com/wp-content/uploads/sites/3/2023/09/7766409_3757762-1-1024x1024.jpg",
