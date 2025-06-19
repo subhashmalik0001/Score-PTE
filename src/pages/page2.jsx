@@ -30,7 +30,7 @@ const Page2 = () => {
       <h2 className="text-6xl sm:text-7xl font-light mb-20 tracking-tight leading-tight">
         <span className="bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">Ready to</span>{' '}
         <span className="font-extrabold text-black">level </span>
-        <span className="bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">up</span>{' '}
+        <span className="bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">up ?</span>{' '}
       </h2>
 
       {/* Horizontal Category Icons */}
