@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTelegram } from "react-icons/fa";
 
 const Page10 = ({ onTermsClick }) => {
   return (
@@ -53,7 +53,7 @@ const Page10 = ({ onTermsClick }) => {
       <div className="flex space-x-6 pt-4 text-gray-500 text-lg">
         <a href="#"><FaFacebookF className="hover:text-white" /></a>
         <a href="#"><FaInstagram className="hover:text-white" /></a>
-        <a href="#"><FaLinkedinIn className="hover:text-white" /></a>
+        <a href="https://web.telegram.org/"><FaTelegram className="hover:text-white" /></a>
       </div>
     </div>
   );
