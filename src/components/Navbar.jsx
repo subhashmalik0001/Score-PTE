@@ -8,7 +8,7 @@ const Navbar = ({ onNavigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigationItems = [
-    "ABOUT Score PTE",
+    "Home",
     "PTE Practice",
     "Hand Outs",
     "Support Team",
@@ -22,8 +22,9 @@ const Navbar = ({ onNavigate }) => {
   const handleNavClick = (item) => {
     if (item === "PTE Practice" && onNavigate) {
       onNavigate("pte-practice")
-    } else if (item === "ABOUT Score PTE" && onNavigate) {
+    } else if (item === "Home" && onNavigate) {
       onNavigate("home")
+      window.scrollTo({ top: 0, behavior: "smooth" })
     }
     setIsMenuOpen(false)
   }
@@ -35,14 +36,13 @@ const Navbar = ({ onNavigate }) => {
         <div className="flex items-center gap-4">
           {/* University Logo */}
           <div className="flex-shrink-0">
-          <img src={logo} alt="ScorePTE Logo" className="w-16 h-16 md:w-20 md:h-20" />
-   
+            <img src={logo} alt="ScorePTE Logo" className="w-24 h-24 md:w-32 md:h-32" />
           </div>
 
           {/* University Name and Info */}
           <div className="flex-1">
-            <h1 className="text-2xl md:text-4xl font-bold text-red-800 tracking-wide">Score PTE</h1>
-            <p className="text-xs md:text-sm text-gray-600 mt-1">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-red-800 tracking-wide">Score PTE</h1>
+            <p className="text-xs md:text-sm mt-1 text-gold-glow">
               Established by Experts
               <br />- Score must grow
             </p>

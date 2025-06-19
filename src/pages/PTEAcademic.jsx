@@ -10,12 +10,12 @@ const PTEAcademic = () => {
     { name: "Repeat Sentence", hasAI: true, disabled: false },
     { name: "Describe Image", hasAI: true, disabled: false },
     { name: "Re-tell Lecture", hasAI: true, disabled: false },
-    { name: "Answer Short Question", hasAI: true, disabled: false },
+    { name: "Answer Short Question", hasAI: false, disabled: false },
     { name: "Respond to a situation", hasAI: false, disabled: true },
   ]
 
   const writingItems = [
-    { name: "Summarize Written Text", hasAI: true, disabled: false },
+    { name: "Summarize Written Text", hasAI: false, disabled: false },
     { name: "Write Essay", hasAI: true, disabled: false },
     { name: "Summarize Written Text", hasAI: false, disabled: true },
     { name: "Write Email (Core)", hasAI: false, disabled: true },
@@ -30,9 +30,9 @@ const PTEAcademic = () => {
   ]
 
   const listeningItems = [
-    { name: "Summarize Spoken Text", hasAI: true, disabled: false },
+    { name: "Summarize Spoken Text", hasAI: false, disabled: false },
     { name: "Multiple Choice (Multiple)", hasAI: false, disabled: false },
-    { name: "Fill in the Blanks", hasAI: false, disabled: false },
+    { name: "Fill in the Blanks", hasAI: true, disabled: false },
     { name: "Highlight Correct Summary", hasAI: false, disabled: false },
     { name: "Multiple Choice (Single)", hasAI: false, disabled: false },
     { name: "Select Missing Word", hasAI: false, disabled: false },
@@ -41,14 +41,7 @@ const PTEAcademic = () => {
     { name: "Summarize Spoken Text", hasAI: false, disabled: true },
   ]
 
-  const moreItems = [
-    { name: "Vocab Books", hasAI: false, disabled: false },
-    { name: "Shadowing", hasAI: false, disabled: false },
-    { name: "AI Score Report Analysis", hasAI: false, disabled: false },
-    { name: "AI Study Plan", hasAI: false, disabled: false },
-    { name: "Mock Tests", hasAI: false, disabled: false },
-    { name: "Study Materials Download", hasAI: false, disabled: false },
-  ]
+ 
 
   const ItemList = ({ items, title }) => (
     <div className="flex-1 min-w-0">
@@ -66,7 +59,7 @@ const PTEAcademic = () => {
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium">{item.name}</span>
               {item.hasAI && !item.disabled && (
-                <span className="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AI Score</span>
+                 <span className="text-xs bg-black text-gold px-2 py-1 rounded-full font-semibold border border-gold" style={{color:'#FFD700', borderColor:'#FFD700', background:'#111'}}>AI Score</span>
               )}
             </div>
           </div>
@@ -84,7 +77,7 @@ const PTEAcademic = () => {
             onClick={() => setActiveTab("pte-academic")}
             className={`px-6 py-3 font-medium text-sm transition-colors ${
               activeTab === "pte-academic"
-                ? "bg-teal-400 text-white border-b-2 border-teal-400"
+                ? "bg-red-800 text-white border-b-2 border-teal-400"
                 : "bg-gray-200 text-gray-600 hover:bg-gray-300"
             }`}
           >
@@ -110,7 +103,7 @@ const PTEAcademic = () => {
               <ItemList items={writingItems} title="Writing" />
               <ItemList items={readingItems} title="Reading" />
               <ItemList items={listeningItems} title="Listening" />
-              <ItemList items={moreItems} title="More" />
+              
             </div>
           ) : (
             <div className="text-center py-12">

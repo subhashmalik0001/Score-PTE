@@ -1,21 +1,24 @@
 import React from "react";
-
+import speak from "../assets/image 4.png";
+import write from "../assets/image 6.png";
+import read from "../assets/image 5.png";
+import listen from "../assets/image 7.png";
 const categories = [
   {
     title: "Speaking",
-    img: "https://img.freepik.com/premium-vector/speaking-icon-sign-talking-icon-voice-audio-icon-sign_1199668-997.jpg",
+    img: speak,
   },
   {
     title: "Writing",
-    img: "https://cdn-icons-png.flaticon.com/512/2554/2554339.png",
+    img: write,
   },
   {
     title: "Reading",
-    img: "https://cdn-icons-png.flaticon.com/512/3068/3068380.png",
+    img: read,
   },
   {
     title: "Listening",
-    img: "https://media.istockphoto.com/id/1244097573/vector/headphones-minimal-icon-with-sound-waves.jpg?s=612x612&w=0&k=20&c=OvARZEMYt_CM9M9-oJmMZ3O-HtEB-CAKqpGZPSA1acM=",
+    img: listen,
   },
   
 ];
@@ -24,8 +27,10 @@ const Page2 = () => {
   return (
     <div className="w-full bg-white py-20 px-6 flex flex-col items-center text-center">
       {/* Heading */}
-      <h2 className="text-6xl sm:text-7xl font-light mb-20 text-gray-800 tracking-tight leading-tight">
-        Ready to level up
+      <h2 className="text-6xl sm:text-7xl font-light mb-20 tracking-tight leading-tight">
+        <span className="bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">Ready to</span>{' '}
+        <span className="font-extrabold text-black">level </span>
+        <span className="bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">up</span>{' '}
       </h2>
 
       {/* Horizontal Category Icons */}
@@ -49,6 +54,7 @@ const Page2 = () => {
         <p className="uppercase text-sm text-gray-500 tracking-widest mb-4">
           . Polished . Prepared . PowerFull 
         </p>
+        
         <h3 className="text-5xl sm:text-6xl font-light text-gray-800 mb-6">
           From Practice to <span className="font-medium">Perfection</span>
         </h3>
