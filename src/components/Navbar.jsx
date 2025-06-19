@@ -106,7 +106,7 @@ const Navbar = ({ onNavigate }) => {
                 <a
                   href="#"
                   className={`block px-4 py-3 text-center text-sm font-medium transition-colors duration-200 ${
-                    item === "Support Team" ? "bg-black text-white" : "text-white hover:bg-red-700"
+                    item === "Support Team" ? "bg-red text-white" : "text-white hover:bg-red-700"
                   }`}
                   onClick={e => {
                     e.preventDefault();

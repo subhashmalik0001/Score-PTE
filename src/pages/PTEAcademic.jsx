@@ -7,7 +7,7 @@ import { X, CheckCircle, Lock } from 'lucide-react'
 
 const PTEAcademic = () => {
   const [activeTab, setActiveTab] = useState("pte-academic")
-  const [modalOpen, setModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [inputCode, setInputCode] = useState("")
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
@@ -56,7 +56,7 @@ const PTEAcademic = () => {
   const handleItemClick = (item) => {
     if (!item.disabled) {
       setSelectedItem(item)
-      setModalOpen(true)
+      setIsModalOpen(true)
       setInputCode("")
       setError("")
       setSuccess(false)
@@ -64,7 +64,7 @@ const PTEAcademic = () => {
   }
 
   const handleModalClose = () => {
-    setModalOpen(false)
+    setIsModalOpen(false)
     setInputCode("")
     setError("")
     setSuccess(false)
@@ -99,7 +99,7 @@ const PTEAcademic = () => {
   }
 
   const closeModal = () => {
-    setModalOpen(false)
+    setIsModalOpen(false)
     setAccessCode("")
     setValidationStatus("idle")
     setErrorMessage("")
@@ -177,111 +177,104 @@ const PTEAcademic = () => {
       </div>
 
       {/* Modal Popup */}
-      <AnimatePresence>
-        {modalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center">
-            {/* Blur Background */}
-            <div className="fixed inset-0 bg-black/30 backdrop-blur" />
-            {/* Modal */}
-            <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 scale-100 animate-in zoom-in-95">
-              {/* Close Button */}
-              <button
-                onClick={closeModal}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
-              >
-                <X className="h-6 w-6" />
-              </button>
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 backdrop-blur-sm transition-opacity duration-300"
+            onClick={closeModal}
+          />
 
-              {/* Content */}
-              <div className="text-center">
-                {validationStatus === 'success' ? (
-                  <div className="mb-4 animate-in fade-in-50 duration-500">
-                    <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4 animate-pulse" />
+          {/* Modal */}
+          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 scale-100 animate-in zoom-in-95">
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+            >
+              <X className="h-6 w-6" />
+            </button>
+
+            {/* Modal Content */}
+            <div className="text-center">
+              {validationStatus === 'success' ? (
+                <div className="mb-4 animate-in fade-in-50 duration-500">
+                  <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4 animate-pulse" />
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    Access Granted! 🎉
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    You can now access <strong>{selectedItem?.name}</strong>
+                  </p>
+                </div>
+              ) : (
+                <>
+                  {/* Lock Icon */}
+                  <div className="mb-4">
+                    <Lock className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                     <h3 className="text-lg font-medium text-gray-900 mb-2">
-                      Access Granted! 🎉
+                      🔒 This content is locked.
                     </h3>
-                    <p className="text-sm text-gray-600">
-                      You can now access <strong>{selectedItem?.name}</strong>
+                    <p className="text-sm text-gray-600 mb-6">
+                      Enter your access code to unlock <strong>{selectedItem?.name}</strong>.
                     </p>
                   </div>
-                ) : (
-                  <>
-                    {/* Lock Icon */}
-                    <div className="mb-4">
-                      <Lock className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                      <h3 className="text-lg font-medium text-gray-900 mb-2">
-                        🔒 This content is locked.
-                      </h3>
-                      <p className="text-sm text-gray-600 mb-6">
-                        Enter your access code to unlock <strong>{selectedItem?.name}</strong>.
-                      </p>
-                    </div>
 
-                    {/* Input Form */}
-                    <div className="space-y-4">
-                      <div>
-                        <input
-                          type="text"
-                          value={accessCode}
-                          onChange={(e) => setAccessCode(e.target.value)}
-                          onKeyDown={handleKeyDown}
-                          placeholder="Enter access code"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-center font-mono"
-                          disabled={isValidating}
-                          autoFocus
-                        />
-                        {validationStatus === 'error' && (
-                          <div className="text-red-500 text-sm mt-2 animate-pulse bg-red-50 p-2 rounded border border-red-200">
-                            {errorMessage}
-                          </div>
-                        )}
+                  {/* Input Section */}
+                  <div className="space-y-4">
+                    <input
+                      type="text"
+                      value={accessCode}
+                      onChange={(e) => setAccessCode(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      placeholder="Enter access code"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-center font-mono"
+                      disabled={isValidating}
+                      autoFocus
+                    />
+                    {validationStatus === 'error' && (
+                      <div className="text-red-500 text-sm mt-2 animate-pulse bg-red-50 p-2 rounded border border-red-200">
+                        {errorMessage}
                       </div>
+                    )}
 
+                    <button
+                      onClick={handleSubmit}
+                      disabled={isValidating}
+                      className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium transform hover:scale-105"
+                    >
+                      {isValidating ? (
+                        <div className="flex items-center justify-center">
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                          Validating...
+                        </div>
+                      ) : (
+                        'Submit'
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Telegram Link */}
+                  <div className="mt-6 pt-4 border-t border-gray-200">
+                    <p className="text-sm text-gray-600">
+                      Don't have a code?{' '}
                       <button
-                        onClick={handleSubmit}
-                        disabled={isValidating}
-                        className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium transform hover:scale-105"
+                        className="text-blue-600 hover:text-blue-800 font-medium underline transition-colors"
+                        onClick={() => {
+                          alert('Redirecting to Telegram group...')
+                        }}
                       >
-                        {isValidating ? (
-                          <div className="flex items-center justify-center">
-                            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                            Validating...
-                          </div>
-                        ) : (
-                          'Submit'
-                        )}
-                      </button>
-                    </div>
-
-                    {/* Telegram Link */}
-                    <div className="mt-6 pt-4 border-t border-gray-200">
-                      <p className="text-sm text-gray-600">
-                        Don't have a code?{' '}
-                        <button
-                          className="text-blue-600 hover:text-blue-800 font-medium underline transition-colors"
-                          onClick={() => {
-                            alert('Redirecting to Telegram group...');
-                          }}
-                        >
-                          Join our Telegram Group
-                        </button>{' '}
-                        to request one.
-                      </p>
-                    </div>
-
-                    {/* Hint for demo */}
-                    <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                      <p className="text-xs text-yellow-800">
-                        💡 <strong>Demo hint:</strong> Try codes like "1234", "PTE2024", "UNLOCK", or "ACCESS"
-                      </p>
-                    </div>
-                  </>
-                )}
-              </div>
+                        Join our Telegram Group
+                      </button>{' '}
+                      to request one.
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
           </div>
-        )}
-      </AnimatePresence>
+        </div>
+      )}
     </div>
   )
 }
