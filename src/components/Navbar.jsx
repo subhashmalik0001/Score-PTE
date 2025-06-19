@@ -89,10 +89,11 @@ const Navbar = ({ onNavigate }) => {
           {/* University Name and Info */}
           <div className="flex-1">
             <h1 className="text-4xl md:text-6xl font-extrabold text-red-800 tracking-wide">Score PTE</h1>
-            <p className="text-base md:text-lg mt-1 text-[#FFD700]">
-  Established by Experts
-  <br />- Score must grow
+            <p className="text-base md:text-lg mt-1 text-[#676767]">
+  Established by Experts 
+  <br />-Score Must Grow
 </p>
+
 
           </div>
         </div>
