@@ -1,8 +1,8 @@
 import React from "react";
 import speak from "../assets/image 4.png";
-import write from "../assets/image 6.png";
+import write from "../assets/image 9.png";
 import read from "../assets/image 5.png";
-import listen from "../assets/image 7.png";
+import listen from "../assets/image 8.png";
 const categories = [
   {
     title: "Speaking",

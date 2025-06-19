@@ -3,14 +3,14 @@ import main from "../assets/image 2.png";
 
 const Page1 = () => {
   return (
-    <div className="w-screen h-screen overflow-hidden flex items-center justify-center">
-      <img
-        src={main}
-        alt="Nama Home Landing Page"
-        className="w-full h-full max-w-full max-h-full object-contain"
-        draggable={true}
-      />
-    </div>
+    <div className="relative w-full">
+        <img
+          src={main}
+          alt="PTE Testing Center - Computer lab with workstations for PTE Academic preparation and testing"
+          
+        />
+       
+      </div>
   );
 };
 
