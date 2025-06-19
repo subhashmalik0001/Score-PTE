@@ -1,36 +1,62 @@
 import React from "react";
-import { motion } from "framer-motion";
+import image10 from '../assets/image 10.png';
+import image11 from '../assets/image 11.png';
+import image12 from '../assets/image 12.png';
+import image13 from '../assets/image 13.png';
+import image14 from '../assets/image 14.png';
 
-import { FaLaptop, FaClock, FaGlobe, FaUserGraduate, FaChartLine, FaFileAlt } from 'react-icons/fa';
-
-const features = [
-  { icon: <FaLaptop size={64} />, text: "Live Classes" },
-  { icon: <FaClock size={64} />, text: "24/7 Support" },
-  { icon: <FaFileAlt size={64} />, text: "Surety Files" },
-  { icon: <FaUserGraduate size={64} />, text: "Assesses speaking, writing, reading & listening" },
-  { icon: <FaChartLine size={64} />, text: "Real-life academic and professional scenarios" },
-  { icon: <FaFileAlt size={64} />, text: "Scoring ensures fairness & accuracy" },
+const images = [
+  image10,
+  image11,
+  image12,
+  image13,
+  image14,
 ];
 
 const Page3 = () => {
+  const repeatedImages = [...images, ...images]; // For seamless loop
+
   return (
-    <div className="w-full bg-white px-4 pb-12">
-      {/* Feature Grid */}
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }} 
-        animate={{ opacity: 1, y: 0 }} 
-        transition={{ duration: 1 }}
-        className="flex justify-center"
+    <div className="w-full h-[50vh] bg-gray-100 overflow-hidden py-10">
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
+      
+      <div
+        className="flex gap-8 whitespace-nowrap group hover:[animation-play-state:paused] px-6"
+        style={{
+          animation: "scroll 15s linear infinite",
+          animationFillMode: "forwards",
+          animationDirection: "normal",
+          animationIterationCount: "infinite",
+          animationTimingFunction: "linear",
+        }}
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center text-gray-600 max-w-5xl">
-          {features.map((item, index) => (
-            <div key={index} className="flex flex-col items-center space-y-4">
-              <div className="text-gray-400">{item.icon}</div>
-              <p className="text-lg md:text-2xl font-semibold text-gray-700 text-center">{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
+        {repeatedImages.map((src, idx) => (
+          <div
+            key={idx}
+            className="inline-block bg-white rounded-lg shadow-md border border-gray-200 p-6 hover:shadow-lg transition-shadow duration-300"
+            style={{
+              width: "500px",
+              height: "400px",
+              minWidth: "400px",
+            }}
+          >
+            <img
+              src={src}
+              alt={`sponsor-${idx}`}
+              className="w-full h-full object-contain"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
