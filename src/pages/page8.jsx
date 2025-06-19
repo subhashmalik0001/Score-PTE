@@ -85,6 +85,34 @@ const flagUrls = [
   "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/960px-Flag_of_New_Zealand.svg.png",
   "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/1200px-Flag_of_the_United_Kingdom_%281-2%29.svg.png",
   "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
+  "https://t3.ftcdn.net/jpg/08/05/82/66/360_F_805826661_nsFm1zBeiohQqNaGgJQs9y79HRUz0WWk.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/960px-Flag_of_New_Zealand.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_United_Arab_Emirates.svg/1200px-Flag_of_the_United_Arab_Emirates.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Flag_of_Sri_Lanka.svg/1200px-Flag_of_Sri_Lanka.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/330px-Flag_of_Australia_%28converted%29.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Flag_of_Bangladesh.svg/330px-Flag_of_Bangladesh.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/960px-Flag_of_New_Zealand.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/1200px-Flag_of_the_United_Kingdom_%281-2%29.svg.png",
+  "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
+  "https://t3.ftcdn.net/jpg/08/05/82/66/360_F_805826661_nsFm1zBeiohQqNaGgJQs9y79HRUz0WWk.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/960px-Flag_of_New_Zealand.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_United_Arab_Emirates.svg/1200px-Flag_of_the_United_Arab_Emirates.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Flag_of_Sri_Lanka.svg/1200px-Flag_of_Sri_Lanka.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/330px-Flag_of_Australia_%28converted%29.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Flag_of_Bangladesh.svg/330px-Flag_of_Bangladesh.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/960px-Flag_of_New_Zealand.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/1200px-Flag_of_the_United_Kingdom_%281-2%29.svg.png",
+  "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
+  "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
+  "https://t3.ftcdn.net/jpg/08/05/82/66/360_F_805826661_nsFm1zBeiohQqNaGgJQs9y79HRUz0WWk.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/960px-Flag_of_New_Zealand.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_United_Arab_Emirates.svg/1200px-Flag_of_the_United_Arab_Emirates.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Flag_of_Sri_Lanka.svg/1200px-Flag_of_Sri_Lanka.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/330px-Flag_of_Australia_%28converted%29.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Flag_of_Bangladesh.svg/330px-Flag_of_Bangladesh.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/960px-Flag_of_New_Zealand.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/1200px-Flag_of_the_United_Kingdom_%281-2%29.svg.png",
+  "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
  
   
 ]
@@ -119,7 +147,7 @@ export default function DiagonalFlagsAnimation() {
 
   return (
     <div className="min-h-screen bg-gray-900 overflow-hidden relative">
-      <div className="absolute inset-0 transform rotate-12 scale-150 origin-center">
+      <div className="absolute inset-0 h-10 transform rotate-12 scale-150 origin-center">
         <div className="flex flex-col gap-8 -mt-32">
           {rows.map((row, rowIndex) => (
             <motion.div
@@ -137,7 +165,7 @@ export default function DiagonalFlagsAnimation() {
               {row.flags.map((flag, index) => (
                 <motion.div
                   key={`flag-${index}`}
-                  className="flex-shrink-0 w-48 h-32 bg-gray-800 rounded-lg flex items-center justify-center border border-gray-700 hover:border-gray-600 transition-colors overflow-hidden"
+                  className="flex-shrink-0 w-24 h-20 sm:w-32 sm:h-20 md:w-48 md:h-32 bg-gray-800 rounded-lg flex items-center justify-center border border-gray-700 hover:border-gray-600 transition-colors overflow-hidden"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
