@@ -14,7 +14,7 @@ const features = [
 
 const Page3 = () => {
   return (
-    <div className="w-full bg-white px-4 py-0">
+    <div className="w-full bg-white px-4 pb-12">
       {/* Feature Grid */}
       <motion.div 
         initial={{ opacity: 0, y: 50 }} 
@@ -22,7 +22,7 @@ const Page3 = () => {
         transition={{ duration: 1 }}
         className="flex justify-center"
       >
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center text-gray-600 max-w-5xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center text-gray-600 max-w-5xl">
           {features.map((item, index) => (
             <div key={index} className="flex flex-col items-center space-y-4">
               <div className="text-gray-400">{item.icon}</div>
