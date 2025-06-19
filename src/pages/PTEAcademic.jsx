@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Dialog } from '@headlessui/react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X } from 'lucide-react'
+import { X, CheckCircle, Lock } from 'lucide-react'
 
 const PTEAcademic = () => {
   const [activeTab, setActiveTab] = useState("pte-academic")
@@ -12,6 +12,10 @@ const PTEAcademic = () => {
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
   const [selectedItem, setSelectedItem] = useState(null)
+  const [accessCode, setAccessCode] = useState("")
+  const [validationStatus, setValidationStatus] = useState("idle")
+  const [errorMessage, setErrorMessage] = useState("")
+  const [isValidating, setIsValidating] = useState(false)
 
   const speakingItems = [
     { name: "Read Aloud", hasAI: true, disabled: false },
@@ -75,6 +79,30 @@ const PTEAcademic = () => {
       setError("Invalid code. Please try again.")
       setSuccess(false)
     }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (accessCode === "1234") {
+      setValidationStatus("success")
+      setErrorMessage("")
+    } else {
+      setValidationStatus("error")
+      setErrorMessage("Invalid code. Please try again.")
+    }
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit(e)
+    }
+  }
+
+  const closeModal = () => {
+    setModalOpen(false)
+    setAccessCode("")
+    setValidationStatus("idle")
+    setErrorMessage("")
   }
 
   const ItemList = ({ items, title }) => (
@@ -151,62 +179,107 @@ const PTEAcademic = () => {
       {/* Modal Popup */}
       <AnimatePresence>
         {modalOpen && (
-          <Dialog as="div" className="fixed inset-0 z-50 flex items-center justify-center" open={modalOpen} onClose={handleModalClose}>
-            <motion.div
-              key="modal-bg"
-              className="fixed inset-0  bg-opacity-40"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            />
-            <motion.div
-              key="modal-content"
-              initial={{ scale: 0.95, opacity: 0, y: 40 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 40 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative z-10 bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 p-6 flex flex-col items-center"
-            >
-              {/* Close button */}
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            {/* Blur Background */}
+            <div className="fixed inset-0 bg-black/30 backdrop-blur" />
+            {/* Modal */}
+            <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 scale-100 animate-in zoom-in-95">
+              {/* Close Button */}
               <button
-                className="absolute top-3 right-3 text-gray-400 hover:text-gray-700"
-                onClick={handleModalClose}
-                aria-label="Close"
+                onClick={closeModal}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
               >
-                <X size={24} />
+                <X className="h-6 w-6" />
               </button>
-              {/* Lock icon and message */}
-              <div className="text-4xl mb-2">🔒</div>
-              <div className="text-lg font-semibold mb-2 text-gray-800">This content is locked.</div>
-              <div className="text-sm text-gray-500 mb-4">Enter your access code to unlock this feature.</div>
-              {/* Input and submit */}
-              {!success ? (
-                <form onSubmit={handleCodeSubmit} className="w-full flex flex-col items-center gap-3">
-                  <input
-                    type="text"
-                    value={inputCode}
-                    onChange={e => setInputCode(e.target.value)}
-                    className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-teal-400 text-center"
-                    placeholder="Access code"
-                  />
-                  <button
-                    type="submit"
-                    className="w-full bg-white text-gold-glow font-semibold py-2 rounded hover:bg-gray-200 transition-colors"
-                  >
-                    Submit
-                  </button>
-                  {error && <div className="text-red-600 text-sm mt-1">{error}</div>}
-                </form>
-              ) : (
-                <div className="text-green-600 font-semibold my-4">Access granted! 🎉</div>
-              )}
-              {/* Telegram link */}
-              <div className="mt-4 text-xs text-gray-500 text-center">
-                Don't have a code?{' '}
-                <a href="https://telegram.org/" className="text-blue-600 underline hover:text-blue-800 transition-colors">Join our Telegram Group</a> to request one.
+
+              {/* Content */}
+              <div className="text-center">
+                {validationStatus === 'success' ? (
+                  <div className="mb-4 animate-in fade-in-50 duration-500">
+                    <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4 animate-pulse" />
+                    <h3 className="text-lg font-medium text-gray-900 mb-2">
+                      Access Granted! 🎉
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      You can now access <strong>{selectedItem?.name}</strong>
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    {/* Lock Icon */}
+                    <div className="mb-4">
+                      <Lock className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                      <h3 className="text-lg font-medium text-gray-900 mb-2">
+                        🔒 This content is locked.
+                      </h3>
+                      <p className="text-sm text-gray-600 mb-6">
+                        Enter your access code to unlock <strong>{selectedItem?.name}</strong>.
+                      </p>
+                    </div>
+
+                    {/* Input Form */}
+                    <div className="space-y-4">
+                      <div>
+                        <input
+                          type="text"
+                          value={accessCode}
+                          onChange={(e) => setAccessCode(e.target.value)}
+                          onKeyDown={handleKeyDown}
+                          placeholder="Enter access code"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-center font-mono"
+                          disabled={isValidating}
+                          autoFocus
+                        />
+                        {validationStatus === 'error' && (
+                          <div className="text-red-500 text-sm mt-2 animate-pulse bg-red-50 p-2 rounded border border-red-200">
+                            {errorMessage}
+                          </div>
+                        )}
+                      </div>
+
+                      <button
+                        onClick={handleSubmit}
+                        disabled={isValidating}
+                        className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium transform hover:scale-105"
+                      >
+                        {isValidating ? (
+                          <div className="flex items-center justify-center">
+                            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                            Validating...
+                          </div>
+                        ) : (
+                          'Submit'
+                        )}
+                      </button>
+                    </div>
+
+                    {/* Telegram Link */}
+                    <div className="mt-6 pt-4 border-t border-gray-200">
+                      <p className="text-sm text-gray-600">
+                        Don't have a code?{' '}
+                        <button
+                          className="text-blue-600 hover:text-blue-800 font-medium underline transition-colors"
+                          onClick={() => {
+                            alert('Redirecting to Telegram group...');
+                          }}
+                        >
+                          Join our Telegram Group
+                        </button>{' '}
+                        to request one.
+                      </p>
+                    </div>
+
+                    {/* Hint for demo */}
+                    <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                      <p className="text-xs text-yellow-800">
+                        💡 <strong>Demo hint:</strong> Try codes like "1234", "PTE2024", "UNLOCK", or "ACCESS"
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
-            </motion.div>
-          </Dialog>
+            </div>
+          </div>
         )}
       </AnimatePresence>
     </div>

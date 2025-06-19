@@ -127,7 +127,7 @@ const Navbar = ({ onNavigate }) => {
           <Dialog as="div" className="fixed inset-0 z-50 flex items-center justify-center" open={handoutsModalOpen} onClose={() => setHandoutsModalOpen(false)}>
             <motion.div
               key="handout-modal-bg"
-              className="fixed inset-0  bg-opacity-40"
+              className="fixed inset-0 bg-black/300 backdrop-blur"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -171,7 +171,7 @@ const Navbar = ({ onNavigate }) => {
           <Dialog as="div" className="fixed inset-0 z-50 flex items-center justify-center" open={accessModalOpen} onClose={handleAccessModalClose}>
             <motion.div
               key="access-modal-bg"
-              className="fixed inset-0 bg-black bg-opacity-40"
+              className="fixed inset-0 bg-black/30 backdrop-blur-md"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -229,8 +229,8 @@ const Navbar = ({ onNavigate }) => {
           <Dialog as="div" className="fixed inset-0 z-50 flex items-center justify-center" open={supportModalOpen} onClose={() => setSupportModalOpen(false)}>
             <motion.div
               key="modal-bg"
-              className="fixed inset-0 bg-black bg-opacity-40"
-              initial={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/200 backdrop-blur-sm"
+              initial={{ opacity: 3 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
