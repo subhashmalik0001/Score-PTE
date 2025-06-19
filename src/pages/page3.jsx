@@ -32,7 +32,7 @@ const Page3 = () => {
       <div
         className="flex gap-8 whitespace-nowrap group hover:[animation-play-state:paused] px-6"
         style={{
-          animation: "scroll 15s linear infinite",
+          animation: "scroll 3s linear infinite",
           animationFillMode: "forwards",
           animationDirection: "normal",
           animationIterationCount: "infinite",
