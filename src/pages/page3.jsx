@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+// Mock images for demonstration - replace with your actual imports
 import image10 from '../assets/image 10.png';
 import image11 from '../assets/image 11.png';
 import image12 from '../assets/image 12.png';
@@ -13,49 +15,82 @@ const images = [
   image14,
 ];
 
+// Custom hook to get window width
+function useWindowWidth() {
+  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+  
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  return width;
+}
+
 const Page3 = () => {
-  const repeatedImages = [...images, ...images]; // For seamless loop
+  const repeatedImages = [...images, ...images, ...images]; // Triple for seamless loop
+  const width = useWindowWidth();
+
+  // Responsive configuration with much faster speeds
+  let boxConfig = { 
+    width: width < 640 ? Math.min(250, width * 0.7) : 384, 
+    height: width < 640 ? 180 : 300, 
+    gap: width < 640 ? 12 : 32, 
+    duration: width < 640 ? '4s' : '3s' 
+  };
+  
+  if (width >= 640 && width < 1024) { // tablet
+    boxConfig = { width: 320, height: 240, gap: 24, duration: '3.5s' };
+  }
+
+  // Calculate total width needed for all images
+  const totalContentWidth = (boxConfig.width + boxConfig.gap) * images.length;
 
   return (
-    <div className="w-full h-[50vh] bg-gray-100 overflow-hidden py-10">
+    <div className="w-full bg-gray-100 overflow-hidden py-6 sm:py-10">
       <style jsx>{`
         @keyframes scroll {
           0% {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translateX(calc(-33.333%));
           }
         }
       `}</style>
       
-      <div
-        className="flex gap-8 whitespace-nowrap group hover:[animation-play-state:paused] px-6"
-        style={{
-          animation: "scroll 3s linear infinite",
-          animationFillMode: "forwards",
-          animationDirection: "normal",
-          animationIterationCount: "infinite",
-          animationTimingFunction: "linear",
-        }}
-      >
-        {repeatedImages.map((src, idx) => (
-          <div
-            key={idx}
-            className="inline-block bg-white rounded-lg shadow-md border border-gray-200 p-6 hover:shadow-lg transition-shadow duration-300"
-            style={{
-              width: "500px",
-              height: "400px",
-              minWidth: "400px",
-            }}
-          >
-            <img
-              src={src}
-              alt={`sponsor-${idx}`}
-              className="w-full h-full object-contain"
-            />
-          </div>
-        ))}
+      <div className="relative h-fit">
+        <div
+          className="flex whitespace-nowrap group hover:[animation-play-state:paused]"
+          style={{
+            animation: `scroll ${boxConfig.duration} linear infinite`,
+            gap: `${boxConfig.gap}px`,
+            paddingLeft: `${boxConfig.gap}px`,
+            paddingRight: `${boxConfig.gap}px`,
+          }}
+        >
+          {repeatedImages.map((src, idx) => (
+            <div
+              key={idx}
+              className="inline-block bg-white rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-all duration-300 flex-shrink-0"
+              style={{
+                width: `${boxConfig.width}px`,
+                height: `${boxConfig.height}px`,
+                padding: width < 640 ? '8px' : '16px',
+              }}
+            >
+              <img
+                src={src}
+                alt={`image-${idx}`}
+                className="w-full h-full object-contain rounded"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
