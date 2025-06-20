@@ -10,7 +10,7 @@ const Page7 = () => {
 
       {/* Main Title */}
       <h1 className="text-3xl md:text-5xl font-light">
-        Seen Score 
+        Seen Score PTE Lately?
         <span 
           className="font-extrabold bg-gradient-to-r from-gray-800 via-gray-100 to-gray-800 bg-clip-text text-transparent"
           style={{
@@ -20,7 +20,7 @@ const Page7 = () => {
             WebkitTextFillColor: 'transparent',
           }}
         >
-           PTE Lately?
+          
         </span> 
       </h1>
 
@@ -32,12 +32,14 @@ Each score shared reminds us why we started.
       </p>
 
       {/* Email Link */}
-      <a
-       
-        className="text-blue-300 underline text-sm md:text-base hover:text-blue-400 transition"
-      >
-        @scorepte_explains telegram handle 
-      </a>
+      <div className="flex flex-wrap items-center justify-center gap-2">
+        <span>Drop your Score Card with Reviews on</span>
+        <a
+          className="text-blue-300 underline text-sm md:text-base hover:text-blue-400 transition"
+        >
+          @telegram handle
+        </a>
+      </div>
     </div>
   );
 };

@@ -122,7 +122,12 @@ const PTEAcademic = () => {
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium">{item.name}</span>
               {item.hasAI && !item.disabled && (
-                <span className="text-xs bg-gold text-white px-2 py-1 rounded-full font-semibold border border-black" style={{color:'#111', borderColor:'#111', background:'#FFD700'}}>AI Score</span>
+               <span className="text-xs px-2 py-1 rounded-full font-semibold border border-yellow-300 bg-white">
+               <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+                 AI Score
+               </span>
+             </span>
+             
               )}
             </div>
           </div>
@@ -140,7 +145,7 @@ const PTEAcademic = () => {
             onClick={() => setActiveTab("pte-academic")}
             className={`px-6 py-3 font-medium text-sm transition-colors ${
               activeTab === "pte-academic"
-                ? "bg-red-800 text-white border-b-2 border-teal-400"
+                ? "bg-red-800 text-white border-b-2 "
                 : "bg-gray-200 text-gray-600 hover:bg-gray-300"
             }`}
           >
@@ -150,7 +155,7 @@ const PTEAcademic = () => {
             onClick={() => setActiveTab("pte-core")}
             className={`px-6 py-3 font-medium text-sm transition-colors ${
               activeTab === "pte-core"
-                ? "bg-red-800 text-white border-b-2 border-teal-400"
+                ? "bg-red-800 text-white border-b-2 "
                 : "bg-gray-200 text-gray-600 hover:bg-gray-300"
             }`}
           >

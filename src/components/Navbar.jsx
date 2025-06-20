@@ -6,22 +6,25 @@ import { Menu, X } from "lucide-react"
 import { Dialog } from '@headlessui/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaTelegramPlane, FaInstagram, FaFacebook, FaPhone } from 'react-icons/fa'
+import { CheckCircle, Lock } from 'lucide-react'
 
 const Navbar = ({ onNavigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [supportModalOpen, setSupportModalOpen] = useState(false)
   const [handoutsModalOpen, setHandoutsModalOpen] = useState(false)
-  const [accessModalOpen, setAccessModalOpen] = useState(false)
   const [selectedHandout, setSelectedHandout] = useState(null)
-  const [inputCode, setInputCode] = useState("")
-  const [error, setError] = useState("")
-  const [success, setSuccess] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [validationStatus, setValidationStatus] = useState('')
+  const [selectedItem, setSelectedItem] = useState(null)
+  const [accessCode, setAccessCode] = useState("")
+  const [isValidating, setIsValidating] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handoutResources = [
-    "Template",
+    "Templates",
     "Prediction Files",
     "Surety Files",
-    "One-on-One Classes"
+
   ]
 
   const navigationItems = [
@@ -52,28 +55,48 @@ const Navbar = ({ onNavigate }) => {
 
   // Handouts modal logic
   const handleHandoutClick = (resource) => {
+    setHandoutsModalOpen(false)
     setSelectedHandout(resource)
-    setAccessModalOpen(true)
-    setInputCode("")
-    setError("")
-    setSuccess(false)
+    setIsModalOpen(true)
+    setAccessCode("")
+    setValidationStatus("")
+    setSelectedItem({ name: resource })
   }
-  const handleAccessModalClose = () => {
-    setAccessModalOpen(false)
-    setSelectedHandout(null)
-    setInputCode("")
-    setError("")
-    setSuccess(false)
-  }
-  const handleCodeSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (inputCode === "1234") {
-      setSuccess(true)
-      setError("")
-    } else {
-      setError("Invalid code. Please try again.")
-      setSuccess(false)
+    setIsValidating(true)
+    setErrorMessage("")
+
+    try {
+      // Simulate a validation process
+      const isValid = accessCode === "1234"
+      if (isValid) {
+        setValidationStatus('success')
+        setSelectedItem({ name: selectedHandout })
+      } else {
+        setValidationStatus('error')
+        setErrorMessage("Invalid code. Please try again.")
+      }
+    } catch (error) {
+      setValidationStatus('error')
+      setErrorMessage("An error occurred. Please try again later.")
+    } finally {
+      setIsValidating(false)
     }
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit(e)
+    }
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setAccessCode("")
+    setValidationStatus('')
+    setSelectedItem(null)
   }
 
   return (
@@ -167,64 +190,6 @@ const Navbar = ({ onNavigate }) => {
         )}
       </AnimatePresence>
 
-      {/* Access Code Modal (second-level) */}
-      <AnimatePresence>
-        {accessModalOpen && (
-          <Dialog as="div" className="fixed inset-0 z-50 flex items-center justify-center" open={accessModalOpen} onClose={handleAccessModalClose}>
-            <motion.div
-              key="access-modal-bg"
-              className="fixed inset-0 bg-black/30 backdrop-blur-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            />
-            <motion.div
-              key="access-modal-content"
-              initial={{ scale: 0.95, opacity: 0, y: 40 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 40 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative z-10 bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 p-6 flex flex-col items-center"
-            >
-              <button
-                className="absolute top-3 right-3 text-gray-400 hover:text-gray-700"
-                onClick={handleAccessModalClose}
-                aria-label="Close"
-              >
-                <X size={24} />
-              </button>
-              <div className="text-4xl mb-2">🔒</div>
-              <div className="text-lg font-semibold mb-2 text-gray-800">This content is locked.</div>
-              <div className="text-sm text-gray-500 mb-4">Enter your access code to unlock this feature.</div>
-              {!success ? (
-                <form onSubmit={handleCodeSubmit} className="w-full flex flex-col items-center gap-3">
-                  <input
-                    type="text"
-                    value={inputCode}
-                    onChange={e => setInputCode(e.target.value)}
-                    className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-teal-400 text-center"
-                    placeholder="Access code"
-                  />
-                  <button
-                    type="submit"
-                    className="w-full bg-white text-gold-glow font-semibold py-2 rounded hover:bg-gray-200 transition-colors"
-                  >
-                    Submit
-                  </button>
-                  {error && <div className="text-red-600 text-sm mt-1">{error}</div>}
-                </form>
-              ) : (
-                <div className="text-green-600 font-semibold my-4">Access granted! 🎉</div>
-              )}
-              <div className="mt-4 text-xs text-gray-500 text-center">
-                Don't have a code?{' '}
-                <a href="https://telegram.org/" className="text-blue-600 underline hover:text-blue-800 transition-colors">Join our Telegram Group</a> to request one.
-              </div>
-            </motion.div>
-          </Dialog>
-        )}
-      </AnimatePresence>
-
       {/* Support Modal */}
       <AnimatePresence>
         {supportModalOpen && (
@@ -277,6 +242,109 @@ const Navbar = ({ onNavigate }) => {
           </Dialog>
         )}
       </AnimatePresence>
+
+      {/* Modal Popup */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 backdrop-blur-sm transition-opacity duration-300"
+            onClick={closeModal}
+          />
+
+          {/* Modal */}
+          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 scale-100 animate-in zoom-in-95">
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+            >
+              <X className="h-6 w-6" />
+            </button>
+
+            {/* Modal Content */}
+            <div className="text-center">
+              {validationStatus === 'success' ? (
+                <div className="mb-4 animate-in fade-in-50 duration-500">
+                  <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4 animate-pulse" />
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    Access Granted! 🎉
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    You can now access <strong>{selectedItem?.name}</strong>
+                  </p>
+                </div>
+              ) : (
+                <>
+                  {/* Lock Icon */}
+                  <div className="mb-4">
+                    <Lock className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                    <h3 className="text-2xl md:text-3xl font-bold mb-2">
+  <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+    Premium
+  </span>{' '}
+  <span className="text-black">starts here.</span>
+</h3>
+                    <p className="text-sm text-gray-600 mb-6">
+                      Enter your access code to unlock <strong>{selectedItem?.name}</strong>.
+                    </p>
+                  </div>
+
+                  {/* Input Section */}
+                  <div className="space-y-4">
+                    <input
+                      type="text"
+                      value={accessCode}
+                      onChange={(e) => setAccessCode(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      placeholder="Enter code"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-center font-mono"
+                      disabled={isValidating}
+                      autoFocus
+                    />
+                    {validationStatus === 'error' && (
+                      <div className="text-red-500 text-sm mt-2 animate-pulse bg-red-50 p-2 rounded border border-red-200">
+                        {errorMessage}
+                      </div>
+                    )}
+
+                    <button
+                      onClick={handleSubmit}
+                      disabled={isValidating}
+                      className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium transform hover:scale-105"
+                    >
+                      {isValidating ? (
+                        <div className="flex items-center justify-center">
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                          Validating...
+                        </div>
+                      ) : (
+                        'Submit'
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Telegram Link */}
+                  <div className="mt-6 pt-4 border-t border-gray-200">
+                    <p className="text-sm text-gray-600">
+                      Don't have a code? Contact Support{' '}
+                      <button
+                        className="text-blue-600 hover:text-blue-800 font-medium underline transition-colors"
+                        onClick={() => {
+                          alert('Redirecting to Telegram group...')
+                        }}
+                      >
+                        Telegram Link
+                      </button>{' '}
+                     
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   )
 }
