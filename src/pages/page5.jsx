@@ -2,7 +2,7 @@ import React from "react";
 
 const Page5 = () => {
   return (
-    <div className="w-full bg-white flex flex-col justify-center items-center px-4 min-h-screen md:px-6">
+    <div className="w-full bg-white flex flex-col justify-center items-center px-4 py-12 md:px-6">
       <p className="uppercase tracking-[0.25em] text-gray-400 text-xs md:text-sm mb-4">
         What we are working on
       </p>

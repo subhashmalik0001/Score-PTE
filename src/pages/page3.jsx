@@ -18,44 +18,44 @@ const images = [
 // Custom hook to get window width
 function useWindowWidth() {
   const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
-  
+    
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    
+        
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  
+    
   return width;
 }
 
 const Page3 = () => {
   const repeatedImages = [...images, ...images]; // Double for seamless loop
   const width = useWindowWidth();
-
+  
   // Responsive configuration
   let boxConfig = { 
-    width: width < 640 ? Math.min(250, width * 0.7) : 384, 
-    height: width < 640 ? 180 : 300, 
-    gap: width < 640 ? 12 : 32, 
-    duration: width < 640 ? '6s' : '8s' 
+    width: width < 640 ? Math.min(250, width * 0.7) : 384,
+    height: width < 640 ? 180 : 300,
+    gap: width < 640 ? 12 : 32,
+    duration: width < 640 ? '6s' : '8s'
   };
-  
+    
   if (width >= 640 && width < 1024) { // tablet
     boxConfig = { width: 320, height: 240, gap: 24, duration: '7s' };
   }
-
+  
   // Calculate total scroll distance (all images)
   const totalScroll = (boxConfig.width + boxConfig.gap) * images.length;
-
+  
   // Dynamic keyframes for all images
   const keyframes = `@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-${totalScroll}px); } }`;
-
+  
   return (
-    <div className="w-full bg-gray-100 overflow-hidden py-6 sm:py-10">
+    <div className="w-full bg-gray-100 overflow-hidden">
       <style jsx>{keyframes}</style>
-      
+            
       <div className="relative h-fit">
         <div
           className="flex whitespace-nowrap group hover:[animation-play-state:paused]"
