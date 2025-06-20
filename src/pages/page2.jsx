@@ -57,11 +57,12 @@ const Page2 = () => {
   <span className="relative top-[-4px]">.</span> PowerFull
 </p>
 
-<h3 className="text-6xl sm:text-7xl font-light mb-20 tracking-tight leading-tight">
-        <span className="bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">  From</span>{' '}
-        <span className="font-extrabold text-black">Practice </span>
-        <span className="bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">to Perfection</span>{' '}
-      </h3>
+<h1 className="text-6xl sm:text-7xl font-extrabold mb-20 tracking-tight leading-tight">
+  <span className="bg-gradient-to-r from-gray-200 via-gray-800 to-gray-700 bg-clip-text text-transparent">
+    From Practice to Perfection
+  </span>
+</h1>
+
 
        
        

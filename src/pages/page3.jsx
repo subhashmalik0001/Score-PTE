@@ -31,36 +31,30 @@ function useWindowWidth() {
 }
 
 const Page3 = () => {
-  const repeatedImages = [...images, ...images, ...images]; // Triple for seamless loop
+  const repeatedImages = [...images, ...images]; // Double for seamless loop
   const width = useWindowWidth();
 
-  // Responsive configuration with much faster speeds
+  // Responsive configuration
   let boxConfig = { 
     width: width < 640 ? Math.min(250, width * 0.7) : 384, 
     height: width < 640 ? 180 : 300, 
     gap: width < 640 ? 12 : 32, 
-    duration: width < 640 ? '4s' : '3s' 
+    duration: width < 640 ? '6s' : '8s' 
   };
   
   if (width >= 640 && width < 1024) { // tablet
-    boxConfig = { width: 320, height: 240, gap: 24, duration: '3.5s' };
+    boxConfig = { width: 320, height: 240, gap: 24, duration: '7s' };
   }
 
-  // Calculate total width needed for all images
-  const totalContentWidth = (boxConfig.width + boxConfig.gap) * images.length;
+  // Calculate total scroll distance (all images)
+  const totalScroll = (boxConfig.width + boxConfig.gap) * images.length;
+
+  // Dynamic keyframes for all images
+  const keyframes = `@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-${totalScroll}px); } }`;
 
   return (
     <div className="w-full bg-gray-100 overflow-hidden py-6 sm:py-10">
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-33.333%));
-          }
-        }
-      `}</style>
+      <style jsx>{keyframes}</style>
       
       <div className="relative h-fit">
         <div

@@ -212,9 +212,12 @@ const PTEAcademic = () => {
                   {/* Lock Icon */}
                   <div className="mb-4">
                     <Lock className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">
-                      🔒 This content is locked.
-                    </h3>
+                    <h3 className="text-2xl md:text-3xl font-bold mb-2">
+  <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+    Premium
+  </span>{' '}
+  <span className="text-black">access starts here</span>
+</h3>
                     <p className="text-sm text-gray-600 mb-6">
                       Enter your access code to unlock <strong>{selectedItem?.name}</strong>.
                     </p>
@@ -227,7 +230,7 @@ const PTEAcademic = () => {
                       value={accessCode}
                       onChange={(e) => setAccessCode(e.target.value)}
                       onKeyDown={handleKeyDown}
-                      placeholder="Enter access code"
+                      placeholder="Enter code"
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-center font-mono"
                       disabled={isValidating}
                       autoFocus
@@ -257,16 +260,16 @@ const PTEAcademic = () => {
                   {/* Telegram Link */}
                   <div className="mt-6 pt-4 border-t border-gray-200">
                     <p className="text-sm text-gray-600">
-                      Don't have a code?{' '}
+                      Don't have a code? Contact Support{' '}
                       <button
                         className="text-blue-600 hover:text-blue-800 font-medium underline transition-colors"
                         onClick={() => {
                           alert('Redirecting to Telegram group...')
                         }}
                       >
-                        Join our Telegram Group
+                        Telegram Link
                       </button>{' '}
-                      to request one.
+                     
                     </p>
                   </div>
                 </>
