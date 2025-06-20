@@ -39,11 +39,11 @@ const Page3 = () => {
     width: width < 640 ? Math.min(250, width * 0.7) : 384,
     height: width < 640 ? 180 : 300,
     gap: width < 640 ? 12 : 32,
-    duration: width < 640 ? '6s' : '8s'
+    duration: width < 640 ? '13s' : '12s'
   };
     
   if (width >= 640 && width < 1024) { // tablet
-    boxConfig = { width: 320, height: 240, gap: 24, duration: '7s' };
+    boxConfig = { width: 320, height: 240, gap: 24, duration: '13s' };
   }
   
   // Calculate total scroll distance (all images)
