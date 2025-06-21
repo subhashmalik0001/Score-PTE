@@ -7,11 +7,13 @@ import { Dialog } from '@headlessui/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaTelegramPlane, FaInstagram, FaFacebook, FaPhone } from 'react-icons/fa'
 import { CheckCircle, Lock } from 'lucide-react'
+import PricingCards from './PricingCards'
 
 const Navbar = ({ onNavigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [supportModalOpen, setSupportModalOpen] = useState(false)
   const [handoutsModalOpen, setHandoutsModalOpen] = useState(false)
+  const [courseModalOpen, setCourseModalOpen] = useState(false)
   const [selectedHandout, setSelectedHandout] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [validationStatus, setValidationStatus] = useState('')
@@ -30,8 +32,10 @@ const Navbar = ({ onNavigate }) => {
   const navigationItems = [
     "Home",
     "PTE Practice",
+    "Course",
     "Hand Outs",
     "Support Team",
+
   ]
 
   const toggleMenu = () => {
@@ -49,6 +53,8 @@ const Navbar = ({ onNavigate }) => {
       setSupportModalOpen(true)
     } else if (item === "Hand Outs") {
       setHandoutsModalOpen(true)
+    } else if (item === "Course") {
+      setCourseModalOpen(true)
     }
     setIsMenuOpen(false)
   }
@@ -237,6 +243,42 @@ const Navbar = ({ onNavigate }) => {
                   <FaPhone className="text-green-600 text-2xl" />
                   <span className="font-medium text-gray-800">+91-987654XXXX</span>
                 </div>
+              </div>
+            </motion.div>
+          </Dialog>
+        )}
+      </AnimatePresence>
+
+      {/* Course Modal */}
+      <AnimatePresence>
+        {courseModalOpen && (
+          <Dialog as="div" className="fixed inset-0 z-50 flex items-center justify-center" open={courseModalOpen} onClose={() => setCourseModalOpen(false)}>
+            <motion.div
+              key="course-modal-bg"
+              className="fixed inset-0 bg-black/200 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+            <motion.div
+              key="course-modal-content"
+              initial={{ scale: 0.95, opacity: 0, y: 40 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 40 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="relative z-10 bg-white rounded-xl shadow-2xl w-full max-w-7xl mx-4 p-6 max-h-[90vh] overflow-y-auto"
+            >
+              {/* Close button */}
+              <button
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 z-10"
+                onClick={() => setCourseModalOpen(false)}
+                aria-label="Close"
+              >
+                <X size={24} />
+              </button>
+              {/* Modal Content */}
+              <div className="mt-4">
+                <PricingCards />
               </div>
             </motion.div>
           </Dialog>
