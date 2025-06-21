@@ -67,14 +67,14 @@ export default function PaymentPage({ onBack }) {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col lg:flex-row">
       {/* Left Panel */}
-      <div className="flex-1 bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800 p-4 sm:p-6 lg:p-8 flex flex-col justify-center items-start text-white min-h-[40vh] lg:min-h-screen">
+      <div className="flex-1 bg-gradient-to-br from-red-700 via-red-800 to-red-900 p-4 sm:p-6 lg:p-8 flex flex-col justify-center items-start text-white min-h-[40vh] lg:min-h-screen">
         <div className="w-full max-w-md mx-auto lg:mx-0">
           <button className="flex items-center text-white/80 hover:text-white mb-6 lg:mb-8" onClick={onBack}>
             <ArrowLeft className="w-5 h-5 mr-2" />
             <div className="flex items-center">
               <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-2 overflow-hidden">
                 <div className="w-7 h-7 bg-white/40 rounded-full flex items-center justify-center">
-                  <span className="text-xs font-bold text-slate-800">SP</span>
+                  <span className="text-xs font-bold text-red-100">SP</span>
                 </div>
               </div>
               <span className="font-medium">Score PTE</span>
