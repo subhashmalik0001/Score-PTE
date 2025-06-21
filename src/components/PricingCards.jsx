@@ -16,7 +16,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
   const getButtonStyles = (color) => {
     const styles = {
       black: 'bg-blue-500 hover:bg-blue-600 text-white',
-      purple: 'bg-purple-600 hover:bg-purple-700 text-white',
+      purple: 'bg-gradient-to-r from-gray-300 via-gray-400 to-gray-200 hover:from-gray-400 hover:to-gray-300 text-white',
       orange: 'bg-yellow-400 hover:bg-yellow-300 text-white',
       yellow: 'bg-orange-500 hover:bg-orange-600 text-white',
       bronze: 'bg-[#cd7f32] hover:bg-[#b87333] text-white',
@@ -59,9 +59,9 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
         </div>
       )}
       <div className="text-center mb-8 flex-1 flex flex-col justify-center">
-        <div className="text-4xl font-extrabold text-gray-900 mb-4">
+        <div className="text-4xl font-extrabold text-gray-900 mb-4 flex items-center justify-center gap-2">
           ${price}
-          
+          <span className="text-xs font-medium text-gray-500" style={{ position: 'relative', top: '0.5em' }}>USD</span>
         </div>
         <p className="text-gray-600 text-sm leading-relaxed">
           {features}
@@ -73,7 +73,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
           onClick={handleStartNow}
           className={`w-full py-3 px-6 rounded-lg font-semibold text-sm uppercase tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${getButtonStyles(buttonColor)}`}
         >
-          Start Now
+          Purchase Now
         </button>
         
        
