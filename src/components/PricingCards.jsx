@@ -1,4 +1,5 @@
 import React from 'react';
+import image15 from '../assets/image 15.png';
 
 const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = 'black' }) => {
   const handleStartNow = () => {
@@ -103,29 +104,45 @@ const PricingCards = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Choose Your Plan
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Select the perfect plan for your needs.
+        <div className="text-center mb-18 flex flex-col items-center justify-center">
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <img src={image15} alt="Guarantee" className="h-12 w-12 object-contain inline-block" />
+            <h1 className="text-4xl font-bold text-gray-900 mb-0">
+              <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-300 bg-clip-text text-transparent">
+                'SCORE MUST GROW'
+              </span>{' '}
+              <span className="text-gray-700">
+                GUARANTEE
+              </span>
+            </h1>
+          </div>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto mt-2">
+            Score PTE delivers more than promises. Join with Bronze, Silver, or Gold and experience smart tips, powerful materials, premium content and undeniable improvement that ensures your score must grow.
           </p>
         </div>
-        
-        <div className="flex flex-wrap justify-center gap-8 lg:flex-nowrap lg:justify-center">
-          {plans.map((planData, index) => (
-            <PricingCard
-              key={index}
-              plan={planData.plan}
-              price={planData.price}
-              features={planData.features}
-              isPopular={planData.isPopular}
-              buttonColor={planData.buttonColor}
-            />
-          ))}
+        {/* Big Box for Cards */}
+        <div className="w-full flex flex-col items-center">
+          <div className="bg-white rounded-2xl shadow-2xl p-10 w-full max-w-none flex flex-col items-center">
+            {/* Navbar-like Tab Bar inside the card box */}
+            <div className="w-full flex justify-start mb-10">
+              <div className="bg-red-800 text-white px-8 py-4 rounded-t-2xl text-2xl font-bold tracking-wide shadow-md flex items-center">
+                PTE Academic / UKVI / CORE
+              </div>
+            </div>
+            <div className="flex flex-wrap justify-center gap-8 lg:flex-nowrap lg:justify-center w-full">
+              {plans.map((planData, index) => (
+                <PricingCard
+                  key={index}
+                  plan={planData.plan}
+                  price={planData.price}
+                  features={planData.features}
+                  isPopular={planData.isPopular}
+                  buttonColor={planData.buttonColor}
+                />
+              ))}
+            </div>
+          </div>
         </div>
-        
-      
       </div>
     </div>
   );

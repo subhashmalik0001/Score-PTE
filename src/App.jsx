@@ -8,6 +8,7 @@ import Page8 from "./pages/page8";
 import Footer from "./pages/page10";
 import Terms from "./pages/Terms";
 import PTEAcademic from "./pages/PTEAcademic";
+import PricingCards from "./components/PricingCards";
 
 import Navbar from "./components/Navbar";
 
@@ -37,6 +38,11 @@ function App() {
         <>
           <Navbar onNavigate={setCurrentPage} />
           <PTEAcademic />
+        </>
+      ) : currentPage === "course" ? (
+        <>
+          <Navbar onNavigate={setCurrentPage} />
+          <PricingCards />
         </>
       ) : null}
     </div>

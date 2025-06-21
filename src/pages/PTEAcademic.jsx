@@ -140,7 +140,7 @@ const PTEAcademic = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="bg-white rounded-lg shadow-sm">
         {/* Tab Navigation */}
-        <div className="flex border-b">
+        <div className="flex border-b relative">
           <button
             onClick={() => setActiveTab("pte-academic")}
             className={`px-6 py-3 font-medium text-sm transition-colors ${
@@ -160,6 +160,15 @@ const PTEAcademic = () => {
             }`}
           >
             PTE Core
+          </button>
+          {/* Red Cross Button */}
+          <button
+            onClick={() => window.location.href = '/'}
+            className="absolute  right-1 text-red-600 hover:text-red-800 text-5xl font-bold p-4 rounded-full hover:bg-red-100 transition-colors z-10"
+            aria-label="Close and go home"
+            style={{ lineHeight: 0.8 }}
+          >
+            &times;
           </button>
         </div>
 
