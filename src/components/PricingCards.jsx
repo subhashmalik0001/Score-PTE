@@ -1,15 +1,16 @@
 import React from 'react';
 import image15 from '../assets/image 15.png';
+import image16 from '../assets/image 16.png';
 
 const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = 'black' }) => {
   const handleStartNow = () => {
     console.log(`Starting ${plan} plan!`);
-    // Add your purchase logic here
+
   };
 
   const handleSeeAllFeatures = () => {
     console.log(`Viewing all features for ${plan} plan`);
-    // Add navigation to features page
+  
   };
 
   const getButtonStyles = (color) => {
@@ -17,7 +18,8 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
       black: 'bg-blue-500 hover:bg-blue-600 text-white',
       purple: 'bg-purple-600 hover:bg-purple-700 text-white',
       orange: 'bg-yellow-400 hover:bg-yellow-300 text-white',
-      yellow: 'bg-orange-500 hover:bg-orange-600 text-white'
+      yellow: 'bg-orange-500 hover:bg-orange-600 text-white',
+      bronze: 'bg-[#cd7f32] hover:bg-[#b87333] text-white',
     };
     return styles[color] || styles.black;
   };
@@ -28,7 +30,27 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
         ? 'border-blue-500 shadow-blue-100 ring-2 ring-blue-500 ring-opacity-20' 
         : 'border-gray-200 hover:border-gray-300'
     }`}>
-      
+      {/* VIP Image for Gold Plan */}
+      {plan === 'gold' && (
+        <img src={image16} alt="VIP" className="absolute top-0 right-0 h-20 w-20 object-contain z-20 -translate-y-2 translate-x-2" style={{top: 0, right: 0}} />
+      )}
+      {/* Plan Name at the Top */}
+      <h3
+        className={`text-3xl font-extrabold mb-6 capitalize ${
+          plan === 'bronze'
+            ? 'text-[#cd7f32]'
+            : plan === 'silver'
+            ? 'text-gray-400'
+            : plan === 'gold'
+            ? 'text-yellow-500'
+            : plan === 'platinum'
+            ? 'text-orange-500'
+            : 'text-gray-800'
+        }`}
+        style={{ alignSelf: 'flex-start', width: '100%', textAlign: 'center' }}
+      >
+        {plan}
+      </h3>
       {isPopular && (
         <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
           <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
@@ -36,11 +58,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
           </span>
         </div>
       )}
-
       <div className="text-center mb-8 flex-1 flex flex-col justify-center">
-        <h3 className="text-2xl font-bold text-gray-800 mb-2 capitalize">
-          {plan}
-        </h3>
         <div className="text-4xl font-extrabold text-gray-900 mb-4">
           ${price}
           
@@ -58,12 +76,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
           Start Now
         </button>
         
-        <button 
-          onClick={handleSeeAllFeatures}
-          className="w-full text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 underline hover:no-underline"
-        >
-          See all features
-        </button>
+       
       </div>
     </div>
   );
@@ -109,7 +122,7 @@ const PricingCards = () => {
       price: "899",
       features: "Strong error analysis skills building impact driven training & more",
       isPopular: false,
-      buttonColor: "black"
+      buttonColor: "bronze"
     },
     {
       plan: "silver",
