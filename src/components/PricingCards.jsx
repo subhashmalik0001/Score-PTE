@@ -59,7 +59,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
         </div>
       )}
       <div className="text-center mb-8 flex-1 flex flex-col justify-center">
-        <div className="text-4xl font-extrabold text-gray-900 mb-4 flex items-center justify-center gap-2">
+      <div className="text-4xl font-extrabold text-gray-900 mb-4 flex items-center justify-center gap-2">
           ${price}
           <span className="text-xs font-medium text-gray-500" style={{ position: 'relative', top: '0.5em' }}>USD</span>
         </div>
@@ -71,7 +71,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
       <div className="w-full space-y-3">
         <button 
           onClick={handleStartNow}
-          className={`w-full py-3 px-6 rounded-lg font-semibold text-sm uppercase tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${getButtonStyles(buttonColor)}`}
+          className={`w-full py-2 px-4 sm:py-3 sm:px-6 rounded-lg font-semibold text-xs sm:text-sm uppercase tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${getButtonStyles(buttonColor)}`}
         >
           Purchase Now
         </button>
