@@ -238,10 +238,7 @@ const Navbar = ({ onNavigate }) => {
                   <FaFacebook className="text-blue-700 text-2xl" />
                   <span className="font-medium text-gray-800">Visit our Facebook page</span>
                 </a>
-                <div className="flex items-center gap-3 p-3 rounded-lg border">
-                  <FaPhone className="text-green-600 text-2xl" />
-                  <span className="font-medium text-gray-800">+91-987654XXXX</span>
-                </div>
+                
               </div>
             </motion.div>
           </Dialog>
