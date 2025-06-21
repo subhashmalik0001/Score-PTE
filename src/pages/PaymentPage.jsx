@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
-import logo from '../assets/image.png';
 
 export default function PaymentPage({ onBack }) {
   const [formData, setFormData] = useState({
@@ -66,91 +65,87 @@ export default function PaymentPage({ onBack }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex">
+    <div className="min-h-screen bg-gray-100 flex flex-col lg:flex-row">
       {/* Left Panel */}
-      <div className="flex-1 bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800 p-8 flex flex-col justify-center items-start text-white">
-        <div className="mb-8">
-          <button className="flex items-center text-white/80 hover:text-white mb-8" onClick={onBack}>
+      <div className="flex-1 bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800 p-4 sm:p-6 lg:p-8 flex flex-col justify-center items-start text-white min-h-[40vh] lg:min-h-screen">
+        <div className="w-full max-w-md mx-auto lg:mx-0">
+          <button className="flex items-center text-white/80 hover:text-white mb-6 lg:mb-8" onClick={onBack}>
             <ArrowLeft className="w-5 h-5 mr-2" />
             <div className="flex items-center">
               <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-2 overflow-hidden">
-                <img src={logo} alt="Score PTE Logo" className="w-7 h-7 object-contain" />
+                <div className="w-7 h-7 bg-white/40 rounded-full flex items-center justify-center">
+                  <span className="text-xs font-bold text-slate-800">SP</span>
+                </div>
               </div>
               <span className="font-medium">Score PTE</span>
             </div>
           </button>
-          
           <div className="space-y-4">
-            <h1 className="text-lg font-medium text-white/90">Score PTE Pass Plan</h1>
-            <div className="text-5xl font-light">US$199.00</div>
+            <h1 className="text-lg sm:text-xl font-medium text-white/90">Score PTE Pass Plan</h1>
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-light">US$199.00</div>
           </div>
         </div>
       </div>
 
       {/* Right Panel */}
-      <div className="flex-1 bg-white p-8 flex flex-col justify-center max-w-md">
+      <div className="flex-1 bg-white p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
         <div className="w-full max-w-sm mx-auto">
           {/* Payment Info Box */}
-          <div className="w-full mb-8">
-            <div className="bg-red-800 rounded-lg px-6 py-5 text-center">
-              <span className="text-white text-lg font-semibold">
+          <div className="w-full mb-6 lg:mb-8">
+            <div className="bg-red-800 rounded-lg px-4 sm:px-6 py-4 sm:py-5 text-center">
+              <span className="text-white text-sm sm:text-base lg:text-lg font-semibold leading-tight">
                 Kindly pay via TransferWise, Remitly, or Western Union
               </span>
             </div>
           </div>
 
           {/* Account Details Section */}
-          <div className="w-full mb-8">
-            <div className="bg-white border border-gray-200 rounded-lg px-6 py-5 shadow-sm">
-              <h3 className="text-lg font-bold text-gray-800 mb-2">Receiver Account Details</h3>
-              <div className="text-gray-700 text-sm space-y-1">
-                <div><span className="font-semibold">Account Name:</span> John Doe</div>
-                <div><span className="font-semibold">Account Number:</span> 1234567890</div>
-                <div><span className="font-semibold">Bank Name:</span> Dummy Bank</div>
-                <div><span className="font-semibold">IFSC Code:</span> DUMM0001234</div>
-                <div><span className="font-semibold">SWIFT Code:</span> DUMMUS33</div>
-                <div><span className="font-semibold">Country:</span> India</div>
+          <div className="w-full mb-6 lg:mb-8">
+            <div className="bg-white border border-gray-200 rounded-lg px-4 sm:px-6 py-4 sm:py-5 shadow-sm">
+              <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3">Receiver Account Details</h3>
+              <div className="text-gray-700 text-xs sm:text-sm space-y-2">
+                <div className="flex flex-col sm:flex-row sm:items-center">
+                  <span className="font-semibold min-w-0 sm:min-w-[120px]">Account Name:</span>
+                  <span className="break-all">John Doe</span>
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-center">
+                  <span className="font-semibold min-w-0 sm:min-w-[120px]">Account Number:</span>
+                  <span className="break-all">1234567890</span>
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-center">
+                  <span className="font-semibold min-w-0 sm:min-w-[120px]">Bank Name:</span>
+                  <span className="break-all">Dummy Bank</span>
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-center">
+                  <span className="font-semibold min-w-0 sm:min-w-[120px]">IFSC Code:</span>
+                  <span className="break-all">DUMM0001234</span>
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-center">
+                  <span className="font-semibold min-w-0 sm:min-w-[120px]">SWIFT Code:</span>
+                  <span className="break-all">DUMMUS33</span>
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-center">
+                  <span className="font-semibold min-w-0 sm:min-w-[120px]">Country:</span>
+                  <span className="break-all">India</span>
+                </div>
               </div>
             </div>
           </div>
           
           <div className="space-y-6">
-            {/* Email */}
-         
-
-            {/* Card Information */}
-            <div>
-              
-              
-              
-              <div className="flex">
-               
-                <div className="relative flex-1">
-                 
-                 
-                </div>
-              </div>
-            </div>
-
-            {/* Cardholder Name */}
-      
-
-            {/* Country */}
-          
-
             {/* Pay Button */}
             <button
               type="button"
               onClick={handleSubmit}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-sm sm:text-base"
             >
               Pay
             </button>
           </div>
 
           {/* Footer */}
-          <div className="mt-8 text-center text-sm text-gray-500">
-            <div className="mb-2">Powered by <span className="font-semibold text-gray-700">stripe</span></div>
+          <div className="mt-6 lg:mt-8 text-center text-xs sm:text-sm text-gray-500">
+            <div className="mb-2">Powered by <span className="font-semibold text-gray-700">Score PTE</span></div>
             <div className="space-x-4">
               <a href="#" className="hover:text-gray-700">Terms</a>
               <a href="#" className="hover:text-gray-700">Privacy</a>
@@ -160,4 +155,4 @@ export default function PaymentPage({ onBack }) {
       </div>
     </div>
   );
-} 
+}
