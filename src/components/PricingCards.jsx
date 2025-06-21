@@ -64,7 +64,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
           <span className="text-xs font-medium text-gray-500" style={{ position: 'relative', top: '0.5em' }}>USD</span>
         </div>
         <p className="text-gray-600 text-sm leading-relaxed">
-          {features}
+          {typeof features === 'string' ? features : features}
         </p>
       </div>
 
@@ -120,28 +120,28 @@ const PricingCards = () => {
     {
       plan: "bronze",
       price: "899",
-      features: "Strong error analysis skills building impact driven training & more",
+      features: <><span className="font-extrabold text-lg text-[#cd7f32]">Strong</span> error analysis skills building impact driven training & more</>,
       isPopular: false,
       buttonColor: "bronze"
     },
     {
       plan: "silver",
       price: "1499",
-      features: "Basic protection files, score-driven tips, daily insights & more",
+      features: <><span className="font-extrabold text-lg text-gray-400">Basic</span> protection files, score-driven tips, daily insights & more</>,
       isPopular: false,
       buttonColor: "purple"
     },
     {
       plan: "gold",
       price: "1899",
-      features: "Invisible surety files, live classes, expert support & more",
+      features: <><span className="font-extrabold text-lg text-yellow-500">Invisible</span> surety files, live classes, expert support & more</>,
       isPopular: true,
       buttonColor: "orange"
     },
     {
       plan: "platinum",
       price: "4799",
-      features: "Confidential customized, credible premium support, Enterprise-grade security, unlimited access",
+      features: <><span className="font-extrabold text-lg text-orange-500">Confidential</span> customized, credible premium support, Enterprise-grade security, unlimited access</>,
       isPopular: false,
       buttonColor: "yellow"
     }
