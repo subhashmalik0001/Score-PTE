@@ -2,10 +2,13 @@ import React from 'react';
 import image15 from '../assets/image 15.png';
 import image16 from '../assets/image 16.png';
 
-const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = 'black' }) => {
+const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = 'black', onPurchase }) => {
   const handleStartNow = () => {
-    console.log(`Starting ${plan} plan!`);
-
+    if (onPurchase) {
+      onPurchase();
+    } else {
+      console.log(`Starting ${plan} plan!`);
+    }
   };
 
   const handleSeeAllFeatures = () => {
@@ -115,7 +118,7 @@ const HelpButton = () => {
   );
 };
 
-const PricingCards = () => {
+const PricingCards = ({ onPurchase }) => {
   const plans = [
     {
       plan: "bronze",
@@ -184,6 +187,7 @@ const PricingCards = () => {
                   features={planData.features}
                   isPopular={planData.isPopular}
                   buttonColor={planData.buttonColor}
+                  onPurchase={onPurchase}
                 />
               ))}
             </div>

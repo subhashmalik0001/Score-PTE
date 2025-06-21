@@ -9,6 +9,7 @@ import Footer from "./pages/page10";
 import Terms from "./pages/Terms";
 import PTEAcademic from "./pages/PTEAcademic";
 import PricingCards from "./components/PricingCards";
+import PaymentPage from "./pages/PaymentPage";
 
 import Navbar from "./components/Navbar";
 
@@ -42,8 +43,10 @@ function App() {
       ) : currentPage === "course" ? (
         <>
           <Navbar onNavigate={setCurrentPage} />
-          <PricingCards />
+          <PricingCards onPurchase={() => setCurrentPage("payment")} />
         </>
+      ) : currentPage === "payment" ? (
+        <PaymentPage />
       ) : null}
     </div>
   );
