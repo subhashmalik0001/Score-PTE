@@ -165,7 +165,7 @@ const PricingCards = ({ onPurchase }) => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-18 flex flex-col items-center justify-center">
           <div className="flex items-center justify-center gap-3 mb-5">
-            <img src={image15} alt="Guarantee" className="h-12 w-12 object-contain inline-block" />
+            <img src={image15} alt="Guarantee" className="h-20 w-20 object-contain inline-block align-middle" />
             <h1 className="text-4xl font-bold text-gray-900 mb-0">
               <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-300 bg-clip-text text-transparent">
                 'SCORE MUST GROW'
