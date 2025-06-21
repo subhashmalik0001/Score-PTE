@@ -69,6 +69,39 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
   );
 };
 
+const HelpButton = () => {
+  return (
+    <button className="flex items-center justify-between w-full max-w-2xl px-6 py-4 bg-white border-2 border-red-700 rounded-full shadow-sm hover:bg-red-50 transition-colors duration-200 group mt-12">
+      {/* Question mark icon */}
+      <div className="flex items-center gap-4">
+        <div className="flex-shrink-0 w-12 h-12 bg-red-700 rounded-full flex items-center justify-center">
+          <span className="text-white text-xl font-bold">?</span>
+        </div>
+        {/* Text content */}
+        <span className="text-red-700 text-lg font-semibold">
+          Not sure what to pick? Contact Support
+        </span>
+      </div>
+      {/* Arrow icon */}
+      <div className="flex-shrink-0 ml-4">
+        <svg 
+          className="w-6 h-6 text-red-700 group-hover:translate-x-1 transition-transform duration-200" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth={2} 
+            d="M9 5l7 7-7 7" 
+          />
+        </svg>
+      </div>
+    </button>
+  );
+};
+
 const PricingCards = () => {
   const plans = [
     {
@@ -140,6 +173,10 @@ const PricingCards = () => {
                   buttonColor={planData.buttonColor}
                 />
               ))}
+            </div>
+            {/* Help Button inside the card box */}
+            <div className="flex justify-center mt-8 w-full">
+              <HelpButton />
             </div>
           </div>
         </div>
