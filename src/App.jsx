@@ -46,7 +46,7 @@ function App() {
           <PricingCards onPurchase={() => setCurrentPage("payment")} />
         </>
       ) : currentPage === "payment" ? (
-        <PaymentPage />
+        <PaymentPage onBack={() => setCurrentPage('course')} />
       ) : null}
     </div>
   );

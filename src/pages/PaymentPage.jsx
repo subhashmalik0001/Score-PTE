@@ -73,14 +73,14 @@ export default function PaymentPage({ onBack }) {
             <ArrowLeft className="w-5 h-5 mr-2" />
             <div className="flex items-center">
               <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-2">
-                <span className="text-sm font-semibold">A</span>
+                <span className="text-sm font-semibold">S</span>
               </div>
-              <span className="font-medium">APEUni</span>
+              <span className="font-medium">Score PTE</span>
             </div>
           </button>
           
           <div className="space-y-4">
-            <h1 className="text-lg font-medium text-white/90">APEUni Pass PTE Plan</h1>
+            <h1 className="text-lg font-medium text-white/90">Score PTE Pass Plan</h1>
             <div className="text-5xl font-light">US$199.00</div>
           </div>
         </div>
