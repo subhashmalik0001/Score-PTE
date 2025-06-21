@@ -28,10 +28,16 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
   };
 
   return (
-    <div className={`relative flex flex-col items-center justify-between w-72 h-96 p-8 bg-white rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
-      isPopular 
-        ? 'border-blue-500 shadow-blue-100 ring-2 ring-blue-500 ring-opacity-20' 
-        : 'border-gray-200 hover:border-gray-300'
+    <div className={`relative flex flex-col items-center justify-between w-72 h-96 p-8 ${
+      plan === 'gold'
+        ? 'bg-gradient-to-br from-yellow-100 via-yellow-200 to-yellow-50'
+        : 'bg-white'
+    } rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
+      isPopular && plan === 'gold'
+        ? 'border-yellow-500 shadow-yellow-200 ring-2 ring-yellow-400 ring-opacity-20'
+      : isPopular
+        ? 'border-blue-500 shadow-blue-100 ring-2 ring-blue-500 ring-opacity-20'
+      : 'border-gray-200 hover:border-gray-300'
     }`}>
       {/* VIP Image for Gold Plan */}
       {plan === 'gold' && (
@@ -56,15 +62,19 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
       </h3>
       {isPopular && (
         <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-          <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
+          <span className={`px-4 py-1 rounded-full text-sm font-semibold shadow-lg ${
+            plan === 'gold'
+              ? 'bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 text-yellow-900'
+              : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
+          }`}>
             Most Popular
           </span>
         </div>
       )}
       <div className="text-center mb-8 flex-1 flex flex-col justify-center">
       <div className="text-4xl font-extrabold text-gray-900 mb-4 flex items-center justify-center gap-2">
-          ${price}
-          <span className="text-xs font-medium text-gray-500" style={{ position: 'relative', top: '0.5em' }}>USD</span>
+          {price}
+          <span className="text-xs font-medium text-gray-500" style={{ position: 'relative', top: '0.5em' }}>AUD</span>
         </div>
         <p className="text-gray-600 text-sm leading-relaxed">
           {typeof features === 'string' ? features : features}
@@ -166,7 +176,7 @@ const PricingCards = ({ onPurchase }) => {
             </h1>
           </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mt-2">
-            Score PTE delivers more than promises. Join with Bronze, Silver, or Gold and experience smart tips, powerful materials, premium content and undeniable improvement that ensures your score must grow.
+            Score PTE delivers more than promises. Join with Bronze, Silver, Gold, or Platinum and experience smart tips, powerful materials, premium content and undeniable improvement that ensures your score must grow.
           </p>
         </div>
         {/* Big Box for Cards */}
