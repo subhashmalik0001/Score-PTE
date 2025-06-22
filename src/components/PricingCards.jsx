@@ -100,7 +100,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
       <div className="w-full space-y-3">
         <button 
           onClick={handleStartNow}
-          className={`w-full py-2 px-4 sm:py-3 sm:px-6 rounded-lg font-semibold text-xs sm:text-sm uppercase tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${getButtonStyles(buttonColor)}`}
+          className={`w-full py-2 px-3 sm:py-3 sm:px-6 rounded-lg font-semibold text-xs sm:text-sm uppercase tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${getButtonStyles(buttonColor)}`}
         >
           Purchase Now
         </button>
@@ -120,8 +120,9 @@ const HelpButton = () => {
           <span className="text-white text-xl font-bold">?</span>
         </div>
         {/* Text content */}
-        <span className="text-red-700 text-lg font-semibold">
-          Not sure what to pick? Contact Support
+        <span className="text-red-700 text-lg font-semibold flex items-center gap-1">
+          <span className="hidden sm:inline">Not sure what to pick?</span>
+          <span>Contact Support</span>
         </span>
       </div>
       {/* Arrow icon */}
