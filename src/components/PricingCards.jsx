@@ -31,10 +31,14 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
     <div className={`relative flex flex-col items-center justify-between w-72 h-96 p-8 ${
       plan === 'gold'
         ? 'bg-gradient-to-br from-yellow-100 via-yellow-200 to-yellow-50'
+      : plan === 'platinum'
+        ? 'bg-gradient-to-br from-gray-100 via-gray-300 to-white'
         : 'bg-white'
     } rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
       isPopular && plan === 'gold'
         ? 'border-yellow-500 shadow-yellow-200 ring-2 ring-yellow-400 ring-opacity-20'
+      : plan === 'platinum'
+        ? 'border-gray-400 ring-2 ring-gray-300 ring-opacity-30 shadow-gray-200'
       : isPopular
         ? 'border-blue-500 shadow-blue-100 ring-2 ring-blue-500 ring-opacity-20'
       : 'border-gray-200 hover:border-gray-300'
@@ -57,7 +61,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
         style={{ alignSelf: 'flex-start', width: '100%', textAlign: 'center' }}
       >
         <span className="flex flex-col items-center w-full">
-          {plan}
+          {plan === 'platinum' ? <span className="inline-flex items-center">{plan}</span> : plan}
           {plan === 'silver' && (
             <span className="text-sm font-semibold text-black mt-1">(65-78)</span>
           )}
