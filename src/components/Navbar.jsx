@@ -1,8 +1,9 @@
 "use client"
 import logo from "../assets/image.png";
+import image17 from '../assets/image 17.png';
 
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Info } from "lucide-react"
 import { Dialog } from '@headlessui/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaTelegramPlane, FaInstagram, FaFacebook, FaPhone } from 'react-icons/fa'
@@ -177,7 +178,16 @@ const Navbar = ({ onNavigate }) => {
               >
                 <X size={24} />
               </button>
-              <div className="text-xl font-bold mb-4 text-center">📄 Hand Outs</div>
+              <div className="text-xl font-bold mb-4 text-center flex items-center justify-center gap-2">
+                <img src={image17} alt="Handouts Icon" className="h-8 w-8 object-contain inline-block" />
+                Hand Outs
+                <span className="relative group ml-1">
+                  <Info className="w-5 h-5 text-blue-500 cursor-pointer" />
+                  <span className="absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white text-gray-700 text-xs rounded shadow-lg px-3 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+                  Center-Specific Templates, Prediction Files and Surety Files Crafted crafted by experts.
+                  </span>
+                </span>
+              </div>
               <div className="w-full space-y-3">
                 {handoutResources.map((resource) => (
                   <button
