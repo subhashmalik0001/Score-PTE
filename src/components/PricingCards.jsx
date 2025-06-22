@@ -40,12 +40,10 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
       : 'border-gray-200 hover:border-gray-300'
     }`}>
       {/* VIP Image for Gold Plan */}
-      {plan === 'gold' && (
-        <img src={image16} alt="VIP" className="absolute top-0 right-0 h-20 w-20 object-contain z-20 -translate-y-2 translate-x-2" style={{top: 0, right: 0}} />
-      )}
+      
       {/* Plan Name at the Top */}
       <h3
-        className={`text-3xl font-extrabold mb-6 capitalize ${
+        className={`text-3xl font-extrabold mb-6 capitalize flex items-center justify-center relative ${
           plan === 'bronze'
             ? 'text-[#cd7f32]'
             : plan === 'silver'
@@ -58,7 +56,21 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
         }`}
         style={{ alignSelf: 'flex-start', width: '100%', textAlign: 'center' }}
       >
-        {plan}
+        <span className="flex flex-col items-center w-full">
+          {plan}
+          {plan === 'silver' && (
+            <span className="text-sm font-semibold text-black mt-1">(65-78)</span>
+          )}
+          {plan === 'gold' && (
+            <span className="text-sm font-semibold text-black mt-1">79+</span>
+          )}
+          {plan === 'platinum' && (
+            <span className="text-sm font-semibold text-black mt-1">83+</span>
+          )}
+        </span>
+        {plan === 'gold' && (
+          <img src={image16} alt="VIP" className="absolute right-4 -top-8 h-16 w-14 object-contain" style={{zIndex: 1}} />
+        )}
       </h3>
       {isPopular && (
         <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
@@ -133,28 +145,34 @@ const PricingCards = ({ onPurchase }) => {
     {
       plan: "bronze",
       price: "899",
-      features: <><span className="font-extrabold text-lg text-[#cd7f32]">Strong</span> error analysis skills building impact driven training & more</>,
+      features: <><span className="font-extrabold text-lg text-[#cd7f32]">Strong ;</span> Error Analysis, Skill Building, Impact-driven training & More.</>,
       isPopular: false,
       buttonColor: "bronze"
     },
     {
       plan: "silver",
       price: "1499",
-      features: <><span className="font-extrabold text-lg text-gray-400">Basic</span> protection files, score-driven tips, daily insights & more</>,
+      features: <><span className="font-extrabold text-lg text-gray-400">Refined ;</span>  Predication Files, Score -Driven Tips, Daily Insights & More.</>,
       isPopular: false,
       buttonColor: "purple"
     },
     {
       plan: "gold",
       price: "1899",
-      features: <><span className="font-extrabold text-lg text-yellow-500">Invisible</span> surety files, live classes, expert support & more</>,
+      features: <><span className="font-extrabold text-lg text-yellow-500">Unmissable; </span> Surety Files, Live classes, Expert support & More.</>,
       isPopular: true,
       buttonColor: "orange"
     },
     {
       plan: "platinum",
       price: "4799",
-      features: <><span className="font-extrabold text-lg text-orange-500">Confidential</span> customized, credible premium support, Enterprise-grade security, unlimited access</>,
+      features: (
+        <>
+          <span className="font-extrabold text-lg text-orange-500 block">Confidential</span>
+          <span className="block">Customized</span>
+          <span className="block">Credible</span>
+        </>
+      ),
       isPopular: false,
       buttonColor: "yellow"
     }
