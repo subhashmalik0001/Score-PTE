@@ -21,7 +21,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
       black: 'bg-blue-500 hover:bg-blue-600 text-white',
       purple: 'bg-gradient-to-r from-gray-300 via-gray-400 to-gray-200 hover:from-gray-400 hover:to-gray-300 text-white',
       orange: 'bg-yellow-400 hover:bg-yellow-300 text-white',
-      yellow: 'bg-orange-500 hover:bg-orange-600 text-white',
+      yellow: 'bg-gradient-to-br from-gray-200 via-gray-400 to-gray-100 hover:from-gray-300 hover:to-white text-gray-800',
       bronze: 'bg-[#cd7f32] hover:bg-[#b87333] text-white',
     };
     return styles[color] || styles.black;
@@ -55,7 +55,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
             : plan === 'gold'
             ? 'text-yellow-500'
             : plan === 'platinum'
-            ? 'text-orange-500'
+            ? 'text-gray-800'
             : 'text-gray-800'
         }`}
         style={{ alignSelf: 'flex-start', width: '100%', textAlign: 'center' }}
@@ -173,7 +173,7 @@ const PricingCards = ({ onPurchase }) => {
       price: "4799",
       features: (
         <>
-          <span className="font-extrabold text-lg text-orange-500 block">Confidential</span>
+          <span className="font-extrabold text-lg text-gray-800 block">Confidential</span>
           <span className="block">Customized</span>
           <span className="block">Credible</span>
         </>

@@ -163,13 +163,16 @@ const PTEAcademic = () => {
           </button>
           {/* Red Cross Button */}
           <button
-            onClick={() => window.location.href = '/'}
-            className="absolute  right-1 text-red-600 hover:text-red-800 text-5xl font-bold p-4 rounded-full hover:bg-red-100 transition-colors z-10"
-            aria-label="Close and go home"
-            style={{ lineHeight: 0.8 }}
-          >
-            &times;
-          </button>
+  onClick={() => window.location.href = '/'}
+  className="absolute right-1 text-gray-600 text-4xl font-bold p-2 z-10"
+  aria-label="Close and go home"
+  style={{ lineHeight: 0.8, background: 'none' }}
+>
+  &times;
+</button>
+
+
+
         </div>
 
         {/* Content Area */}
@@ -203,10 +206,11 @@ const PTEAcademic = () => {
           <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 scale-100 animate-in zoom-in-95">
             {/* Close Button */}
             <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-700"
               onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+              aria-label="Close"
             >
-              <X className="h-6 w-6" />
+              <X size={24} />
             </button>
 
             {/* Modal Content */}
