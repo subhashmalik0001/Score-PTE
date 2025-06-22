@@ -68,10 +68,15 @@ const Terms = ({ onBack }) => {
 
           {/* Cancellation & Refund Policy Section */}
           <div className="p-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-              <div className="w-1 h-8 bg-red-600 mr-4"></div>
-              Cancellation & Refund Policy
-            </h2>
+          <h1 className="text-3xl sm:text-2xl font-bold text-gray-900 mb-4">
+  Score PTE's Terms and Conditions are applicable to all purchases made through our website and our official Instagram, Telegram, and Facebook handles.
+</h1>
+
+<h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
+  <div className="w-1 h-8 bg-red-600 mr-4"></div>
+  Cancellation & Refund Policy
+</h2>
+
             <div className="prose prose-gray max-w-none">
               <p className="text-gray-700 leading-relaxed mb-4">
                 All payments would be non-refundable, however, we would consider special circumstances. So please choose
@@ -96,7 +101,7 @@ const Terms = ({ onBack }) => {
                   </li>
                   <li className="flex items-start">
                     <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    The time frame for the refund request is 'Within 3 days'
+                    The time frame for the refund request is 'Within 180 days'
                   </li>
                   <li className="flex items-start">
                     <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
@@ -116,7 +121,7 @@ const Terms = ({ onBack }) => {
         </div>
 
         {/* Contact Information */}
-        <div className="mt-8 bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-lg p-6">
+        <div className="mt-8 bg-gradient-to-r from-red-800 to-red-600 text-white rounded-lg p-6">
           <h3 className="text-xl font-semibold mb-3">Need Help?</h3>
           <p className="text-blue-100 mb-4">
             If you have any questions about these terms and conditions, please contact us.
