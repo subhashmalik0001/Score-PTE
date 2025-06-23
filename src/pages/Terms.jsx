@@ -67,17 +67,17 @@ const Terms = ({ onBack }) => {
           </div>
 
           {/* Cancellation & Refund Policy Section */}
-          <div className="p-8">
-          <h1 className="text-3xl sm:text-2xl font-bold text-gray-900 mb-4">
-  Score PTE's Terms and Conditions are applicable to all purchases made through our website and our official Instagram, Telegram, and Facebook handles.
-</h1>
+          <div className="p-4 sm:p-6 md:p-8">
+            <h1 className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Score PTE's Terms and Conditions are applicable to all purchases made through our website and our official Instagram, Telegram, and Facebook handles.
+            </h1>
 
-<h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-  <div className="w-1 h-8 bg-red-600 mr-4"></div>
-  Cancellation & Refund Policy
-</h2>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-6 flex items-center">
+              <div className="w-1 h-6 sm:h-8 bg-red-600 mr-2 sm:mr-4"></div>
+              Cancellation & Refund Policy
+            </h2>
 
-            <div className="prose prose-gray max-w-none">
+            <div className="prose prose-sm sm:prose lg:prose-lg prose-gray max-w-none">
               <p className="text-gray-700 leading-relaxed mb-4">
                 All payments would be non-refundable, however, we would consider special circumstances. So please choose
                 carefully. If you still wish to request a refund, it will be accepted ONLY upon careful consideration by
@@ -85,26 +85,26 @@ const Terms = ({ onBack }) => {
               </p>
 
               <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-6">
-                <h3 className="text-lg font-semibold text-yellow-800 mb-3">Please Note:</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-yellow-800 mb-3">Please Note:</h3>
                 <ul className="space-y-2 text-yellow-700">
                   <li className="flex items-start">
-                    <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-2 sm:mr-3 flex-shrink-0"></span>
                     We will not consider any kind of unjustified request stating "We need a refund"
                   </li>
                   <li className="flex items-start">
-                    <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-2 sm:mr-3 flex-shrink-0"></span>
                     We will not entertain refund requests without any genuine concerns
                   </li>
                   <li className="flex items-start">
-                    <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-2 sm:mr-3 flex-shrink-0"></span>
                     The management will decide upon the request being genuine or not
                   </li>
                   <li className="flex items-start">
-                    <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-2 sm:mr-3 flex-shrink-0"></span>
                     The time frame for the refund request is 'Within 180 days'
                   </li>
                   <li className="flex items-start">
-                    <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-2 sm:mr-3 flex-shrink-0"></span>
                     No Refunds will be processed after the above time duration has surpassed
                   </li>
                 </ul>
@@ -121,12 +121,12 @@ const Terms = ({ onBack }) => {
         </div>
 
         {/* Contact Information */}
-        <div className="mt-8 bg-gradient-to-r from-red-800 to-red-600 text-white rounded-lg p-6">
-          <h3 className="text-xl font-semibold mb-3">Need Help?</h3>
+        <div className="mt-8 bg-gradient-to-r from-red-800 to-red-600 text-white rounded-lg p-4 sm:p-6">
+          <h3 className="text-lg sm:text-xl font-semibold mb-3">Need Help?</h3>
           <p className="text-blue-100 mb-4">
             If you have any questions about these terms and conditions, please contact us.
           </p>
-          <button className="bg-white text-blue-900 px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+          <button className="w-full sm:w-auto bg-white text-blue-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
             Contact Support
           </button>
         </div>

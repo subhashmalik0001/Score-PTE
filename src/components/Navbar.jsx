@@ -21,6 +21,7 @@ const Navbar = ({ onNavigate }) => {
   const [accessCode, setAccessCode] = useState("")
   const [isValidating, setIsValidating] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
+  const [infoOpen, setInfoOpen] = useState(false)
 
   const handoutResources = [
     "Templates",
@@ -32,7 +33,7 @@ const Navbar = ({ onNavigate }) => {
   const navigationItems = [
     "Home",
     "PTE Practice",
-    "Course",
+    "Courses",
     "Hand Outs",
     "Support Team",
 
@@ -181,10 +182,19 @@ const Navbar = ({ onNavigate }) => {
               <div className="text-xl font-bold mb-4 text-center flex items-center justify-center gap-2">
                 <img src={image17} alt="Handouts Icon" className="h-8 w-8 object-contain inline-block" />
                 Hand Outs
-                <span className="relative group ml-1">
+                <span
+                  className={`relative group ml-1 select-none`}
+                  onClick={() => setInfoOpen((open) => !open)}
+                  onMouseLeave={() => setInfoOpen(false)}
+                  tabIndex={0}
+                  onBlur={() => setInfoOpen(false)}
+                  role="button"
+                  aria-label="Show handouts info"
+                >
                   <Info className="w-5 h-5 text-blue-500 cursor-pointer" />
-                  <span className="absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white text-gray-700 text-xs rounded shadow-lg px-3 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
-                  Center-Specific Templates, Prediction Files and Surety Files Crafted crafted by experts.
+                  <span className={`absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white text-gray-700 text-xs rounded shadow-lg px-3 py-2 z-20 transition-opacity pointer-events-none group-hover:opacity-100 ${infoOpen ? 'opacity-100' : 'opacity-0'}`}
+                  >
+                    Center-Specific Templates, Prediction Files and Surety Files Crafted crafted by experts.
                   </span>
                 </span>
               </div>
@@ -295,7 +305,7 @@ const Navbar = ({ onNavigate }) => {
   <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
     Premium
   </span>{' '}
-  <span className="text-black">starts here.</span>
+  <span className="text-black">Starts Here.</span>
 </h3>
                     <p className="text-sm text-gray-600 mb-6">
                       Enter your access code to unlock <strong>{selectedItem?.name}</strong>.

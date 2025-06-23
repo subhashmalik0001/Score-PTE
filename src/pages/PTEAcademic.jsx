@@ -234,7 +234,7 @@ const PTEAcademic = () => {
   <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
     Premium
   </span>{' '}
-  <span className="text-black">starts here.</span>
+  <span className="text-black">Starts Here.</span>
 </h3>
                     <p className="text-sm text-gray-600 mb-6">
                       Enter your access code to unlock <strong>{selectedItem?.name}</strong>.
