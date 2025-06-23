@@ -54,7 +54,7 @@ const Navbar = ({ onNavigate }) => {
       setSupportModalOpen(true)
     } else if (item === "Hand Outs") {
       setHandoutsModalOpen(true)
-    } else if (item === "Course" && onNavigate) {
+    } else if (item === "Courses" && onNavigate) {
       onNavigate("course")
     }
     setIsMenuOpen(false)

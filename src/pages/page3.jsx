@@ -43,7 +43,7 @@ const Page3 = () => {
   };
     
   if (width >= 640 && width < 1024) { // tablet
-    boxConfig = { width: 320, height: 240, gap: 24, duration: '13s' };
+    boxConfig = { width: 320, height: 300, gap: 24, duration: '13s' };
   }
   
   // Calculate total scroll distance (all images)
@@ -53,7 +53,7 @@ const Page3 = () => {
   const keyframes = `@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-${totalScroll}px); } }`;
   
   return (
-    <div className="w-full bg-gray-100 overflow-hidden">
+    <div className="w-full h-80 bg-gray-100 overflow-hidden mt-8 px-2 sm:px-0">
       <style jsx>{keyframes}</style>
             
       <div className="relative h-fit">

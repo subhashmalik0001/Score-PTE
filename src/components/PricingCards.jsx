@@ -30,7 +30,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
   return (
     <div className={`relative flex flex-col items-center justify-between w-72 h-96 p-8 ${
       plan === 'gold'
-        ? 'bg-gradient-to-br from-yellow-100 via-yellow-200 to-yellow-50'
+        ? 'bg-white'
       : plan === 'platinum'
         ? 'bg-gradient-to-br from-gray-100 via-gray-300 to-white'
         : 'bg-white'
@@ -68,9 +68,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
           {plan === 'gold' && (
             <span className="text-sm font-semibold text-black mt-1">79+</span>
           )}
-          {plan === 'platinum' && (
-            <span className="text-sm font-semibold text-black mt-1">83+</span>
-          )}
+          
         </span>
         {plan === 'gold' && (
           <img src={image16} alt="VIP" className="absolute right-4 -top-8 h-16 w-14 object-contain" style={{zIndex: 1}} />
@@ -173,8 +171,8 @@ const PricingCards = ({ onPurchase }) => {
       price: "4799",
       features: (
         <>
-          <span className="font-extrabold text-lg text-gray-800 block">Confidential</span>
-          <span className="block">Customized</span>
+          <span className="font-extrabold text-lg text-gray-800 block">Confidential,</span>
+          <span className="block">Customized,</span>
           <span className="block">Credible</span>
         </>
       ),
