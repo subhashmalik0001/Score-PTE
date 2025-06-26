@@ -112,20 +112,18 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
 const HelpButton = () => {
   return (
     <div className="flex justify-center p-4">
-      <button className="flex flex-col sm:flex-row items-center justify-between w-full max-w-sm sm:max-w-2xl px-3 sm:px-4 py-2.5 sm:py-3 bg-white border-2 border-red-700 rounded-full shadow-sm hover:bg-red-50 transition-colors duration-200 group mt-12">
-        {/* Question mark icon + text */}
-        <div className="flex items-center gap-2 sm:gap-3 mb-1.5 sm:mb-0">
-          <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-red-700 rounded-full flex items-center justify-center">
-            <span className="text-white text-sm sm:text-lg font-bold leading-none">?</span>
-          </div>
-          <div className="text-red-700 text-xs sm:text-sm md:text-base font-medium flex flex-col sm:flex-row sm:items-center sm:gap-2 text-center sm:text-left leading-tight">
-            <span>Not sure what to pick?</span>
-            <span>Contact Support</span>
-          </div>
+      <button className="flex flex-row items-center justify-between w-full max-w-xs sm:max-w-3xl px-4 py-2 sm:py-3 bg-white border-2 border-red-700 rounded-full shadow-sm hover:bg-red-50 transition-colors duration-200 group mt-10">
+        {/* Question mark icon */}
+        <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-red-700 rounded-full flex items-center justify-center mr-3">
+          <span className="text-white text-sm sm:text-lg font-bold leading-none">?</span>
         </div>
-
+        {/* Text */}
+        <div className="flex-1 text-red-700 text-xs sm:text-sm md:text-base font-medium flex flex-row items-center gap-2 text-center sm:text-left leading-tight justify-center">
+          <span>Not sure what to pick?</span>
+          <span>Contact Support</span>
+        </div>
         {/* Arrow icon */}
-        <div className="flex-shrink-0 flex items-center justify-center">
+        <div className="flex-shrink-0 flex items-center justify-center ml-3">
           <svg
             className="w-4 h-4 sm:w-5 sm:h-5 text-red-700 group-hover:translate-x-1 transition-transform duration-200"
             fill="none"
