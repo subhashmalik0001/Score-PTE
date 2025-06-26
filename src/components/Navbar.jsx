@@ -194,7 +194,7 @@ const Navbar = ({ onNavigate }) => {
                   <Info className="w-5 h-5 text-blue-500 cursor-pointer" />
                   <span className={`absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white text-gray-700 text-xs rounded shadow-lg px-3 py-2 z-20 transition-opacity pointer-events-none group-hover:opacity-100 ${infoOpen ? 'opacity-100' : 'opacity-0'}`}
                   >
-                    Center-Specific Templates, Prediction Files and Surety Files Crafted crafted by experts.
+                    Center-Specific Templates, Prediction Files and Surety Files crafted by experts.
                   </span>
                 </span>
               </div>
