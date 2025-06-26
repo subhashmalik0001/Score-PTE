@@ -22,7 +22,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
       purple: 'bg-gradient-to-r from-gray-300 via-gray-400 to-gray-200 hover:from-gray-400 hover:to-gray-300 text-white',
       orange: 'bg-yellow-400 hover:bg-yellow-300 text-white',
       yellow: 'bg-gradient-to-br from-gray-200 via-gray-400 to-gray-100 hover:from-gray-300 hover:to-white text-gray-800',
-      bronze: 'bg-[#cd7f32] hover:bg-[#b87333] text-white',
+      bronze: 'bg-[#8D6E63] hover:bg-[#795548] text-white',
     };
     return styles[color] || styles.black;
   };
@@ -49,7 +49,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
       <h3
         className={`text-3xl font-extrabold mb-6 capitalize flex items-center justify-center relative ${
           plan === 'bronze'
-            ? 'text-[#cd7f32]'
+            ? 'text-[#8D6E63]'
             : plan === 'silver'
             ? 'text-gray-400'
             : plan === 'gold'
@@ -148,27 +148,27 @@ const PricingCards = ({ onPurchase }) => {
     {
       plan: "bronze",
       price: "899",
-      features: <><span className="font-extrabold text-lg text-[#cd7f32]">Strong ;</span> Error Analysis, Skill Building, Impact-driven training & More.</>,
+      features: <><span className="font-extrabold text-lg text-[#8D6E63]">Strong ;</span> Error Analysis, Skill Building, Impact-driven training & More.</>,
       isPopular: false,
       buttonColor: "bronze"
     },
     {
       plan: "silver",
-      price: "1499",
+      price: "1,499",
       features: <><span className="font-extrabold text-lg text-gray-400">Refined ;</span>  Predication Files, Score -Driven Tips, Daily Insights & More.</>,
       isPopular: false,
       buttonColor: "purple"
     },
     {
       plan: "gold",
-      price: "1899",
+      price: "1,899",
       features: <><span className="font-extrabold text-lg text-yellow-500">Unmissable; </span> Surety Files, Live classes, Expert support & More.</>,
       isPopular: true,
       buttonColor: "orange"
     },
     {
       plan: "platinum",
-      price: "4799",
+      price: "4,799",
       features: (
         <>
           <span className="font-extrabold text-lg text-gray-800 block">Confidential,</span>

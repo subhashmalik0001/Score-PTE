@@ -45,30 +45,30 @@ const Terms = ({ onBack }) => {
             </h2>
             <div className="prose prose-gray max-w-none">
               <p className="text-gray-700 leading-relaxed mb-4">
-                1. ScorePTE has a cloud-based interface. The various services offered and their charges are explicitly
+                ScorePTE has a cloud-based interface. The various services offered and their charges are explicitly
                 mentioned on the website. Particular service can be accessed via the website once you have purchased it.
-                You can access only those service(s) that you have purchased from the website.
+             
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
-                2. In case you have been given certain service(s) as a part of some promotional activity then you will be
+                In case you have been given certain service(s) as a part of some promotional activity then you will be
                 given access to those mentioned service(s) only. The offers and services may change without prior
                 intimation.
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
-              3. Being an online platform, the website is prone to uncontrollable and sudden issues like increased
+              Being an online platform, the website is prone to uncontrollable and sudden issues like increased
                 loading time, bad internet connectivity, feature incompatibility, and any other technical difficulties.
                 ScorePTE is not liable for any loss occurred due to such uncontrollable problems.
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
-              4. ScorePTE website may plan and implement maintenance without any prior notice on account of which the
+               ScorePTE website may plan and implement maintenance without any prior notice on account of which the
               services might become unavailable for a short period of time.
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
-              5 .Score PTE's Terms and Conditions are applicable to all purchases made through our website and our official Instagram, Telegram, and Facebook handles.
+              Score PTE's Terms and Conditions are applicable to all purchases made through our website and our official Instagram, Telegram, and Facebook handles.
               </p>
               
               <p className="text-gray-700 leading-relaxed">
-              6. We provide expert tips and resources to support your preparation, but your progress ultimately depends on your own efforts. Our materials and coaching are designed to help you improve, not to guarantee a specific score. Results may vary from person to person based on individual learning pace and practice.
+              We provide expert tips and resources to support your preparation, but your progress ultimately depends on your own efforts. Our materials and coaching are designed to help you improve, not to guarantee a specific score. Results may vary from person to person based on individual learning pace and practice.
               </p>
 
              
@@ -109,7 +109,11 @@ const Terms = ({ onBack }) => {
                   </li>
                   <li className="flex items-start">
                     <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-2 sm:mr-3 flex-shrink-0"></span>
-                    The time frame for the refund request is 'Within 180 days'
+                    The time frame for the refund request is 'Within 24 days'
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-2 sm:mr-3 flex-shrink-0"></span>
+                    If you have raised a refund request, our experts will review it and provide you with the final decision within 180 days.
                   </li>
                   <li className="flex items-start">
                     <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-2 sm:mr-3 flex-shrink-0"></span>
