@@ -1,6 +1,7 @@
 import React from 'react';
 import image15 from '../assets/image 15.png';
 import image16 from '../assets/image 16.png';
+import mapImage from '../assets/map.png';
 
 const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = 'black', onPurchase }) => {
   const handleStartNow = () => {
@@ -109,37 +110,75 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
   );
 };
 
-const HelpButton = () => {
+const PTEConsultationCTA = () => {
   return (
-    <div className="flex justify-center p-4">
-      <button className="flex flex-row items-center justify-between w-full max-w-xs sm:max-w-3xl px-4 py-2 sm:py-3 bg-white border-2 border-red-700 rounded-full shadow-sm hover:bg-red-50 transition-colors duration-200 group mt-10">
-        {/* Question mark icon */}
-        <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-red-700 rounded-full flex items-center justify-center mr-3">
-          <span className="text-white text-sm sm:text-lg font-bold leading-none">?</span>
-        </div>
-        {/* Text */}
-        <div className="flex-1 text-red-700 text-xs sm:text-sm md:text-base font-medium flex flex-row items-center gap-2 text-center sm:text-left leading-tight justify-center">
-          <span>Not sure what to pick?</span>
-          <span>Contact Support</span>
-        </div>
-        {/* Arrow icon */}
-        <div className="flex-shrink-0 flex items-center justify-center ml-3">
-          <svg
-            className="w-4 h-4 sm:w-5 sm:h-5 text-red-700 group-hover:translate-x-1 transition-transform duration-200"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </div>
-      </button>
-    </div>
-  
-  
+    <div className="w-full max-w-6xl mx-auto p-4">
+      <div className="bg-amber-800 rounded-2xl px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-16">
+        <div className="max-w-4xl">
+          <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 leading-tight">
+            Not ready yet? Book your FREE PTE Consultation today!
+          </h2>
 
+          <p className="text-white text-base md:text-lg lg:text-xl mb-6 md:mb-8 leading-relaxed opacity-95">
+            Receive expert advice on your current skills, personalized guidance on achieving your target score, and a
+            clear roadmap to better prepare for your PTE exam. Why wait? Take the first step towards success now!
+          </p>
+
+          <button
+            className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 md:px-8 md:py-4 text-base md:text-lg rounded-lg transition-colors duration-200 cursor-pointer"
+            onClick={() => alert("Booking consultation slot!")}
+          >
+            Save my slot
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const locations = [
+  { title: 'New York, USA', description: 'Our hub in North America.', top: '35%', left: '28%' },
+  { title: 'London, UK', description: 'Connecting Europe.', top: '28%', left: '46%' },
+  { title: 'Sydney, Australia', description: 'Oceania operations.', top: '75%', left: '87%' },
+  { title: 'Dubai, UAE', description: 'Middle East gateway.', top: '48%', left: '60%' },
+  { title: 'Mumbai, India', description: 'South Asia center.', top: '55%', left: '68%' },
+  { title: 'Johannesburg, South Africa', description: 'Africa network.', top: '80%', left: '52%' },
+  { title: 'Toronto, Canada', description: 'Canadian presence.', top: '25%', left: '22%' },
+  { title: 'Singapore', description: 'Southeast Asia hub.', top: '65%', left: '78%' },
+  { title: 'Berlin, Germany', description: 'Central Europe.', top: '30%', left: '52%' },
+];
+
+function InteractiveMap() {
+  return (
+    <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-10 w-full max-w-none flex flex-col items-center mt-8 overflow-hidden">
+      <header className="text-center mb-8 w-full">
+        <h1 className="text-4xl font-bold text-blue-600 uppercase">Our Global Network</h1>
+        <p className="text-gray-600 mt-2">Foastring a Global Community of Excellence</p>
+      </header>
+
+      <div className="relative w-full max-w-5xl mx-auto">
+        <img src={mapImage} alt="World Map" className="w-full max-w-2xl mx-auto" style={{ minHeight: '220px' }} />
+
+        {locations.map((loc, index) => (
+          <span
+            key={index}
+            className="absolute flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 w-16 h-16 z-0"
+            style={{
+              top: loc.top,
+              left: loc.left,
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <svg className="w-8 h-8 sm:w-6 sm:h-6" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C7.03 2 3 6.03 3 11c0 5.25 7.11 11.54 8.09 12.37a1 1 0 0 0 1.23 0C13.89 22.54 21 16.25 21 11c0-4.97-4.03-9-9-9zm0 18.88C9.14 18.07 5 13.98 5 11c0-3.87 3.13-7 7-7s7 3.13 7 7c0 2.98-4.14 7.07-7 9.88z" fill="#EF4444"/>
+              <circle cx="12" cy="11" r="3.5" fill="#EF4444" stroke="#fff" strokeWidth="2"/>
+            </svg>
+          </span>
+        ))}
+      </div>
+    </div>
   );
-};
+}
 
 const PricingCards = ({ onPurchase }) => {
   const plans = [
@@ -222,9 +261,13 @@ const PricingCards = ({ onPurchase }) => {
             </div>
             {/* Help Button inside the card box */}
             <div className="flex justify-center mt-8 w-full">
-              <HelpButton />
+              <PTEConsultationCTA />
             </div>
           </div>
+        </div>
+        {/* Interactive Map section OUTSIDE the card box */}
+        <div className="flex justify-center mt-8 w-full">
+          <InteractiveMap />
         </div>
       </div>
     </div>
