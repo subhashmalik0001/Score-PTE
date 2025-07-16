@@ -7,6 +7,7 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 import { Separator } from "../components/ui/separator";
+import { CheckCircle2, Clock, Sparkles } from "lucide-react";
 
 const categories = [
   { title: "Speaking", img: speak },
@@ -16,7 +17,7 @@ const categories = [
 ];
 
 const testData = {
-  TESTS: {
+  "About PTE": {
     title: "All Tests Overview",
     content: (
       <div className="space-y-6">
@@ -60,8 +61,8 @@ const testData = {
     ),
   },
   
-  GMAT: {
-    title: "GMAT - Graduate Management Admission Test",
+  "PTE Academic": {
+    title: "PTE Academic  - Graduate Management Admission Test",
     content: (
       <div className="space-y-6">
         <div className="flex items-center gap-2 mb-4">
@@ -96,7 +97,7 @@ const testData = {
       </div>
     ),
   },
-  TOEFL: {
+  "PTE Core": {
     title: "TOEFL - Test of English as a Foreign Language",
     content: (
       <div className="space-y-6">
@@ -200,66 +201,88 @@ const testData = {
     ),
   },
   PTE: {
-    title: "PTE - Pearson Test of English Academic",
+    title: "PTE Core - Canadian Immigration & Workplace Test",
     content: (
-      <div className="space-y-6">
-        <div className="flex items-center gap-2 mb-4">
-          <Badge variant="secondary">English Proficiency</Badge>
-          <Badge variant="outline">Computer-based</Badge>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold mb-3">About PTE</h3>
-          <p className="text-muted-foreground mb-4">
-            Pearson Language Tests is a unit of the Pearson PLC group, dedicated to assessing and validating the English
-            language usage of non-native English speakers. Pearson PLC is one of the largest education and media
-            companies in the world and owns many education and publishing companies.
+      <div className="max-w-3xl mx-auto p-6 md:p-8 lg:p-10 bg-white text-gray-800">
+        <section className="mb-8">
+          <h2 className="text-2xl font-bold flex items-center gap-2 mb-4">
+            <CheckCircle2 className="w-6 h-6 text-green-600" />
+            {"What is PTE Core?"}
+          </h2>
+          <p className="mb-4">
+            <span className="font-bold">PTE Core</span> is a fully computer-based English language proficiency test by{" "}
+            <span className="font-bold">Pearson</span>, designed for{" "}
+            <span className="font-bold">Canadian economic immigration</span> and{" "}
+            <span className="font-bold">workplace communication</span>.
           </p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Format</h4>
-          <p className="text-sm text-muted-foreground mb-3">
-            Computer-based test measures all four language areas: Listening, Reading, Speaking, Writing.
+          <p className="mb-4">
+            It evaluates your <span className="font-bold">real-world English skills</span> across{" "}
+            <span className="font-bold">Speaking, Writing, Reading, and Listening</span> using everyday scenarios, not
+            academic contexts.
           </p>
-          <p className="text-sm text-muted-foreground">20 often innovative and integrated item types.</p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Content</h4>
-          <p className="text-sm text-muted-foreground">
-            Authentic academic test content from a variety of international contexts and scenarios
+          <ul className="list-disc pl-6 space-y-2">
+            <li>
+              <span className="font-bold">Accepted by:</span> IRCC (Canada Immigration)
+            </li>
+            <li>
+              <span className="font-bold">Purpose:</span> Canadian Permanent Residency, work, and citizenship
+            </li>
+            <li>
+              <span className="font-bold">Delivery:</span> Pearson VUE centers worldwide
+            </li>
+            <li>
+              <span className="font-bold">Scoring:</span> AI-based scoring system (10–90 scale, CLB aligned)
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold flex items-center gap-2 mb-4">
+            <Clock className="w-6 h-6 text-gray-500" />
+            {"Test Format Overview"}
+          </h2>
+          <p className="mb-6">
+            PTE Core is divided into <span className="font-bold">three integrated parts</span>. Each part assesses
+            multiple skills through real-life tasks.
           </p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Duration</h4>
-          <p className="text-sm text-muted-foreground">Approximately three hours</p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Availability</h4>
-          <p className="text-sm text-muted-foreground">
-            During the launch period, PTE Academic will be available in 37 territories including China, India, the US,
-            Japan, South Korea, Australia, the UK, Hong Kong, Taiwan and Canada.
-          </p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Registration</h4>
-          <p className="text-sm text-muted-foreground">
-            Register online and schedule a test using a flexible 'choose and book' system
-          </p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Scores</h4>
-          <p className="text-sm text-muted-foreground">
-            Available online within five business days of taking the test Secure online results service
-          </p>
-        </div>
+
+          <div className="border-t border-b border-gray-200">
+            <div className="grid grid-cols-3 py-2 text-sm font-bold text-gray-600">
+              <div>Module</div>
+              <div>Skills Tested</div>
+              <div className="text-right">Time</div>
+            </div>
+            <div className="grid grid-cols-3 py-2 border-t border-gray-200 text-sm">
+              <div>1. Speaking & Writing</div>
+              <div>Speaking + Writing</div>
+              <div className="text-right">~50 mins</div>
+            </div>
+            <div className="grid grid-cols-3 py-2 border-t border-gray-200 text-sm">
+              <div>2. Reading</div>
+              <div>Reading + Writing</div>
+              <div className="text-right">~30 mins</div>
+            </div>
+            <div className="grid grid-cols-3 py-2 border-t border-gray-200 text-sm">
+              <div>3. Listening</div>
+              <div>Listening + Reading + Writing</div>
+              <div className="text-right">~30 mins</div>
+            </div>
+          </div>
+
+          <div className="mt-6 text-lg font-bold flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-red-500" />
+            {"Total Duration: ~2 hours (including breaks and intro)"}
+          </div>
+        </section>
       </div>
     ),
   },
 };
 
-const testButtons = ["TESTS", "GMAT", "TOEFL", "SAT", "PTE"];
+const testButtons = ["About PTE", "PTE Academic", "PTE"];
 
 const Page2 = () => {
-  const [activeTest, setActiveTest] = useState("TESTS");
+  const [activeTest, setActiveTest] = useState("About PTE");
 
   return (
     <div className="w-full bg-white pt-20 px-6 flex flex-col items-center text-center min-h-screen">
@@ -281,10 +304,11 @@ const Page2 = () => {
         
       </div>
       <h2 className="text-6xl sm:text-7xl font-light mb-20 tracking-tight leading-tight">
-        <span className="bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">PTE</span>{' '}
-        <span className="font-extrabold text-black">Made </span>
-        <span className="bg-gradient-to-r from-gray-400   to-gray-800 bg-clip-text text-transparent">Easy</span>{' '}
+        <span className="text-red-600">PTE</span>{' '}
+        <span className="text-red-600">Made </span>
+        <span className="text-red-600">Easy</span>{' '}
       </h2>
+      <p className="text-sm text-gray-500 mb-6 -mt-9">A basic insight into the test.</p>
 
       <div className="w-full max-w-7xl flex flex-col lg:flex-row mb-20">
         <div className="w-full lg:w-80 mb-6 lg:mb-0 lg:min-h-full px-4">
