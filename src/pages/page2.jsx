@@ -337,7 +337,7 @@ const Page2 = () => {
         </div>
 
         <div className="flex-1 px-4">
-          <Card className="w-full">
+          <Card className="w-full mt-8">
             <CardHeader>
               <CardTitle className="text-xl lg:text-2xl xl:text-3xl">
                 {testData[activeTest] && testData[activeTest].title}
@@ -353,9 +353,9 @@ const Page2 = () => {
 
       <div className="text-center px-4 max-w-3xl pb-12">
         <p className="uppercase text-sm text-gray-500 tracking-widest mb-4">
-          <span className="relative top-[-4px]">.</span> Polished
-          <span className="relative top-[-4px]">.</span> Prepared
-          <span className="relative top-[-4px]">.</span> PowerFull
+          <span className="relative top-[-4px]">.</span> Polished   
+          <span className="relative top-[-4px]">.</span> Prepared   
+          <span className="relative top-[-4px]">.</span> PowerFull 
         </p>
         <h1 className="text-6xl sm:text-7xl font-extrabold tracking-tight leading-tight">
           <span className="bg-gradient-to-r from-gray-200 via-gray-800 to-gray-700 bg-clip-text text-transparent">
