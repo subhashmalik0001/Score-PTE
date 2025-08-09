@@ -7,7 +7,7 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 import { Separator } from "../components/ui/separator";
-import { CheckCircle2, Clock, Sparkles } from "lucide-react";
+import { CheckCircle2, Clock, Sparkles, Check, Target } from "lucide-react";
 
 const categories = [
   { title: "Speaking", img: speak },
@@ -18,81 +18,173 @@ const categories = [
 
 const testData = {
   "About PTE": {
-    title: "All Tests Overview",
+    title: "PTE: Pearson Test of English - Complete Guide",
     content: (
-      <div className="space-y-6">
-        <div>
-          <h3 className="text-lg font-semibold mb-3">Available Test Types</h3>
-          <div className="grid gap-4 md:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-base">English Proficiency</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">PTE, TOEFL, IELTS</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-base">Graduate Admissions</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">GRE, GMAT</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-base">Undergraduate</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">SAT</p>
-              </CardContent>
-            </Card>
+      <div className="h-96 bg-gray-50 py-4 overflow-y-auto">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-6">
+            <h1 className="text-2xl font-bold text-gray-900 mb-2">PTE: Pearson Test of English</h1>
+            <p className="text-base text-gray-600">Complete Guide to PTE Exam Types</p>
           </div>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold mb-3">Test Preparation</h3>
-          <p className="text-muted-foreground">
-            Choose from our comprehensive test preparation programs designed to help you achieve your target scores.
-            Each test has specific requirements and formats tailored to different academic and professional goals.
-          </p>
+
+          <div className="space-y-6">
+            {/* First Image - PTE Introduction and Academic */}
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="p-3">
+                <h2 className="text-lg font-semibold text-gray-800 mb-3">PTE Overview & Academic Exam</h2>
+                <div className="relative">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-nvF1zmuaUPFlk3hhEVMvEYjp4tiUyZ.png"
+                    alt="PTE Introduction and Academic Exam Information"
+                    className="w-full h-auto rounded-md"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Second Image - PTE Academic UKVI and PTE Home */}
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="p-3">
+                <h2 className="text-lg font-semibold text-gray-800 mb-3">PTE Academic UKVI & PTE Home</h2>
+                <div className="relative">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-iIIOrvy8LYfLi0Atk72zxoBe73zwar.png"
+                    alt="PTE Academic UKVI and PTE Home Exam Information"
+                    className="w-full h-auto rounded-md"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Third Image - PTE Core */}
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="p-3">
+                <h2 className="text-lg font-semibold text-gray-800 mb-3">PTE Core (2024 Launch)</h2>
+                <div className="relative">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-txFqCm2kN5kf2FhIrrfyed3OKCQZlU.png"
+                    alt="PTE Core Exam Information"
+                    className="w-full h-auto rounded-md"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     ),
   },
   
   "PTE Academic": {
-    title: "PTE Academic  - Graduate Management Admission Test",
+    title: "PTE Academic - Pearson Test of English Academic",
     content: (
-      <div className="space-y-6">
-        <div className="flex items-center gap-2 mb-4">
-          <Badge variant="secondary">Business School</Badge>
-          <Badge variant="outline">Computer Adaptive</Badge>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold mb-3">About GMAT</h3>
-          <p className="text-muted-foreground mb-4">
-            The Graduate Management Admission Test (GMAT) is a computer adaptive test intended to assess certain
-            analytical, writing, quantitative, verbal, and reading skills for use in admission to a graduate management
-            program.
+      <div className="max-w-4xl mx-auto p-6 bg-white">
+        {/* Header Section */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+              <Check className="w-5 h-5 text-white" />
+            </div>
+            <h1 className="text-2xl font-bold text-gray-900">What is PTE Academic?</h1>
+          </div>
+
+          <p className="text-gray-700 text-lg leading-relaxed mb-6">
+            <strong>PTE Academic (Pearson Test of English Academic)</strong> is a fully computerized English proficiency
+            test accepted for study, work, and migration across countries like Australia, Canada, the UK, and more. It
+            evaluates your real-world English skills in academic and professional contexts.
           </p>
+
+          <div className="space-y-3">
+            <div className="flex items-start gap-2">
+              <span className="text-gray-700 font-medium">•</span>
+              <div>
+                <span className="font-semibold text-gray-900">Duration:</span>
+                <span className="text-gray-700 ml-1">
+                  Approximately <strong>2 hours</strong>
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-2">
+              <span className="text-gray-700 font-medium">•</span>
+              <div>
+                <span className="font-semibold text-gray-900">Format:</span>
+                <span className="text-gray-700 ml-1">Computer-based with a microphone and headset</span>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-2">
+              <span className="text-gray-700 font-medium">•</span>
+              <div>
+                <span className="font-semibold text-gray-900">Scoring:</span>
+                <span className="text-gray-700 ml-1">Fully AI-automated scoring system (10–90 scale)</span>
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Exam Sections Overview */}
         <div>
-          <h4 className="font-semibold mb-2">Test Sections</h4>
-          <ul className="space-y-2 text-sm">
-            <li>• Analytical Writing Assessment (30 minutes)</li>
-            <li>• Integrated Reasoning (30 minutes)</li>
-            <li>• Quantitative (62 minutes)</li>
-            <li>• Verbal (65 minutes)</li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Duration</h4>
-          <p className="text-sm text-muted-foreground">Approximately 3 hours and 7 minutes</p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Score Range</h4>
-          <p className="text-sm text-muted-foreground">200-800 total score</p>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-8 h-8 bg-red-500 rounded-md flex items-center justify-center">
+              <Target className="w-5 h-5 text-white" />
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900">PTE Exam Sections Overview</h2>
+          </div>
+
+          <p className="text-gray-700 text-lg leading-relaxed mb-6">
+            PTE Academic is divided into <strong>three integrated parts</strong> (not four). Each part evaluates multiple
+            skills.
+          </p>
+
+          {/* Table */}
+          <div className="overflow-hidden border border-gray-200 rounded-lg">
+            <table className="w-full">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 border-b border-gray-200">
+                    Module
+                  </th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 border-b border-gray-200">
+                    Skills Tested
+                  </th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 border-b border-gray-200">
+                    Time
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td className="px-6 py-4 text-sm text-gray-900">1. Speaking & Writing</td>
+                  <td className="px-6 py-4 text-sm text-gray-700">Speaking + Writing</td>
+                  <td className="px-6 py-4 text-sm text-gray-700">54–67 minutes</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 text-sm text-gray-900">2. Reading</td>
+                  <td className="px-6 py-4 text-sm text-gray-700">Reading</td>
+                  <td className="px-6 py-4 text-sm text-gray-700">29–30 minutes</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 text-sm text-gray-900">3. Listening</td>
+                  <td className="px-6 py-4 text-sm text-gray-700">Listening</td>
+                  <td className="px-6 py-4 text-sm text-gray-700">30–43 minutes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Total Duration */}
+          <div className="mt-6 p-4 bg-gray-50 rounded-lg border-l-4 border-green-500">
+            <div className="flex items-center gap-3">
+              <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 text-white" />
+              </div>
+              <p className="text-gray-900">
+                <span className="font-semibold">Total Duration:</span> ~2 hours (including optional introduction and
+                breaks)
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     ),
@@ -279,7 +371,7 @@ const testData = {
   },
 };
 
-const testButtons = ["About PTE", "PTE Academic", "PTE"];
+const testButtons = ["About PTE", "PTE Academic", "PTE Core"];
 
 const Page2 = () => {
   const [activeTest, setActiveTest] = useState("About PTE");
