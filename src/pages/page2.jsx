@@ -7,7 +7,7 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 import { Separator } from "../components/ui/separator";
-import { CheckCircle2, Clock, Sparkles, Check, Target } from "lucide-react";
+import { CheckCircle2, Clock, Sparkles, Check, Target, CheckCircle, BarChart3, BookOpen, Headphones } from "lucide-react";
 
 const categories = [
   { title: "Speaking", img: speak },
@@ -20,7 +20,7 @@ const testData = {
   "About PTE": {
     title: "PTE: Pearson Test of English - Complete Guide",
     content: (
-      <div className="h-96 bg-gray-50 py-4 overflow-y-auto">
+      <div className="h-[700px] bg-gray-50 py-4 overflow-y-auto">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900 mb-2">PTE: Pearson Test of English</h1>
@@ -292,80 +292,331 @@ const testData = {
       </div>
     ),
   },
-  PTE: {
+  "PTE Core": {
     title: "PTE Core - Canadian Immigration & Workplace Test",
     content: (
-      <div className="max-w-3xl mx-auto p-6 md:p-8 lg:p-10 bg-white text-gray-800">
-        <section className="mb-8">
-          <h2 className="text-2xl font-bold flex items-center gap-2 mb-4">
-            <CheckCircle2 className="w-6 h-6 text-green-600" />
-            {"What is PTE Core?"}
-          </h2>
-          <p className="mb-4">
-            <span className="font-bold">PTE Core</span> is a fully computer-based English language proficiency test by{" "}
-            <span className="font-bold">Pearson</span>, designed for{" "}
-            <span className="font-bold">Canadian economic immigration</span> and{" "}
-            <span className="font-bold">workplace communication</span>.
-          </p>
-          <p className="mb-4">
-            It evaluates your <span className="font-bold">real-world English skills</span> across{" "}
-            <span className="font-bold">Speaking, Writing, Reading, and Listening</span> using everyday scenarios, not
-            academic contexts.
-          </p>
-          <ul className="list-disc pl-6 space-y-2">
-            <li>
-              <span className="font-bold">Accepted by:</span> IRCC (Canada Immigration)
-            </li>
-            <li>
-              <span className="font-bold">Purpose:</span> Canadian Permanent Residency, work, and citizenship
-            </li>
-            <li>
-              <span className="font-bold">Delivery:</span> Pearson VUE centers worldwide
-            </li>
-            <li>
-              <span className="font-bold">Scoring:</span> AI-based scoring system (10–90 scale, CLB aligned)
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold flex items-center gap-2 mb-4">
-            <Clock className="w-6 h-6 text-gray-500" />
-            {"Test Format Overview"}
-          </h2>
-          <p className="mb-6">
-            PTE Core is divided into <span className="font-bold">three integrated parts</span>. Each part assesses
-            multiple skills through real-life tasks.
-          </p>
-
-          <div className="border-t border-b border-gray-200">
-            <div className="grid grid-cols-3 py-2 text-sm font-bold text-gray-600">
-              <div>Module</div>
-              <div>Skills Tested</div>
-              <div className="text-right">Time</div>
-            </div>
-            <div className="grid grid-cols-3 py-2 border-t border-gray-200 text-sm">
-              <div>1. Speaking & Writing</div>
-              <div>Speaking + Writing</div>
-              <div className="text-right">~50 mins</div>
-            </div>
-            <div className="grid grid-cols-3 py-2 border-t border-gray-200 text-sm">
-              <div>2. Reading</div>
-              <div>Reading + Writing</div>
-              <div className="text-right">~30 mins</div>
-            </div>
-            <div className="grid grid-cols-3 py-2 border-t border-gray-200 text-sm">
-              <div>3. Listening</div>
-              <div>Listening + Reading + Writing</div>
-              <div className="text-right">~30 mins</div>
+      <div className="h-[700px] bg-gray-50 py-4 overflow-y-auto">
+        <div className="max-w-6xl mx-auto space-y-6 px-4">
+          {/* Header */}
+          <div className="text-center space-y-4">
+            <div className="flex items-center justify-center gap-2">
+              <CheckCircle className="w-8 h-8 text-green-600" />
+              <h1 className="text-3xl font-bold text-gray-900">What is PTE Core?</h1>
             </div>
           </div>
 
-          <div className="mt-6 text-lg font-bold flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-red-500" />
-            {"Total Duration: ~2 hours (including breaks and intro)"}
+          {/* PTE Core Overview */}
+          <Card>
+            <CardContent className="p-6">
+              <div className="space-y-4">
+                <p className="text-base text-gray-700">
+                  <span className="font-semibold">PTE Core</span> is a fully computer-based English language proficiency
+                  test by <span className="font-semibold">Pearson</span>, designed for{" "}
+                  <span className="font-semibold">Canadian economic immigration and workplace communication</span>.
+                </p>
+
+                <p className="text-base text-gray-700">
+                  It evaluates your <span className="font-semibold">real-world English skills</span> across{" "}
+                  <span className="font-semibold">Speaking, Writing, Reading, and Listening</span> using everyday
+                  scenarios, not academic contexts.
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-4 mt-6">
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-900">• Accepted by:</span>
+                      <span className="text-gray-700">IRCC (Canada Immigration)</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-900">• Purpose:</span>
+                      <span className="text-gray-700">Canadian Permanent Residency, work, and citizenship</span>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-900">• Delivery:</span>
+                      <span className="text-gray-700">Pearson VUE centers worldwide</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-900">• Scoring:</span>
+                      <span className="text-gray-700">AI-based scoring system (10–90 scale, CLB aligned)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Test Format Overview */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <Clock className="w-5 h-5" />
+                Test Format Overview
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-700 mb-4">
+                PTE Core is divided into <span className="font-semibold">three integrated parts</span>. Each part assesses
+                multiple skills through real-life tasks.
+              </p>
+
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr className="border-b-2 border-gray-200">
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Module</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Skills Tested</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">1. Speaking & Writing</td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Speaking + Writing</td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">~50 mins</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">2. Reading</td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Reading + Writing</td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">~30 mins</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">3. Listening</td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Listening + Reading + Writing</td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">~30 mins</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="mt-4 p-3 bg-red-50 rounded-lg border border-red-200">
+                <div className="flex items-center gap-2">
+                  <span className="text-red-600 text-lg">🚀</span>
+                  <span className="font-semibold text-red-800 text-sm">Total Duration:</span>
+                  <span className="text-red-700 text-sm">~2 hours (including breaks and intro)</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Scoring System */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <BarChart3 className="w-5 h-5" />
+                Scoring System
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <div className="flex items-start gap-2">
+                  <span className="font-semibold text-gray-900 text-sm">• Score Range:</span>
+                  <span className="text-gray-700 text-sm">
+                    10 to 90 (aligned with <span className="font-semibold">Canadian Language Benchmarks - CLB</span>)
+                  </span>
+                </div>
+
+                <div>
+                  <span className="font-semibold text-gray-900 text-sm">• Components:</span>
+                  <div className="ml-4 mt-1 space-y-1">
+                    <div className="text-gray-700 text-sm">
+                      • <span className="font-medium">Overall Score</span>
+                    </div>
+                    <div className="text-gray-700 text-sm">
+                      • <span className="font-medium">Communicative Skills:</span> Listening, Reading, Speaking, Writing
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <span className="font-semibold text-gray-900 text-sm">• Scoring Method:</span>
+                  <div className="ml-4 mt-1 space-y-1">
+                    <div className="text-gray-700 text-sm">• AI-driven, 100% automated and unbiased</div>
+                    <div className="text-gray-700 text-sm">
+                      • No negative marking (except in specific multiple-answer questions)
+                    </div>
+                    <div className="text-gray-700 text-sm">• Partial credit awarded for partially correct responses</div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Reading Section */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <BookOpen className="w-5 h-5" />
+                2. Reading (~30 minutes)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr className="border-b-2 border-gray-200">
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Task</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Skills Tested</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">What You Do</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Reading & Writing: Fill in the Blanks</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Reading + Writing
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Drag words to fill gaps in a text</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Multiple Choice (Single Answer)</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Reading
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Choose one correct response</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Re-order Paragraphs</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Reading
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Arrange text boxes in correct order</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Fill in the Blanks (Drag & Drop)</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Reading
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-sm">Drag correct words to complete the passage</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Multiple Choice (Multiple Answers)</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Reading
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Select all correct answers</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Listening Section */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <Headphones className="w-5 h-5" />
+                3. Listening (~30 minutes)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr className="border-b-2 border-gray-200">
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Task</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Skills Tested</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">What You Do</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Summarize Spoken Text</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Listening + Writing
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Write a 50–70 word summary of an audio recording</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Multiple Choice (Multiple)</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Listening
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Choose all correct responses from an audio clip</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Fill in the Blanks</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Listening + Writing
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Type missing words from the recording</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Highlight Correct Summary</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Listening + Reading
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Pick the summary that matches the audio</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Multiple Choice (Single)</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Listening
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Choose one best answer based on an audio clip</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Select Missing Word</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Listening
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Predict the final word in an audio</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Highlight Incorrect Words</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Listening + Reading
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Spot and select incorrect words in the transcript</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Write from Dictation</td>
+                      <td className="py-2 px-3">
+                        <Badge variant="secondary" className="text-xs">
+                          Listening + Writing
+                        </Badge>
+                      </td>
+                      <td className="py-2 px-3 text-gray-700 text-sm">Type exactly what you hear in a sentence</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Footer */}
+          <div className="text-center py-4">
+            <p className="text-gray-600 text-sm">
+              This comprehensive overview covers all aspects of the PTE Core test format and requirements.
+            </p>
           </div>
-        </section>
+        </div>
       </div>
     ),
   },
