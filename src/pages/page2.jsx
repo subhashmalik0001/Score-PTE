@@ -647,9 +647,9 @@ const Page2 = () => {
         
       </div>
       <h2 className="text-6xl sm:text-7xl font-light mb-20 tracking-tight leading-tight">
-        <span className="text-red-600">PTE</span>{' '}
-        <span className="text-red-600">Made </span>
-        <span className="text-red-600">Easy</span>{' '}
+        <span className="bg-gradient-to-r from-red-400 via-red-600 to-red-800 bg-clip-text text-transparent">PTE</span>{' '}
+        <span className="font-extrabold text-red">Made </span>
+        <span className="bg-gradient-to-r from-re-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">Easy</span>{' '}
       </h2>
       <p className="text-sm text-gray-500 mb-6 -mt-9">A basic insight into the test.</p>
 

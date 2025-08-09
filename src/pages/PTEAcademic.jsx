@@ -18,7 +18,8 @@ const PTEAcademic = () => {
   const [errorMessage, setErrorMessage] = useState("")
   const [selectedItem, setSelectedItem] = useState(null)
 
-  const speakingItems = [
+  // PTE Academic items (original)
+  const speakingItemsAcademic = [
     { name: "Read Aloud", hasAI: true, disabled: false },
     { name: "Repeat Sentence", hasAI: true, disabled: false },
     { name: "Describe Image", hasAI: true, disabled: false },
@@ -27,14 +28,14 @@ const PTEAcademic = () => {
     { name: "Respond to a situation", hasAI: false, disabled: true },
   ]
 
-  const writingItems = [
+  const writingItemsAcademic = [
     { name: "Summarize Written Text", hasAI: false, disabled: false },
     { name: "Write Essay", hasAI: true, disabled: false },
     { name: "Summarize Written Text", hasAI: false, disabled: true },
     { name: "Write Email (Core)", hasAI: false, disabled: true },
   ]
 
-  const readingItems = [
+  const readingItemsAcademic = [
     { name: "Reading & Writing: Fill in the blanks", hasAI: false, disabled: false },
     { name: "Multiple Choice (Multiple)", hasAI: false, disabled: false },
     { name: "Re-order Paragraphs", hasAI: false, disabled: false },
@@ -42,7 +43,7 @@ const PTEAcademic = () => {
     { name: "Multiple Choice (Single)", hasAI: false, disabled: false },
   ]
 
-  const listeningItems = [
+  const listeningItemsAcademic = [
     { name: "Summarize Spoken Text", hasAI: false, disabled: false },
     { name: "Multiple Choice (Multiple)", hasAI: false, disabled: false },
     { name: "Fill in the Blanks", hasAI: true, disabled: false },
@@ -52,6 +53,45 @@ const PTEAcademic = () => {
     { name: "Highlight Incorrect Words", hasAI: false, disabled: false },
     { name: "Write From Dictation", hasAI: false, disabled: false },
     { name: "Summarize Spoken Text", hasAI: false, disabled: true },
+  ]
+
+  // PTE Core items (new)
+  const speakingItemsCore = [
+    { name: "Read Aloud", hasAI: true, disabled: false },
+    { name: "Repeat Sentence", hasAI: true, disabled: false },
+    { name: "Describe Image", hasAI: true, disabled: false },
+    { name: "Answer Short Question", hasAI: true, disabled: false },
+    { name: "Respond to a situation", hasAI: true, disabled: false },
+    { name: "Re-tell Lecture (PTEA)", hasAI: false, disabled: false },
+    { name: "Respond to a situation (PTEA)", hasAI: false, disabled: false },
+    { name: "Summarize Group Discussion (PTEA)", hasAI: false, disabled: false },
+  ]
+
+  const writingItemsCore = [
+    { name: "Summarize Written Text", hasAI: true, disabled: false },
+    { name: "Write Email", hasAI: true, disabled: false },
+    { name: "Summarize Written Text (PTEA)", hasAI: false, disabled: false },
+    { name: "Write Essay (PTEA)", hasAI: false, disabled: false },
+  ]
+
+  const readingItemsCore = [
+    { name: "Fill in the Blanks (Dropdown)", hasAI: false, disabled: false },
+    { name: "Multiple Choice (Multiple)", hasAI: false, disabled: false },
+    { name: "Re-order Paragraphs", hasAI: false, disabled: false },
+    { name: "Fill in the Blanks (Drag and Drop)", hasAI: false, disabled: false },
+    { name: "Multiple Choice (Single)", hasAI: false, disabled: false },
+  ]
+
+  const listeningItemsCore = [
+    { name: "Summarize Spoken Text", hasAI: true, disabled: false },
+    { name: "Multiple Choice (Multiple)", hasAI: false, disabled: false },
+    { name: "Fill in the Blanks", hasAI: false, disabled: false },
+    { name: "Multiple Choice (Single)", hasAI: false, disabled: false },
+    { name: "Select Missing Word", hasAI: false, disabled: false },
+    { name: "Highlight Incorrect Words", hasAI: false, disabled: false },
+    { name: "Write From Dictation", hasAI: false, disabled: false },
+    { name: "Summarize Spoken Text (PTEA)", hasAI: false, disabled: false },
+    { name: "Highlight Correct Summary (PTEA)", hasAI: false, disabled: false },
   ]
 
   const handleItemClick = (item) => {
@@ -150,61 +190,17 @@ const PTEAcademic = () => {
         <div className="p-6">
           {activeTab === "pte-academic" ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-              <ItemList items={speakingItems} title="Speaking" />
-              <ItemList items={writingItems} title="Writing" />
-              <ItemList items={readingItems} title="Reading" />
-              <ItemList items={listeningItems} title="Listening" />
+              <ItemList items={speakingItemsAcademic} title="Speaking" />
+              <ItemList items={writingItemsAcademic} title="Writing" />
+              <ItemList items={readingItemsAcademic} title="Reading" />
+              <ItemList items={listeningItemsAcademic} title="Listening" />
             </div>
           ) : (
-            <div className="text-left ml-3 max-w-3xl mx-auto text-gray-800 space-y-6">
-              <div>
-                <h2 className="text-2xl font-bold mb-3">What is PTE Core?</h2>
-                <p className="mb-4">
-                  <strong>PTE Core</strong> is a computer-based English proficiency test by <strong>Pearson</strong>, 
-                  designed for <strong>Canadian economic immigration</strong> and <strong>workplace communication</strong>.
-                </p>
-                <ul className="list-disc pl-6 space-y-1">
-                  <li><strong>Accepted by:</strong> IRCC (Canada Immigration)</li>
-                  <li><strong>Purpose:</strong> Canadian PR, work, citizenship</li>
-                  <li><strong>Delivery:</strong> Pearson VUE centers worldwide</li>
-                  <li><strong>Scoring:</strong> AI-based (10–90 scale, CLB aligned)</li>
-                </ul>
-              </div>
-
-              <div>
-                <h2 className="text-2xl font-bold mb-2">Test Format Overview</h2>
-                <p className="mb-4">
-                  PTE Core has <strong>3 parts</strong> assessing real-life English skills.
-                </p>
-
-                <div className="border border-gray-300 rounded-lg overflow-hidden">
-                  <div className="grid grid-cols-3 font-bold bg-gray-100 p-3 text-sm">
-                    <div>Module</div>
-                    <div>Skills</div>
-                    <div className="text-right">Time</div>
-                  </div>
-                  <div className="grid grid-cols-3 border-t p-3 text-sm">
-                    <div>1. Speaking & Writing</div>
-                    <div>Speaking + Writing</div>
-                    <div className="text-right">~50 mins</div>
-                  </div>
-                  <div className="grid grid-cols-3 border-t p-3 text-sm">
-                    <div>2. Reading</div>
-                    <div>Reading + Writing</div>
-                    <div className="text-right">~30 mins</div>
-                  </div>
-                  <div className="grid grid-cols-3 border-t p-3 text-sm">
-                    <div>3. Listening</div>
-                    <div>Listening + Reading + Writing</div>
-                    <div className="text-right">~30 mins</div>
-                  </div>
-                </div>
-
-                <div className="mt-6 text-lg font-bold flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-red-500" />
-                  Total Duration: ~2 hours (with breaks)
-                </div>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+              <ItemList items={speakingItemsCore} title="Speaking" />
+              <ItemList items={writingItemsCore} title="Writing" />
+              <ItemList items={readingItemsCore} title="Reading" />
+              <ItemList items={listeningItemsCore} title="Listening" />
             </div>
           )}
         </div>
