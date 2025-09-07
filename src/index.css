@@ -3,6 +3,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+/* Microgramma font (via CDN) */
+@font-face {
+  font-family: 'Microgramma';
+  src: url('https://fonts.cdnfonts.com/s/14881/Microgramma%20D%20Extended.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Microgramma';
+  src: url('https://fonts.cdnfonts.com/s/14881/Microgramma%20D%20Extended%20Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Utility to apply Microgramma */
+.font-microgramma {
+  font-family: 'Microgramma', 'Sofia Sans', sans-serif;
+}
+
 * {
   font-family: 'Sofia Sans', sans-serif;
 }

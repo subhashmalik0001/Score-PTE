@@ -1,14 +1,58 @@
 import React from 'react';
+import { openRazorpayCheckout } from '../lib/razorpay';
 import image15 from '../assets/image 15.png';
 import image16 from '../assets/image 16.png';
 import mapImage from '../assets/map.png';
 
 const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = 'black', onPurchase }) => {
-  const handleStartNow = () => {
+  const handleStartNow = async () => {
     if (onPurchase) {
       onPurchase();
-    } else {
-      console.log(`Starting ${plan} plan!`);
+      return;
+    }
+
+    try {
+      // Convert displayed price string like "1,499" to paise (INR minor units)
+      const numericAmount = Number(String(price).replace(/[^0-9.]/g, ''));
+      if (!numericAmount || Number.isNaN(numericAmount)) {
+        console.error('Invalid amount:', price);
+        return;
+      }
+      const amountPaise = Math.round(numericAmount * 100);
+
+      // Create order on our server
+      const orderRes = await fetch('/api/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: amountPaise, currency: 'INR', notes: { plan } }),
+      });
+      if (!orderRes.ok) {
+        const txt = await orderRes.text();
+        try { alert(`Order creation failed: ${txt}`); } catch {}
+        throw new Error('Order creation failed: ' + txt);
+      }
+      const { order } = await orderRes.json();
+      if (!order || !order.id) throw new Error('Invalid order from server');
+
+      await openRazorpayCheckout({
+        amountPaise,
+        currency: 'INR',
+        name: 'Score PTE',
+        description: `Purchase ${plan} plan`,
+        orderId: order.id,
+        notes: { plan },
+        themeColor: '#000000',
+        onSuccess: (resp) => {
+          console.log('Payment successful', resp);
+        },
+        onError: (err) => {
+          console.error('Payment failed', err);
+          alert('Payment failed');
+        },
+      });
+    } catch (e) {
+      console.error('Razorpay init error', e);
+      alert(e?.message || 'Payment init failed');
     }
   };
 
@@ -89,7 +133,7 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
       <div className="text-center mb-8 flex-1 flex flex-col justify-center">
       <div className="text-4xl font-extrabold text-gray-900 mb-4 flex items-center justify-center gap-2">
           {price}
-          <span className="text-xs font-medium text-gray-500" style={{ position: 'relative', top: '0.5em' }}>AUD</span>
+          <span className="text-xs font-medium text-gray-500" style={{ position: 'relative', top: '0.5em' }}>INR</span>
         </div>
         <p className="text-gray-600 text-sm leading-relaxed">
           {typeof features === 'string' ? features : features}
@@ -137,15 +181,8 @@ const PTEConsultationCTA = () => {
 }
 
 const locations = [
-  { title: 'New York, USA', description: 'Our hub in North America.', top: '35%', left: '28%' },
-  { title: 'London, UK', description: 'Connecting Europe.', top: '28%', left: '46%' },
-  { title: 'Sydney, Australia', description: 'Oceania operations.', top: '75%', left: '87%' },
-  { title: 'Dubai, UAE', description: 'Middle East gateway.', top: '48%', left: '60%' },
-  { title: 'Mumbai, India', description: 'South Asia center.', top: '55%', left: '68%' },
-  { title: 'Johannesburg, South Africa', description: 'Africa network.', top: '80%', left: '52%' },
-  { title: 'Toronto, Canada', description: 'Canadian presence.', top: '25%', left: '22%' },
-  { title: 'Singapore', description: 'Southeast Asia hub.', top: '65%', left: '78%' },
-  { title: 'Berlin, Germany', description: 'Central Europe.', top: '30%', left: '52%' },
+  
+  
 ];
 
 function InteractiveMap() {
@@ -156,20 +193,20 @@ function InteractiveMap() {
         <p className="text-gray-600 mt-2">Foastring a Global Community of Excellence</p>
       </header>
 
-      <div className="relative w-full max-w-5xl mx-auto">
-        <img src={mapImage} alt="World Map" className="w-full max-w-2xl mx-auto" style={{ minHeight: '220px' }} />
+      <div className="relative w-full max-w-2xl mx-auto">
+        <img src={mapImage} alt="World Map" className="w-full block" style={{ minHeight: '220px' }} />
 
         {locations.map((loc, index) => (
           <span
             key={index}
-            className="absolute flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 w-16 h-16 z-0"
+            className="absolute flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 z-10"
             style={{
               top: loc.top,
               left: loc.left,
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <svg className="w-8 h-8 sm:w-6 sm:h-6" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-full h-full" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2C7.03 2 3 6.03 3 11c0 5.25 7.11 11.54 8.09 12.37a1 1 0 0 0 1.23 0C13.89 22.54 21 16.25 21 11c0-4.97-4.03-9-9-9zm0 18.88C9.14 18.07 5 13.98 5 11c0-3.87 3.13-7 7-7s7 3.13 7 7c0 2.98-4.14 7.07-7 9.88z" fill="#EF4444"/>
               <circle cx="12" cy="11" r="3.5" fill="#EF4444" stroke="#fff" strokeWidth="2"/>
             </svg>

@@ -428,7 +428,7 @@ const testData = {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-700 mb-4">
+              <p className="text-base text-gray-900 mb-4">
                 PTE Core is divided into <span className="font-semibold">three integrated parts</span>. Each part assesses
                 multiple skills through real-life tasks.
               </p>
@@ -437,26 +437,26 @@ const testData = {
                 <table className="w-full border-collapse">
                   <thead>
                     <tr className="border-b-2 border-gray-200">
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Module</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Skills Tested</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Time</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Module</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Skills Tested</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Time</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">1. Speaking & Writing</td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Speaking + Writing</td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">~50 mins</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">1. Speaking & Writing</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Speaking + Writing</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">~50 mins</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">2. Reading</td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Reading + Writing</td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">~30 mins</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">2. Reading</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Reading + Writing</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">~30 mins</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">3. Listening</td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Listening + Reading + Writing</td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">~30 mins</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">3. Listening</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Listening + Reading + Writing</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">~30 mins</td>
                     </tr>
                   </tbody>
                 </table>
@@ -465,8 +465,8 @@ const testData = {
               <div className="mt-4 p-3 bg-red-50 rounded-lg border border-red-200">
                 <div className="flex items-center gap-2">
                   <span className="text-red-600 text-lg">🚀</span>
-                  <span className="font-semibold text-red-800 text-sm">Total Duration:</span>
-                  <span className="text-red-700 text-sm">~2 hours (including breaks and intro)</span>
+                  <span className="font-semibold text-red-800 text-base">Total Duration:</span>
+                  <span className="text-red-700 text-base">~2 hours (including breaks and intro)</span>
                 </div>
               </div>
             </CardContent>
@@ -483,32 +483,32 @@ const testData = {
             <CardContent>
               <div className="space-y-3">
                 <div className="flex items-start gap-2">
-                  <span className="font-semibold text-gray-900 text-sm">• Score Range:</span>
-                  <span className="text-gray-700 text-sm">
+                  <span className="font-semibold text-gray-900 text-base">• Score Range:</span>
+                  <span className="text-gray-700 text-base">
                     10 to 90 (aligned with <span className="font-semibold">Canadian Language Benchmarks - CLB</span>)
                   </span>
                 </div>
 
                 <div>
-                  <span className="font-semibold text-gray-900 text-sm">• Components:</span>
+                  <span className="font-semibold text-gray-900 text-base">• Components:</span>
                   <div className="ml-4 mt-1 space-y-1">
-                    <div className="text-gray-700 text-sm">
+                    <div className="text-gray-700 text-base">
                       • <span className="font-medium">Overall Score</span>
                     </div>
-                    <div className="text-gray-700 text-sm">
+                    <div className="text-gray-700 text-base">
                       • <span className="font-medium">Communicative Skills:</span> Listening, Reading, Speaking, Writing
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <span className="font-semibold text-gray-900 text-sm">• Scoring Method:</span>
+                  <span className="font-semibold text-gray-900 text-base">• Scoring Method:</span>
                   <div className="ml-4 mt-1 space-y-1">
-                    <div className="text-gray-700 text-sm">• AI-driven, 100% automated and unbiased</div>
-                    <div className="text-gray-700 text-sm">
+                    <div className="text-gray-700 text-base">• AI-driven, 100% automated and unbiased</div>
+                    <div className="text-gray-700 text-base">
                       • No negative marking (except in specific multiple-answer questions)
                     </div>
-                    <div className="text-gray-700 text-sm">• Partial credit awarded for partially correct responses</div>
+                    <div className="text-gray-700 text-base">• Partial credit awarded for partially correct responses</div>
                   </div>
                 </div>
               </div>
@@ -528,56 +528,56 @@ const testData = {
                 <table className="w-full border-collapse">
                   <thead>
                     <tr className="border-b-2 border-gray-200">
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Task</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Skills Tested</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">What You Do</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Task</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Skills Tested</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">What You Do</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Reading & Writing: Fill in the Blanks</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Reading & Writing: Fill in the Blanks</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Reading + Writing
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Drag words to fill gaps in a text</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Drag words to fill gaps in a text</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Multiple Choice (Single Answer)</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Multiple Choice (Single Answer)</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Reading
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Choose one correct response</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Choose one correct response</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Re-order Paragraphs</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Re-order Paragraphs</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Reading
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Arrange text boxes in correct order</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Arrange text boxes in correct order</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Fill in the Blanks (Drag & Drop)</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Fill in the Blanks (Drag & Drop)</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Reading
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-sm">Drag correct words to complete the passage</td>
+                      <td className="py-2 px-3 text-base">Drag correct words to complete the passage</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Multiple Choice (Multiple Answers)</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Multiple Choice (Multiple Answers)</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Reading
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Select all correct answers</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Select all correct answers</td>
                     </tr>
                   </tbody>
                 </table>
@@ -598,83 +598,83 @@ const testData = {
                 <table className="w-full border-collapse">
                   <thead>
                     <tr className="border-b-2 border-gray-200">
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Task</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Skills Tested</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">What You Do</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Task</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Skills Tested</th>
+                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">What You Do</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Summarize Spoken Text</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Summarize Spoken Text</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Listening + Writing
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Write a 50–70 word summary of an audio recording</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Write a 50–70 word summary of an audio recording</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Multiple Choice (Multiple)</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Multiple Choice (Multiple)</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Listening
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Choose all correct responses from an audio clip</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Choose all correct responses from an audio clip</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Fill in the Blanks</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Fill in the Blanks</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Listening + Writing
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Type missing words from the recording</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Type missing words from the recording</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Highlight Correct Summary</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Highlight Correct Summary</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Listening + Reading
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Pick the summary that matches the audio</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Pick the summary that matches the audio</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Multiple Choice (Single)</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Multiple Choice (Single)</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Listening
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Choose one best answer based on an audio clip</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Choose one best answer based on an audio clip</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Select Missing Word</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Select Missing Word</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Listening
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Predict the final word in an audio</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Predict the final word in an audio</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Highlight Incorrect Words</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Highlight Incorrect Words</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Listening + Reading
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Spot and select incorrect words in the transcript</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Spot and select incorrect words in the transcript</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-sm">Write from Dictation</td>
+                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Write from Dictation</td>
                       <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-sm">
                           Listening + Writing
                         </Badge>
                       </td>
-                      <td className="py-2 px-3 text-gray-700 text-sm">Type exactly what you hear in a sentence</td>
+                      <td className="py-2 px-3 text-gray-700 text-base">Type exactly what you hear in a sentence</td>
                     </tr>
                   </tbody>
                 </table>
@@ -684,7 +684,7 @@ const testData = {
 
           {/* Footer */}
           <div className="text-center py-4">
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 text-base">
               This comprehensive overview covers all aspects of the PTE Core test format and requirements.
             </p>
           </div>
@@ -718,12 +718,14 @@ const Page2 = () => {
         ))}
         
       </div>
-      <h2 className="text-6xl sm:text-7xl font-light mb-20 tracking-tight leading-tight">
-        <span className="bg-gradient-to-r from-red-400 via-red-600 to-red-800 bg-clip-text text-transparent">PTE</span>{' '}
-        <span className="font-extrabold text-red-500">Made </span>
-        <span className="bg-gradient-to-r from-red-400 via-red-600 to-red-800 bg-clip-text text-transparent">Easy</span>{' '}
-      </h2>
-      <p className="text-sm text-gray-500 mb-6 -mt-9">A basic insight into the test.</p>
+      <div className="w-full border-b border-black/5 bg-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-8">
+          <div className="text-center">
+            <div className="text-6xl font-light tracking-[0.3em] text-black mb-2 font-microgramma">SPECIALLY</div>
+            <div className="text-2xl font-light tracking-[0.5em] text-black mb-8 font-microgramma">M · A · D · E</div>
+          </div>
+        </div>
+      </div>
 
       <div className="w-full max-w-7xl flex flex-col lg:flex-row mb-20">
         <div className="w-full lg:w-80 mb-6 lg:mb-0 lg:min-h-full px-4">
