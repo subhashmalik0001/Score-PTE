@@ -189,7 +189,7 @@ function InteractiveMap() {
   return (
     <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-10 w-full max-w-none flex flex-col items-center mt-8 overflow-hidden">
       <header className="text-center mb-8 w-full">
-        <h1 className="text-4xl font-bold text-blue-600 uppercase">Our Global Network</h1>
+        <h1 className="text-4xl font-bold text-red-800 uppercase">Our Global Network</h1>
         <p className="text-gray-600 mt-2">Foastring a Global Community of Excellence</p>
       </header>
 

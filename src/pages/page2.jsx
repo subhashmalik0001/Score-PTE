@@ -721,8 +721,9 @@ const Page2 = () => {
       <div className="w-full border-b border-black/5 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-8">
           <div className="text-center">
-            <div className="text-6xl font-light tracking-[0.3em] text-black mb-2 font-microgramma">SPECIALLY</div>
-            <div className="text-2xl font-light tracking-[0.5em] text-black mb-8 font-microgramma">M · A · D · E</div>
+            <div className="text-5xl font-light tracking-[0.2em] text-black mb-2 font-microgramma">SPECIALLY</div>
+            <div className="text-1xl font-light tracking-[0.5em] text-black mb-8 font-microgramma">M · A · D · E</div>
+            <div className="text-1xl font-light  text-black mb-2 ">A basic insight into the test</div>
           </div>
         </div>
       </div>
