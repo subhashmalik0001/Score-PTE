@@ -1,5 +1,4 @@
 // Lightweight Razorpay Checkout loader and opener for client-side use
-// Note: For production, create orders server-side using your KEY_SECRET and pass order_id here.
 
 let razorpayScriptLoadingPromise = null;
 
@@ -48,31 +47,23 @@ export async function openRazorpayCheckout({
       description,
       image,
       order_id: orderId,
-      handler: function (response) {
-        if (onSuccess) onSuccess(response);
-      },
-      modal: {
-        ondismiss: function () {
-          if (onDismiss) onDismiss();
-        },
-      },
+      handler: (response) => onSuccess?.(response),
+      modal: { ondismiss: () => onDismiss?.() },
       prefill,
       notes,
       theme: { color: themeColor },
     };
 
     const rz = new window.Razorpay(options);
-    rz.on('payment.failed', function (response) {
-      if (onError) onError(response);
+    rz.on('payment.failed', (response) => {
+      onError?.(response);
       try { alert('Payment failed. Please try again.'); } catch {}
     });
     rz.open();
     return true;
   } catch (err) {
-    if (onError) onError(err);
+    onError?.(err);
     try { alert(err?.message || 'Failed to initialize payment'); } catch {}
     throw err;
   }
 }
-
-
