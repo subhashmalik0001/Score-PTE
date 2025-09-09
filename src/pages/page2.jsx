@@ -20,7 +20,7 @@ const testData = {
   "About PTE": {
     title: "PTE: Pearson Test of English - Complete Guide",
     content: (
-      <div className="h-[700px] bg-gray-50 py-4 overflow-y-auto">
+      <div className="h-[600px] bg-gray-50 py-4  overflow-y-auto">
         <div className="max-w-6xl mx-auto space-y-6 px-4">
           {/* Header */}
           <div className="text-center space-y-4">
@@ -83,8 +83,8 @@ const testData = {
 
           {/* PTE Core */}
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
+            <CardHeader >
+              <CardTitle className="flex items-center gap-2  text-lg">
                 <BookOpen className="w-5 h-5" />
                 PTE Core (2024 Launch)
               </CardTitle>

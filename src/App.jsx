@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Page1 from "./pages/page1";
 import Page2 from "./pages/page2";
 import Page3 from "./pages/page3";
@@ -9,43 +11,58 @@ import Footer from "./pages/page10";
 import Terms from "./pages/Terms";
 import PTEAcademic from "./pages/PTEAcademic";
 import PricingCards from "./components/PricingCards";
-
 import Navbar from "./components/Navbar";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
 
-  const handleBackToHome = () => {
-    setCurrentPage("home");
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50">
-      {currentPage === "home" && <Navbar onNavigate={setCurrentPage} />}
-      {currentPage === "home" ? (
-        <>
-          <Page1 />
-          <Page2 />
-          <Page3 />
-          <Page5 />
-          <Page7 />
-          <Page8 />
-          <Footer onTermsClick={() => setCurrentPage("terms")} />
-        </>
-      ) : currentPage === "terms" ? (
-        <Terms onBack={handleBackToHome} />
-      ) : currentPage === "pte-practice" ? (
-        <>
-          <Navbar onNavigate={setCurrentPage} />
-          <PTEAcademic />
-        </>
-      ) : currentPage === "course" ? (
-        <>
-          <Navbar onNavigate={setCurrentPage} />
-          <PricingCards />
-        </>
-      ) : null}
-    </div>
+    <Router>
+      <div className="min-h-screen bg-gray-50">
+        <Routes>
+          {/* Terms page handled by React Router */}
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/contact" element={<Terms />} />
+          <Route path="/about" element={<Terms />} />
+          
+          
+
+          {/* Everything else handled manually */}
+          <Route
+            path="*"
+            element={
+              <>
+                {currentPage === "home" && <Navbar onNavigate={setCurrentPage} />}
+
+                {currentPage === "home" ? (
+                  <>
+                    <Page1 />
+                    <div className="mt-[800px]">
+  <Page2 />
+</div>
+                    <Page3 />
+                    <Page5 />
+                    <Page7 />
+                    <Page8 />
+                    <Footer />
+                  </>
+                ) : currentPage === "pte-practice" ? (
+                  <>
+                    <Navbar onNavigate={setCurrentPage} />
+                    <PTEAcademic />
+                  </>
+                ) : currentPage === "course" ? (
+                  <>
+                    <Navbar onNavigate={setCurrentPage} />
+                    <PricingCards />
+                  </>
+                ) : null}
+              </>
+            }
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

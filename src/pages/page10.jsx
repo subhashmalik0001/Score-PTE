@@ -16,12 +16,12 @@ const Page10 = ({ onTermsClick }) => {
         <p className="uppercase tracking-widest text-xs text-gray-500 mb-4">Where to next?</p>
         <div className="flex flex-wrap justify-center gap-6 text-lg">
           <a href="#" className="hover:text-white">Home</a>
-          <a href="#" className="hover:text-white">About</a>
+          <a href="/about" className="hover:text-white">About</a>
           
           
        
           <a href="#" className="hover:text-white">Support</a>
-          <a href="#" className="hover:text-white">Contact</a>
+          <a href="/contact" className="hover:text-white">Contact</a>
         </div>
       </div>
 
