@@ -32,12 +32,13 @@ const Page10 = ({ onTermsClick }) => {
           <span className="mx-1">•</span>
           <span>Newsletter</span>
           <span className="mx-1">•</span>
-          <span 
+          <a href="/terms"><span 
             onClick={onTermsClick} 
             className="cursor-pointer hover:text-white transition-colors duration-300"
           >
             Terms
-          </span>
+          </span></a>
+         
           <span className="mx-1">•</span>
           <span>Score</span>
           <span className="mx-1">•</span>
