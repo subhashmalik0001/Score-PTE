@@ -43,7 +43,7 @@ const Page10 = ({ onTermsClick }) => {
           <span>Score</span>
           <span className="mx-1">•</span>
           <span>
-          @scorepte_explains telegram handle</span>
+          @Scorepte_explains</span>
         </div>
         <p className="text-xs text-gray-500">
           copyright  India. All rights reserved

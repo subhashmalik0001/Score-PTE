@@ -34,7 +34,7 @@ Each score shared reminds us why we started.
       {/* Email Link */}
       <div className="flex flex-wrap items-center justify-center gap-2">
         <span>Drop your Score Card with Reviews on</span>
-        <a
+        <a href="https://t.me/Scorepte_explains"
           className="text-blue-300 underline text-sm md:text-base hover:text-blue-400 transition"
         >
           @telegram handle
