@@ -21,6 +21,7 @@ function App() {
       <div className="min-h-screen bg-gray-50">
         <Routes>
           {/* Terms page handled by React Router */}
+          <Route path="/term" element={<Terms />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/contact" element={<Terms />} />
           <Route path="/about" element={<Terms />} />
