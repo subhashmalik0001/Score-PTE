@@ -53,8 +53,8 @@ const Page10 = ({ onTermsClick }) => {
       {/* Social Icons */}
       <div className="flex space-x-6 pt-4 text-gray-500 text-lg">
         <a href="#"><FaFacebookF className="hover:text-white" /></a>
-        <a href="#"><FaInstagram className="hover:text-white" /></a>
-        <a href="https://web.telegram.org/"><FaTelegram className="hover:text-white" /></a>
+        <a href="https://www.instagram.com/scorepte_explains?igsh=MTQycWVmdThhMTJ3ZQ=="><FaInstagram className="hover:text-white" /></a>
+        <a href="https://t.me/Scorepte_explains"><FaTelegram className="hover:text-white" /></a>
       </div>
     </div>
   );

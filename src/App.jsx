@@ -12,6 +12,7 @@ import Terms from "./pages/Terms";
 import PTEAcademic from "./pages/PTEAcademic";
 import PricingCards from "./components/PricingCards";
 import Navbar from "./components/Navbar";
+import About from "./pages/About";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -24,7 +25,7 @@ function App() {
           <Route path="/term" element={<Terms />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/contact" element={<Terms />} />
-          <Route path="/about" element={<Terms />} />
+          <Route path="/about" element={<About />} />
           
           
 
