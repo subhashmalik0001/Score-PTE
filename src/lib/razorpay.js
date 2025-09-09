@@ -52,6 +52,14 @@ export async function openRazorpayCheckout({
       prefill,
       notes,
       theme: { color: themeColor },
+      method: {
+        netbanking: true,
+        wallet: true,
+        upi: true,
+        card: true,
+        emi: true,
+        paylater: true,
+      },
     };
 
     const rz = new window.Razorpay(options);

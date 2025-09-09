@@ -5,20 +5,52 @@ import image16 from '../assets/image 16.png';
 import mapImage from '../assets/map.png';
 
 const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = 'black' }) => {
+  // Check if user is from India (you can enhance this with more sophisticated geo-detection)
+  const isIndianUser = () => {
+    // Simple check - you can enhance this with IP geolocation or user preference
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    return timezone === 'Asia/Kolkata' || timezone.includes('Asia/Calcutta');
+  };
+
+  const convertToINR = (audPrice) => {
+    const exchangeRate = 58.22; // 1 AUD = 58.22 INR
+    return Math.round(audPrice * exchangeRate);
+  };
+
+  // Keep display in AUD for all users
+  const getDisplayPrice = () => {
+    return price;
+  };
+
+  const getCurrency = () => {
+    return 'AUD';
+  };
+
   const handleStartNow = async () => {
     try {
-      // Convert displayed price string like "1,499" to paise (INR minor units)
       const numericAmount = Number(String(price).replace(/[^0-9.]/g, ''));
       if (!numericAmount || Number.isNaN(numericAmount)) {
         console.error('Invalid amount:', price);
         return;
       }
-      const amountPaise = Math.round(numericAmount * 100);
+
+      let amountPaise, currency;
+      
+      if (isIndianUser()) {
+        // Convert AUD to INR and then to paise
+        const inrAmount = convertToINR(numericAmount);
+        amountPaise = Math.round(inrAmount * 100); // INR paise
+        currency = 'INR';
+      } else {
+        // Use AUD cents
+        amountPaise = Math.round(numericAmount * 100); // AUD cents
+        currency = 'AUD';
+      }
 
       // Frontend-only Razorpay Checkout
       await openRazorpayCheckout({
         amountPaise,
-        currency: 'INR',
+        currency,
         name: 'Score PTE',
         description: `Purchase ${plan} plan`,
         // For test purposes, orderId is optional; remove or set if you have pre-created order
@@ -63,8 +95,8 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
 
       <div className="text-center mb-8 flex-1 flex flex-col justify-center">
         <div className="text-4xl font-extrabold text-gray-900 mb-4 flex items-center justify-center gap-2">
-          {price}
-          <span className="text-xs font-medium text-gray-500" style={{ position: 'relative', top: '0.5em' }}>INR</span>
+          {getDisplayPrice()}
+          <span className="text-xs font-medium text-gray-500" style={{ position: 'relative', top: '0.5em' }}>{getCurrency()}</span>
         </div>
         <p className="text-gray-600 text-sm leading-relaxed">{features}</p>
       </div>
