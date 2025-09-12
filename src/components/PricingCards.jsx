@@ -5,18 +5,6 @@ import image16 from '../assets/image 16.png';
 import mapImage from '../assets/map.png';
 
 const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = 'black' }) => {
-  // Check if user is from India (you can enhance this with more sophisticated geo-detection)
-  const isIndianUser = () => {
-    // Simple check - you can enhance this with IP geolocation or user preference
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    return timezone === 'Asia/Kolkata' || timezone.includes('Asia/Calcutta');
-  };
-
-  const convertToINR = (audPrice) => {
-    const exchangeRate = 58.22; // 1 AUD = 58.22 INR
-    return Math.round(audPrice * exchangeRate);
-  };
-
   // Keep display in AUD for all users
   const getDisplayPrice = () => {
     return price;
@@ -34,18 +22,9 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
         return;
       }
 
-      let amountPaise, currency;
-      
-      if (isIndianUser()) {
-        // Convert AUD to INR and then to paise
-        const inrAmount = convertToINR(numericAmount);
-        amountPaise = Math.round(inrAmount * 100); // INR paise
-        currency = 'INR';
-      } else {
-        // Use AUD cents
-        amountPaise = Math.round(numericAmount * 100); // AUD cents
-        currency = 'AUD';
-      }
+      // Always charge in AUD (amount in cents)
+      const amountPaise = Math.round(numericAmount * 100); // AUD cents
+      const currency = 'AUD';
 
       // Frontend-only Razorpay Checkout
       await openRazorpayCheckout({
