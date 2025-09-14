@@ -191,21 +191,23 @@ export default function About() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              variant="secondary"
-              className="text-lg px-8 py-4 hover:scale-105 transition-transform bg-white text-slate-900 hover:bg-slate-100"
+            <a
+              href="https://www.instagram.com/scorepte_explains"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lg px-8 py-4 hover:scale-105 transition-transform bg-white text-slate-900 hover:bg-slate-100 rounded-lg font-medium text-center inline-flex items-center justify-center"
             >
               Start Your Success Journey
               <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-slate-900 bg-transparent hover:scale-105 transition-transform"
+            </a>
+            <a
+              href="https://www.instagram.com/scorepte_explains"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-slate-900 bg-transparent hover:scale-105 transition-transform rounded-lg font-medium text-center inline-flex items-center justify-center border"
             >
               Watch Success Stories
-            </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -541,20 +543,19 @@ export default function About() {
             practice to perfection starts here.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              variant="secondary"
-              className="text-lg px-8 py-3 bg-white text-slate-900 hover:bg-slate-100 border-0"
+            <a
+              href="/course"
+              className="text-lg px-8 py-3 bg-white text-slate-900 hover:bg-slate-100 border-0 rounded-lg font-medium text-center inline-flex items-center justify-center transition-colors"
             >
               Start Your Preparation Today
               <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
-              size="lg"
-              className="text-lg px-8 py-3 bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 transition-colors"
+            </a>
+            <a
+              href="/course"
+              className="text-lg px-8 py-3 bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 transition-colors rounded-lg font-medium text-center inline-flex items-center justify-center"
             >
               Learn More About Our Programs
-            </Button>
+            </a>
           </div>
           <p className="mt-8 text-white/80">
             Because at Score PTE, your <strong className="text-white font-bold">Score Must Grow</strong> ✨

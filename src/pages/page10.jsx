@@ -20,7 +20,7 @@ const Page10 = ({ onTermsClick }) => {
           
           
        
-          <a href="#" className="hover:text-white">Support</a>
+          <a href="https://t.me/Scorepte_explains" className="hover:text-white">Support</a>
           <a href="/contact" className="hover:text-white">Contact</a>
         </div>
       </div>

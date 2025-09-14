@@ -13,6 +13,7 @@ import PTEAcademic from "./pages/PTEAcademic";
 import PricingCards from "./components/PricingCards";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -24,8 +25,9 @@ function App() {
           {/* Terms page handled by React Router */}
           <Route path="/term" element={<Terms />} />
           <Route path="/terms" element={<Terms />} />
-          <Route path="/contact" element={<Terms />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/course" element={<><Navbar onNavigate={setCurrentPage} /><PricingCards /></>} />
           
           
 

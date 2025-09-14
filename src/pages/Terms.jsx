@@ -138,9 +138,15 @@ const Terms = ({ onBack }) => {
           <p className="text-blue-100 mb-4">
             If you have any questions about these terms and conditions, please contact us.
           </p>
-          <button className="w-full sm:w-auto bg-white text-blue-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+          
+          <a 
+            href="https://t.me/Scorepte_explains" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto bg-white text-blue-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors inline-block text-center"
+          >
             Contact Support
-          </button>
+          </a>
         </div>
       </div>
     </div>
