@@ -41,7 +41,7 @@ function App() {
                 {currentPage === "home" ? (
                   <>
                     <Page1 />
-                    <div className="mt-[800px]">
+                    <div className="mt-[60vh] md:mt-[800px]">
   <Page2 />
 </div>
                     <Page3 />

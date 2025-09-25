@@ -11,7 +11,7 @@ import {
 } from 'lucide-react'
 
 const PTEAcademic = () => {
-  const [activeTab, setActiveTab] = useState("pte-core")
+  const [activeTab, setActiveTab] = useState("pte-academic")
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [accessCode, setAccessCode] = useState("")
   const [validationStatus, setValidationStatus] = useState("idle")

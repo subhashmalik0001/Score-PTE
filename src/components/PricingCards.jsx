@@ -105,7 +105,7 @@ const PTEConsultationCTA = () => (
         </p>
         <button
           className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 md:px-8 md:py-4 text-base md:text-lg rounded-lg transition-colors duration-200 cursor-pointer"
-          onClick={() => alert("Booking consultation slot!")}
+          onClick={() => window.open('https://t.me/Scorepte_explains', '_blank')}
         >
           Save my slot
         </button>
