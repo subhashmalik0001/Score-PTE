@@ -92,27 +92,57 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
   );
 };
 
-const PTEConsultationCTA = () => (
-  <div className="w-full max-w-6xl mx-auto p-4">
-    <div className="bg-amber-800 rounded-2xl px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-16">
-      <div className="max-w-4xl">
-        <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 leading-tight">
-          Not ready yet? Book your FREE PTE Consultation today!
-        </h2>
-        <p className="text-white text-base md:text-lg lg:text-xl mb-6 md:mb-8 leading-relaxed opacity-95">
-          Receive expert advice on your current skills, personalized guidance on achieving your target score, and a
-          clear roadmap to better prepare for your PTE exam. Why wait? Take the first step towards success now!
-        </p>
-        <button
-          className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 md:px-8 md:py-4 text-base md:text-lg rounded-lg transition-colors duration-200 cursor-pointer"
-          onClick={() => window.open('https://t.me/Scorepte_explains', '_blank')}
-        >
-          Save my slot
-        </button>
+const PTEConsultationCTA = () => {
+  const handleConsultationPayment = async () => {
+    try {
+      const amountPaise = Math.round(100 * 100); // $100 in AUD cents
+      const currency = 'AUD';
+
+      // Frontend-only Razorpay Checkout
+      await openRazorpayCheckout({
+        amountPaise,
+        currency,
+        name: 'Score PTE',
+        description: 'PTE Consultation - Expert guidance session',
+        notes: { plan: 'consultation' },
+        themeColor: '#000000',
+        onSuccess: (resp) => {
+          console.log('Consultation payment successful', resp);
+          alert('Payment successful! We will contact you soon to schedule your consultation.');
+        },
+        onError: (err) => {
+          console.error('Consultation payment failed', err);
+          alert('Payment failed. Please try again.');
+        },
+      });
+    } catch (e) {
+      console.error('Razorpay init error', e);
+      alert(e?.message || 'Payment init failed');
+    }
+  };
+
+  return (
+    <div className="w-full max-w-6xl mx-auto p-4">
+      <div className="bg-amber-800 rounded-2xl px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-16">
+        <div className="max-w-4xl">
+          <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 leading-tight">
+            Not ready yet? Book your PTE Consultation today at just $100.
+          </h2>
+          <p className="text-white text-base md:text-lg lg:text-xl mb-6 md:mb-8 leading-relaxed opacity-95">
+            Receive expert advice on your current skills, personalized guidance on achieving your target score, and a
+            clear roadmap to better prepare for your PTE exam. Why wait? Take the first step towards success now!
+          </p>
+          <button
+            className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 md:px-8 md:py-4 text-base md:text-lg rounded-lg transition-colors duration-200 cursor-pointer"
+            onClick={handleConsultationPayment}
+          >
+            Book Consultation - $100 AUD
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const PricingCards = () => {
   const plans = [

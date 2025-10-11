@@ -44,7 +44,7 @@ export default function ContactPage() {
       url: "https://t.me/Scorepte_explains",
       color: "bg-blue-500",
     },
-    
+
   ]
 
   const contactInfo = [
@@ -53,13 +53,7 @@ export default function ContactPage() {
       label: "Email",
       value: "info@scorepte.com",
       href: "mailto:info@scorepte.com",
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+91 85709 59718",
-      href: "tel:+15551234567",
-    },
+    }
   ]
 
   return (

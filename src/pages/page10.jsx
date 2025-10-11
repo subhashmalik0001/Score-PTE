@@ -17,9 +17,9 @@ const Page10 = ({ onTermsClick }) => {
         <div className="flex flex-wrap justify-center gap-6 text-lg">
           <a href="#" className="hover:text-white">Home</a>
           <a href="/about" className="hover:text-white">About</a>
-          
-          
-       
+
+
+
           <a href="https://t.me/Scorepte_explains" className="hover:text-white">Support</a>
           <a href="/contact" className="hover:text-white">Contact</a>
         </div>
@@ -32,18 +32,18 @@ const Page10 = ({ onTermsClick }) => {
           <span className="mx-1">•</span>
           <span>Newsletter</span>
           <span className="mx-1">•</span>
-          <a href="/terms"><span 
-            onClick={onTermsClick} 
+          <a href="/terms"><span
+            onClick={onTermsClick}
             className="cursor-pointer hover:text-white transition-colors duration-300"
           >
             Terms
           </span></a>
-         
+
           <span className="mx-1">•</span>
           <span>Score</span>
           <span className="mx-1">•</span>
           <span>
-          @Scorepte_explains</span>
+            @Scorepte_explains</span>
         </div>
         <p className="text-xs text-gray-500">
           copyright  India. All rights reserved
@@ -52,7 +52,6 @@ const Page10 = ({ onTermsClick }) => {
 
       {/* Social Icons */}
       <div className="flex space-x-6 pt-4 text-gray-500 text-lg">
-        <a href="#"><FaFacebookF className="hover:text-white" /></a>
         <a href="https://www.instagram.com/scorepte_explains?igsh=MTQycWVmdThhMTJ3ZQ=="><FaInstagram className="hover:text-white" /></a>
         <a href="https://t.me/Scorepte_explains"><FaTelegram className="hover:text-white" /></a>
       </div>
