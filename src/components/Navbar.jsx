@@ -120,9 +120,9 @@ const Navbar = ({ onNavigate }) => {
           <div className="flex-1">
             <h1 className="text-4xl md:text-6xl font-extrabold text-red-800 tracking-wide">Score PTE</h1>
             <p className="text-base md:text-lg mt-1 text-[#676767]">
-  Established by Experts 
-  <br />-Score Must Grow
-</p>
+              Established by Experts
+              <br />-Score Must Grow
+            </p>
 
 
           </div>
@@ -137,9 +137,8 @@ const Navbar = ({ onNavigate }) => {
               <li key={item} className="flex-1">
                 <a
                   href="#"
-                  className={`block px-4 py-3 text-center text-sm font-medium transition-colors duration-200 ${
-                    item === "Support Team" ? "bg-red text-white" : "text-white hover:bg-red-700"
-                  }`}
+                  className={`block px-4 py-3 text-center text-sm font-medium transition-colors duration-200 ${item === "Support Team" ? "bg-red text-white" : "text-white hover:bg-red-700"
+                    }`}
                   onClick={e => {
                     e.preventDefault();
                     handleNavClick(item);
@@ -254,11 +253,8 @@ const Navbar = ({ onNavigate }) => {
                   <FaInstagram className="text-pink-500 text-2xl" />
                   <span className="font-medium text-gray-800">Follow us on Instagram</span>
                 </a>
-                <a href="#" className="flex items-center gap-3 p-3 rounded-lg border hover:bg-gray-50 transition-colors">
-                  <FaFacebook className="text-blue-700 text-2xl" />
-                  <span className="font-medium text-gray-800">Visit our Facebook page</span>
-                </a>
-                
+
+
               </div>
             </motion.div>
           </Dialog>
@@ -269,7 +265,7 @@ const Navbar = ({ onNavigate }) => {
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
-          <div 
+          <div
             className="absolute inset-0 backdrop-blur-sm transition-opacity duration-300"
             onClick={closeModal}
           />
@@ -302,11 +298,11 @@ const Navbar = ({ onNavigate }) => {
                   <div className="mb-4">
                     <Lock className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                     <h3 className="text-2xl md:text-3xl font-bold mb-2">
-  <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-    Premium
-  </span>{' '}
-  <span className="text-black">Starts Here.</span>
-</h3>
+                      <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+                        Premium
+                      </span>{' '}
+                      <span className="text-black">Starts Here.</span>
+                    </h3>
                     <p className="text-sm text-gray-600 mb-6">
                       Enter your access code to unlock <strong>{selectedItem?.name}</strong>.
                     </p>
@@ -351,20 +347,20 @@ const Navbar = ({ onNavigate }) => {
                     <p className="text-sm text-gray-600">
                       Don't have a code? Contact Support{' '}
                       <a href="https://t.me/Scorepte_explains"
-          className="text-blue-700  transition inline-flex items-center gap-1"
-        >
-          <svg 
-            width="20" 
-            height="17" 
-            viewBox="0 0 24 24" 
-            fill="currentColor"
-            className="text-blue-700"
-          >
-            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-          </svg>
-          Telegram
-        </a>{' '}
-                     
+                        className="text-blue-700  transition inline-flex items-center gap-1"
+                      >
+                        <svg
+                          width="20"
+                          height="17"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="text-blue-700"
+                        >
+                          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                        </svg>
+                        Telegram
+                      </a>{' '}
+
                     </p>
                   </div>
                 </>

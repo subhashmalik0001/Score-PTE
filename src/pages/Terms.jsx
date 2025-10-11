@@ -47,7 +47,7 @@ const Terms = ({ onBack }) => {
               <p className="text-gray-700 leading-relaxed mb-4">
                 ScorePTE has a cloud-based interface. The various services offered and their charges are explicitly
                 mentioned on the website. Particular service can be accessed via the website once you have purchased it.
-             
+
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
                 In case you have been given certain service(s) as a part of some promotional activity then you will be
@@ -55,30 +55,30 @@ const Terms = ({ onBack }) => {
                 intimation.
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
-              Being an online platform, the website is prone to uncontrollable and sudden issues like increased
+                Being an online platform, the website is prone to uncontrollable and sudden issues like increased
                 loading time, bad internet connectivity, feature incompatibility, and any other technical difficulties.
                 ScorePTE is not liable for any loss occurred due to such uncontrollable problems.
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
-               ScorePTE website may plan and implement maintenance without any prior notice on account of which the
-              services might become unavailable for a short period of time.
+                ScorePTE website may plan and implement maintenance without any prior notice on account of which the
+                services might become unavailable for a short period of time.
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
-              Score PTE's Terms and Conditions are applicable to all purchases made through our website and our official Instagram, Telegram, and Facebook handles.
-              </p>
-              
-              <p className="text-gray-700 leading-relaxed">
-              We provide expert tips and resources to support your preparation, but your progress ultimately depends on your own efforts. Our materials and coaching are designed to help you improve, not to guarantee a specific score. Results may vary from person to person based on individual learning pace and practice.
+                Score PTE's Terms and Conditions are applicable to all purchases made through our website and our official Instagram and Telegram handles.
               </p>
 
-             
-              
+              <p className="text-gray-700 leading-relaxed">
+                We provide expert tips and resources to support your preparation, but your progress ultimately depends on your own efforts. Our materials and coaching are designed to help you improve, not to guarantee a specific score. Results may vary from person to person based on individual learning pace and practice.
+              </p>
+
+
+
             </div>
           </div>
 
           {/* Cancellation & Refund Policy Section */}
           <div className="p-4 sm:p-6 md:p-8">
-           
+
 
             <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-6 flex items-center">
               <div className="w-1 h-6 sm:h-8 bg-red-600 mr-2 sm:mr-4"></div>
@@ -138,10 +138,10 @@ const Terms = ({ onBack }) => {
           <p className="text-blue-100 mb-4">
             If you have any questions about these terms and conditions, please contact us.
           </p>
-          
-          <a 
-            href="https://t.me/Scorepte_explains" 
-            target="_blank" 
+
+          <a
+            href="https://t.me/Scorepte_explains"
+            target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto bg-white text-blue-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors inline-block text-center"
           >

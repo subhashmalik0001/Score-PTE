@@ -51,8 +51,8 @@ export default function ContactPage() {
     {
       icon: Mail,
       label: "Email",
-      value: "info@scorepte.com",
-      href: "mailto:info@scorepte.com",
+      value: "infoscorepteexplains@gmail.com",
+      href: "mailto:infoscorepteexplains@gmail.com",
     }
   ]
 

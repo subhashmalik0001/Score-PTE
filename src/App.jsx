@@ -14,6 +14,7 @@ import PricingCards from "./components/PricingCards";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import TelegramPopup from "./components/TelegramPopup";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -21,6 +22,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
+        <TelegramPopup />
         <Routes>
           {/* Terms page handled by React Router */}
           <Route path="/term" element={<Terms />} />
@@ -28,8 +30,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/course" element={<><Navbar onNavigate={setCurrentPage} /><PricingCards /></>} />
-          
-          
+
+
 
           {/* Everything else handled manually */}
           <Route
@@ -42,8 +44,8 @@ function App() {
                   <>
                     <Page1 />
                     <div className="mt-[60vh] md:mt-[800px]">
-  <Page2 />
-</div>
+                      <Page2 />
+                    </div>
                     <Page3 />
                     <Page5 />
                     <Page7 />
