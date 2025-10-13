@@ -14,6 +14,9 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
     return 'AUD';
   };
 
+  const handleTelegramClick = () => {
+    window.open('https://t.me/Scorepte_explains', '_blank');
+  };
   const handleStartNow = async () => {
     try {
       const numericAmount = Number(String(price).replace(/[^0-9.]/g, ''));
@@ -93,6 +96,9 @@ const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = '
 };
 
 const PTEConsultationCTA = () => {
+  const handleTelegramClick = () => {
+    window.open('https://t.me/Scorepte_explains', '_blank');
+  };
   const handleConsultationPayment = async () => {
     try {
       const amountPaise = Math.round(100 * 100); // $100 in AUD cents
@@ -126,7 +132,7 @@ const PTEConsultationCTA = () => {
       <div className="bg-amber-800 rounded-2xl px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-16">
         <div className="max-w-4xl">
           <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 leading-tight">
-            Not ready yet? Book your PTE Consultation today at just $100.
+            Not ready yet? Book your free PTE Consultation today .
           </h2>
           <p className="text-white text-base md:text-lg lg:text-xl mb-6 md:mb-8 leading-relaxed opacity-95">
             Receive expert advice on your current skills, personalized guidance on achieving your target score, and a
@@ -134,9 +140,9 @@ const PTEConsultationCTA = () => {
           </p>
           <button
             className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 md:px-8 md:py-4 text-base md:text-lg rounded-lg transition-colors duration-200 cursor-pointer"
-            onClick={handleConsultationPayment}
+            onClick={handleTelegramClick}
           >
-            Book Consultation - $100 AUD
+            Book Consultation
           </button>
         </div>
       </div>
@@ -146,9 +152,9 @@ const PTEConsultationCTA = () => {
 
 const PricingCards = () => {
   const plans = [
-    { plan: "bronze", price: "899", features: "Strong; Error Analysis, Skill Building, Impact-driven training & More.", buttonColor: "bronze" },
-    { plan: "silver", price: "1,499", features: "Refined; Predication Files, Score-Driven Tips, Daily Insights & More.", buttonColor: "purple" },
-    { plan: "gold", price: "1,899", features: "Unmissable; Surety Files, Live classes, Expert support & More.", buttonColor: "orange", isPopular: true },
+    { plan: "bronze", price: "399", features: "Strong; Error Analysis, Skill Building, Impact-driven training & More.", buttonColor: "bronze" },
+    { plan: "silver", price: "599", features: "Refined; Predication Files, Score-Driven Tips, Daily Insights & More.", buttonColor: "purple" },
+    { plan: "gold", price: "899", features: "Unmissable; Surety Files, Live classes, Expert support & More.", buttonColor: "orange", isPopular: true },
     { plan: "platinum", price: "4,799", features: "Confidential, Customized, Credible", buttonColor: "yellow" },
   ];
 
@@ -166,15 +172,17 @@ const PricingCards = () => {
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mt-2">
             Score PTE delivers more than promises. Join with Bronze, Silver, Gold, or Platinum and experience smart tips, powerful materials, premium content and undeniable improvement that ensures your score must grow.
           </p>
-          <p className="text-lg text-red-500 max-w-2xl mx-auto mt-2 text-center leading-relaxed">
-            If you face any difficulty with online payment, our team is available to help you instantly on
+          <p className="text-center max-w-3xl mx-auto mt-4 leading-relaxed">
+            <span className="block text-2xl md:text-3xl lg:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] via-[#B22222] to-[#CD5C5C] tracking-wide">
+              If you face any difficulty with online payment, our team is available to help you instantly on
+            </span>
             <span
-              className="inline-flex items-center gap-1 text-blue-600 font-semibold cursor-pointer hover:text-blue-700 hover:underline transition-colors duration-200"
+              className="inline-flex items-center gap-2 text-blue-600 font-semibold cursor-pointer hover:text-blue-700 hover:underline transition-colors duration-200 text-2xl md:text-3xl lg:text-4xl mt-2"
               onClick={() => window.open('https://t.me/Scorepte_explains', '_blank')}
             >
               <svg
-                width="18"
-                height="16"
+                width="28"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 className="text-blue-600"
@@ -184,6 +192,8 @@ const PricingCards = () => {
               Telegram
             </span>
           </p>
+
+
         </div>
 
         <div className="w-full flex flex-col items-center">

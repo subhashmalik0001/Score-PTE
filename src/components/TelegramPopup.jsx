@@ -23,7 +23,9 @@ const TelegramPopup = () => {
         <div className="fixed bottom-6 right-6 z-50">
             {/* Tooltip */}
             <div
-                className={`absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg shadow-lg transition-all duration-300 whitespace-nowrap ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
+                className={`absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg shadow-lg transition-all duration-300 whitespace-nowrap ${isHovered
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-2 pointer-events-none'
                     }`}
             >
                 Join our Telegram for instant support!
@@ -54,15 +56,6 @@ const TelegramPopup = () => {
 
                 {/* Ripple Effect */}
                 <div className="absolute inset-0 rounded-full bg-blue-400 opacity-0 group-hover:opacity-20 group-hover:animate-ping"></div>
-            </button>
-
-            {/* Close Button */}
-            <button
-                onClick={() => setIsVisible(false)}
-                className="absolute -top-2 -left-2 w-6 h-6 bg-gray-600 hover:bg-gray-700 text-white rounded-full flex items-center justify-center text-xs transition-colors duration-200"
-                aria-label="Close"
-            >
-                ×
             </button>
         </div>
     );
