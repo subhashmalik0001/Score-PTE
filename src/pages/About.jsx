@@ -149,41 +149,41 @@ export default function About() {
             transform: `translateY(${scrollY * 0.5}px)`,
           }}
         />
-        <div className="max-w-6xl mx-auto text-center relative z-10">
+        <div className=" min-w-full px-[5%] xs:px-[2%]     mx-auto text-center relative z-10">
           <Badge className="mb-6 text-sm font-medium animate-pulse text-white border-white/20 bg-slate-800">
             <Star className="w-4 h-4 mr-2" />
             Established by PTE Testing Experts
           </Badge>
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 text-balance leading-tight text-white">
+          <h1 className="xs:text-5xl text-7xl font-bold mb-8 text-balance leading-tight text-white">
             Empowering Your Journey to
             <span className="text-yellow-300"> PTE Success</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-12 text-white/90 max-w-4xl mx-auto text-pretty leading-relaxed">
+          <p className="xs:text-xl text-2xl mb-12 text-white/90  max-w-full  ll px-[5%] xs:px-[2%]   mx-auto text-pretty leading-relaxed">
             Where passion meets precision. At Score PTE, we transform your PTE preparation from practice to perfection
             with our motto: <strong className="text-white font-bold">"Score Must Grow"</strong>
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <div className="grid  xs:grid-cols-2 grid-cols-4  gap-8 mb-12  max-w-full   px-[5%] xs:px-[2%]   mx-auto bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+              <div className="xs:text-3xl text-4xl font-bold text-white mb-2">
                 <AnimatedCounter end={5000} suffix="+" />
               </div>
               <p className="text-sm text-white/80">Students Trained</p>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+              <div className="xs:text-3xl text-4xl font-bold text-white mb-2">
                 <AnimatedCounter end={98} suffix="%" />
               </div>
               <p className="text-sm text-white/80">Success Rate</p>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+              <div className="xs:text-3xl text-4xl font-bold text-white mb-2">
                 <AnimatedCounter end={15} suffix="+" />
               </div>
               <p className="text-sm text-white/80">Years Experience</p>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+              <div className="xs:text-3xl text-4xl font-bold text-white mb-2">
                 <AnimatedCounter end={50} suffix="+" />
               </div>
               <p className="text-sm text-white/80">Countries Served</p>
@@ -214,7 +214,7 @@ export default function About() {
 
       {/* Mission */}
       <section className="py-20 px-4 bg-secondary relative">
-        <div className="max-w-6xl mx-auto">
+        <div className=" min-w-full px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]   mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <Badge variant="outline" className="mb-4">
@@ -293,7 +293,7 @@ export default function About() {
 
       {/* Technology */}
       <section className="py-20 px-4 bg-gradient-to-br from-background to-secondary/30">
-        <div className="max-w-6xl mx-auto">
+        <div className=" min-w-full px-[5%] xs:px-[2%]   mx-auto">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               <Zap className="w-4 h-4 mr-2" />
@@ -302,7 +302,7 @@ export default function About() {
             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground leading-tight">
               Technology-Driven Training &<span className="text-accent"> Elite Methodologies</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
+            <p className="text-xl text-muted-foreground  max-w-full px-[5%]  xs:px-[2%]   mx-auto text-pretty leading-relaxed">
               Experience the future of PTE preparation with our state-of-the-art computerized testing center and
               innovative training approaches that adapt to your learning style.
             </p>
@@ -404,7 +404,7 @@ export default function About() {
 
       {/* Four Skills */}
       <section className="py-20 px-4 bg-secondary">
-        <div className="max-w-6xl mx-auto">
+        <div className=" min-w-full px-[5%] xs:px-[2%]    mx-auto">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               <Target className="w-4 h-4 mr-2" />
@@ -414,13 +414,13 @@ export default function About() {
               From Practice to
               <span className="text-accent"> Perfection in All Four Skills</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
+            <p className="text-xl text-muted-foreground  max-w-full px-[5%] xs:px-[2%]   mx-auto text-pretty leading-relaxed">
               Master Speaking, Writing, Reading, and Listening with our comprehensive approach that takes you from basic
               practice to exam perfection through adaptive learning technology.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid xs:grid-cols-1 grid-cols-2 gap-12 items-center mb-16">
             <div className="space-y-6">
               {skills.map((skill, index) => {
                 const Icon = skill.icon
@@ -480,8 +480,8 @@ export default function About() {
 
       {/* Support */}
       <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className=" min-w-full px-[5%] xs:px-[2%]    mx-auto">
+          <div className="grid  xs:grid-cols-1 grid-cols-2  gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
                 Comprehensive Support Every Step of the Way
@@ -535,9 +535,9 @@ export default function About() {
 
       {/* CTA */}
       <section className="py-20 px-4 text-white bg-slate-900">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className=" max-w-full px-[5%]  xs:px-[2%]   mx-auto text-center">
           <Globe className="h-16 w-16 mx-auto mb-6 text-white/70" />
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance text-white">Ready to Excel Globally?</h2>
+          <h2 className="xs:text-3xl text-7xl font-bold mb-6 text-balance text-white">Ready to Excel Globally?</h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto text-pretty">
             Join thousands of successful students who have achieved their PTE goals with Score PTE. Your journey from
             practice to perfection starts here.

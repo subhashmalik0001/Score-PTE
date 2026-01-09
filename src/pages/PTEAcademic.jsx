@@ -1,281 +1,303 @@
-"use client"
+import React from 'react'
+import { motion } from 'framer-motion'
+import { Clock, Cpu, Globe, BookOpen, Target, Sparkles, ChevronRight, Users, Award, CheckCircle, Mic, PenTool, Eye, Headphones } from 'lucide-react'
+import Navbar from '../components/Navbar'
 
-import { useState } from "react"
-import {
-  X,
-  CheckCircle,
-  Lock,
-  CheckCircle2,
-  Clock,
-  Sparkles
-} from 'lucide-react'
+const FeaturePill = ({ icon: Icon, label, value }) => (
+  <div className="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
+    <Icon className="w-6 h-6 text-blue-400 mx-auto mb-2" />
+    <p className="text-xs text-white/40 uppercase tracking-wide">{label}</p>
+    <p className="text-sm font-bold text-white">{value}</p>
+  </div>
+)
+
+const ModuleStep = ({ number, title, skills, time, delay }) => (
+  <motion.div
+    initial={{ opacity: 0, x: -20 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    transition={{ delay }}
+    className="flex items-center gap-6 mb-8 p-6 bg-white/5 rounded-2xl border border-white/10"
+  >
+    <div className="w-12 h-12 rounded-full bg-blue-500 text-white font-bold flex items-center justify-center">
+      {number}
+    </div>
+    <div className="flex-1">
+      <h4 className="text-xl font-bold text-white">{title}</h4>
+      <p className="text-sm text-white/60">{skills}</p>
+    </div>
+    <div className="text-right">
+      <p className="text-lg font-bold text-blue-400">{time}</p>
+    </div>
+  </motion.div>
+)
+
+const SkillCard = ({ icon: Icon, title, description, tasks }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all"
+  >
+    <div className="flex items-center gap-4 mb-6">
+      <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+        <Icon className="w-6 h-6 text-blue-400" />
+      </div>
+      <h3 className="text-2xl font-bold text-white">{title}</h3>
+    </div>
+    <p className="text-white/60 mb-6">{description}</p>
+    <div className="space-y-2">
+      {tasks.map((task, index) => (
+        <div key={index} className="flex items-center gap-3">
+          <CheckCircle className="w-4 h-4 text-green-400" />
+          <span className="text-sm text-white/80">{task}</span>
+        </div>
+      ))}
+    </div>
+  </motion.div>
+)
 
 const PTEAcademic = () => {
-  const [activeTab, setActiveTab] = useState("pte-academic")
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [accessCode, setAccessCode] = useState("")
-  const [validationStatus, setValidationStatus] = useState("idle")
-  const [errorMessage, setErrorMessage] = useState("")
-  const [selectedItem, setSelectedItem] = useState(null)
-
-  // PTE Academic items (original)
-  const speakingItemsAcademic = [
-    { name: "Read Aloud", hasAI: true, disabled: false },
-    { name: "Repeat Sentence", hasAI: true, disabled: false },
-    { name: "Describe Image", hasAI: true, disabled: false },
-    { name: "Re-tell Lecture", hasAI: true, disabled: false },
-    { name: "Answer Short Question", hasAI: false, disabled: false },
-    { name: "Respond to a situation", hasAI: false, disabled: true },
-  ]
-
-  const writingItemsAcademic = [
-    { name: "Summarize Written Text", hasAI: false, disabled: false },
-    { name: "Write Essay", hasAI: true, disabled: false },
-    { name: "Summarize Written Text", hasAI: false, disabled: true },
-    { name: "Write Email (Core)", hasAI: false, disabled: true },
-  ]
-
-  const readingItemsAcademic = [
-    { name: "Reading & Writing: Fill in the blanks", hasAI: false, disabled: false },
-    { name: "Multiple Choice (Multiple)", hasAI: false, disabled: false },
-    { name: "Re-order Paragraphs", hasAI: false, disabled: false },
-    { name: "Reading: Fill in the Blanks", hasAI: false, disabled: false },
-    { name: "Multiple Choice (Single)", hasAI: false, disabled: false },
-  ]
-
-  const listeningItemsAcademic = [
-    { name: "Summarize Spoken Text", hasAI: false, disabled: false },
-    { name: "Multiple Choice (Multiple)", hasAI: false, disabled: false },
-    { name: "Fill in the Blanks", hasAI: true, disabled: false },
-    { name: "Highlight Correct Summary", hasAI: false, disabled: false },
-    { name: "Multiple Choice (Single)", hasAI: false, disabled: false },
-    { name: "Select Missing Word", hasAI: false, disabled: false },
-    { name: "Highlight Incorrect Words", hasAI: false, disabled: false },
-    { name: "Write From Dictation", hasAI: false, disabled: false },
-    { name: "Summarize Spoken Text", hasAI: false, disabled: true },
-  ]
-
-  // PTE Core items (new)
-  const speakingItemsCore = [
-    { name: "Read Aloud", hasAI: true, disabled: false },
-    { name: "Repeat Sentence", hasAI: true, disabled: false },
-    { name: "Describe Image", hasAI: true, disabled: false },
-    { name: "Answer Short Question", hasAI: true, disabled: false },
-    { name: "Respond to a situation", hasAI: true, disabled: false },
-    { name: "Re-tell Lecture (PTEA)", hasAI: false, disabled: false },
-    { name: "Respond to a situation (PTEA)", hasAI: false, disabled: false },
-    { name: "Summarize Group Discussion (PTEA)", hasAI: false, disabled: false },
-  ]
-
-  const writingItemsCore = [
-    { name: "Summarize Written Text", hasAI: true, disabled: false },
-    { name: "Write Email", hasAI: true, disabled: false },
-    { name: "Summarize Written Text (PTEA)", hasAI: false, disabled: false },
-    { name: "Write Essay (PTEA)", hasAI: false, disabled: false },
-  ]
-
-  const readingItemsCore = [
-    { name: "Fill in the Blanks (Dropdown)", hasAI: false, disabled: false },
-    { name: "Multiple Choice (Multiple)", hasAI: false, disabled: false },
-    { name: "Re-order Paragraphs", hasAI: false, disabled: false },
-    { name: "Fill in the Blanks (Drag and Drop)", hasAI: false, disabled: false },
-    { name: "Multiple Choice (Single)", hasAI: false, disabled: false },
-  ]
-
-  const listeningItemsCore = [
-    { name: "Summarize Spoken Text", hasAI: true, disabled: false },
-    { name: "Multiple Choice (Multiple)", hasAI: false, disabled: false },
-    { name: "Fill in the Blanks", hasAI: false, disabled: false },
-    { name: "Multiple Choice (Single)", hasAI: false, disabled: false },
-    { name: "Select Missing Word", hasAI: false, disabled: false },
-    { name: "Highlight Incorrect Words", hasAI: false, disabled: false },
-    { name: "Write From Dictation", hasAI: false, disabled: false },
-    { name: "Summarize Spoken Text (PTEA)", hasAI: false, disabled: false },
-    { name: "Highlight Correct Summary (PTEA)", hasAI: false, disabled: false },
-  ]
-
-  const handleItemClick = (item) => {
-    if (!item.disabled) {
-      setSelectedItem(item)
-      setIsModalOpen(true)
-      setAccessCode("")
-      setErrorMessage("")
-      setValidationStatus("idle")
+  const skillsData = [
+    {
+      icon: Mic,
+      title: "Speaking",
+      description: "Demonstrate your oral English skills through various real-world tasks",
+      tasks: [
+        "Read Aloud - Read text with correct pronunciation",
+        "Repeat Sentence - Listen and repeat sentences accurately",
+        "Describe Image - Describe graphs, charts, and images",
+        "Re-tell Lecture - Summarize academic lectures",
+        "Answer Short Questions - Respond to brief questions"
+      ]
+    },
+    {
+      icon: PenTool,
+      title: "Writing",
+      description: "Show your written English abilities in academic contexts",
+      tasks: [
+        "Summarize Written Text - Condense passages in one sentence",
+        "Write Essay - Compose 200-300 word argumentative essays",
+        "Grammar & Vocabulary - Demonstrate language accuracy",
+        "Coherence & Cohesion - Structure ideas logically"
+      ]
+    },
+    {
+      icon: Eye,
+      title: "Reading",
+      description: "Comprehend and analyze various types of written texts",
+      tasks: [
+        "Multiple Choice - Select correct answers from options",
+        "Re-order Paragraphs - Arrange text in logical sequence",
+        "Fill in the Blanks - Complete missing words in passages",
+        "Reading & Writing - Integrate reading and writing skills"
+      ]
+    },
+    {
+      icon: Headphones,
+      title: "Listening",
+      description: "Understand spoken English in academic and everyday situations",
+      tasks: [
+        "Summarize Spoken Text - Write summaries of audio content",
+        "Multiple Choice - Answer questions about audio clips",
+        "Fill in the Blanks - Complete transcripts while listening",
+        "Highlight Incorrect Words - Identify errors in transcripts",
+        "Write from Dictation - Type sentences as you hear them"
+      ]
     }
-  }
+  ]
 
-  const handleSubmit = () => {
-    if (accessCode === "1234") {
-      setValidationStatus("success")
-      setErrorMessage("")
-    } else {
-      setValidationStatus("error")
-      setErrorMessage("Invalid code. Please try again.")
-    }
-  }
+  const preparationTips = [
+    "Practice with official PTE preparation materials",
+    "Familiarize yourself with the computer-based format",
+    "Improve your typing speed for writing tasks",
+    "Practice speaking clearly into a microphone",
+    "Take timed practice tests regularly",
+    "Focus on integrated skills (speaking while reading)"
+  ]
 
-  const closeModal = () => {
-    setIsModalOpen(false)
-    setAccessCode("")
-    setValidationStatus("idle")
-    setErrorMessage("")
-  }
-
-  const ItemList = ({ items, title }) => (
-    <div className="flex-1 min-w-0">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-gray-300">{title}</h3>
-      <div className="space-y-3">
-        {items.map((item, index) => (
-          <div
-            key={index}
-            onClick={() => handleItemClick(item)}
-            className={`p-3 rounded-lg border transition-colors cursor-pointer select-none ${item.disabled
-              ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
-              : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-gray-300"
-              }`}
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">{item.name}</span>
-              {item.hasAI && !item.disabled && (
-                <span className="text-xs px-2 py-1 rounded-full font-semibold border border-yellow-300 bg-white">
-                  <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-                    AI Score
-                  </span>
-                </span>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
+  const acceptedBy = [
+    "Harvard University", "Stanford University", "MIT",
+    "University of Oxford", "Cambridge University",
+    "Australian Government", "UK Home Office",
+    "New Zealand Immigration", "Canadian Universities"
+  ]
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="bg-white rounded-lg shadow-sm">
-        {/* Tabs */}
-        <div className="flex border-b relative">
-          <button
-            onClick={() => setActiveTab("pte-academic")}
-            className={`px-6 py-3 font-medium text-sm transition-colors ${activeTab === "pte-academic"
-              ? "bg-red-800 text-white border-b-2"
-              : "bg-gray-200 text-gray-600 hover:bg-gray-300"
-              }`}
+    <div className="min-h-screen bg-[#0D2440] text-[#E7F0FA] relative overflow-hidden">
+      {/* <Navbar /> */}
+      
+      {/* Background Effects */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.15),transparent_70%)] pointer-events-none" />
+      
+      {/* Hero Section */}
+      <section className="relative pt-14 pb-24 px-6">
+        <div className=" min-w-full  px-[5%] xs:px-[2%]   mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-8"
           >
-            PTE Academic / UKVI
-          </button>
-          <button
-            onClick={() => setActiveTab("pte-core")}
-            className={`px-6 py-3 font-medium text-sm transition-colors ${activeTab === "pte-core"
-              ? "bg-red-800 text-white border-b-2"
-              : "bg-gray-200 text-gray-600 hover:bg-gray-300"
-              }`}
-          >
-            PTE Core
-          </button>
-          <button
-            onClick={() => window.location.href = '/'}
-            className="absolute right-1 text-gray-600 text-4xl font-bold p-2"
-            aria-label="Close"
-            style={{ lineHeight: 0.8 }}
-          >
-            &times;
-          </button>
+            <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+              <Sparkles className="w-4 h-4 text-blue-400" />
+              <span className="text-xs font-black tracking-[0.3em] text-blue-400">
+                AI-POWERED PRECISION
+              </span>
+            </div>
+            
+            <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+              PTE <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">Academic</span>
+            </h1>
+            
+            <p className="max-w-2xl mx-auto text-[#E7F0FA]/50 text-lg font-medium leading-relaxed">
+              A fully computerized assessment designed for real-world English proficiency in academic and professional environments.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Quick Stats */}
+      <section className=" min-w-full  xs:px-[2%]  ll px-[5%] xs:px-[2%]   mx-auto  mb-20">
+        <div className="grid   xs:grid-cols-2 grid-cols-4  gap-4">
+          <FeaturePill icon={Clock} label="Duration" value="~2 Hours" />
+          <FeaturePill icon={Cpu} label="Scoring" value="AI Automated" />
+          <FeaturePill icon={Globe} label="Acceptance" value="Global Reach" />
+          <FeaturePill icon={BookOpen} label="Format" value="Computer-based" />
+        </div>
+      </section>
+
+      {/* Test Structure */}
+      <section className=" min-w-full px-[5%] xs:px-[2%]   mx-auto  mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl font-bold mb-4">Test Structure</h2>
+          <p className="text-white/60 max-w-2xl mx-auto">
+            PTE Academic consists of three main sections that test integrated language skills
+          </p>
+        </motion.div>
+
+        <div className="space-y-6  ">
+          <ModuleStep 
+            number="1" 
+            title="Speaking & Writing" 
+            skills="Integrated Production Skills" 
+            time="54–67 min" 
+            delay={0.1}
+          />
+          <ModuleStep 
+            number="2" 
+            title="Reading" 
+            skills="Text Comprehension" 
+            time="29–30 min" 
+            delay={0.2}
+          />
+          <ModuleStep 
+            number="3" 
+            title="Listening" 
+            skills="Audio Analysis & Response" 
+            time="30–43 min" 
+            delay={0.3}
+          />
         </div>
 
-        {/* Content */}
-        <div className="p-6">
-          {activeTab === "pte-academic" ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-              <ItemList items={speakingItemsAcademic} title="Speaking" />
-              <ItemList items={writingItemsAcademic} title="Writing" />
-              <ItemList items={readingItemsAcademic} title="Reading" />
-              <ItemList items={listeningItemsAcademic} title="Listening" />
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-              <ItemList items={speakingItemsCore} title="Speaking" />
-              <ItemList items={writingItemsCore} title="Writing" />
-              <ItemList items={readingItemsCore} title="Reading" />
-              <ItemList items={listeningItemsCore} title="Listening" />
-            </div>
-          )}
+        <div className="mt-12 p-8 rounded-3xl bg-blue-500/10 border border-blue-500/20 text-center">
+          <p className="text-sm font-black uppercase tracking-[0.3em] text-blue-400 mb-2">Total Session Duration</p>
+          <p className="text-4xl font-black text-[#E7F0FA] italic">~ 2 HOURS</p>
         </div>
-      </div>
+      </section>
 
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 backdrop-blur-sm" onClick={closeModal} />
-          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6">
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-700"
-              onClick={closeModal}
-              aria-label="Close"
-            >
-              <X size={24} />
-            </button>
-            <div className="text-center">
-              {validationStatus === 'success' ? (
-                <div className="mb-4">
-                  <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4 animate-pulse" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">Access Granted! 🎉</h3>
-                  <p className="text-sm text-gray-600">You can now access <strong>{selectedItem?.name}</strong></p>
+      {/* Skills Breakdown */}
+      <section className=" min-w-full px-[5%]  xs:px-[2%]    mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl font-bold mb-4">Skills Tested</h2>
+          <p className="text-white/60 max-w-2xl mx-auto">
+            Each section evaluates specific language competencies through various task types
+          </p>
+        </motion.div>
+
+        <div className="grid  xs:grid-cols-1  grid-cols-2  gap-8">
+          {skillsData.map((skill, index) => (
+            <SkillCard key={index} {...skill} />
+          ))}
+        </div>
+      </section>
+
+      {/* Preparation Tips */}
+      <section className=" min-w-full px-[5%] xs:px-[2%]   mx-auto  mb-20">
+        <div className="grid  xs:grid-cols-1 grid-cols-2  gap-12">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="bg-white/5 border border-white/10 rounded-2xl p-8"
+          >
+            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <Target className="text-blue-400" /> Preparation Tips
+            </h3>
+            <div className="space-y-4">
+              {preparationTips.map((tip, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-white/80">{tip}</span>
                 </div>
-              ) : (
-                <>
-                  <Lock className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-3xl font-bold mb-2">
-                    <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-                      Premium
-                    </span>{" "}
-                    <span className="text-black">Starts Here.</span>
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-6">
-                    Enter your access code to unlock <strong>{selectedItem?.name}</strong>.
-                  </p>
-                  <input
-                    type="text"
-                    value={accessCode}
-                    onChange={(e) => setAccessCode(e.target.value)}
-                    placeholder="Enter code"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg text-center font-mono"
-                    autoFocus
-                  />
-                  {validationStatus === 'error' && (
-                    <div className="text-red-500 text-sm mt-2 bg-red-50 p-2 rounded border border-red-200">
-                      {errorMessage}
-                    </div>
-                  )}
-                  <button
-                    onClick={handleSubmit}
-                    className="w-full mt-4 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
-                  >
-                    Submit
-                  </button>
-                  <div className="mt-6 pt-2 border-t text-sm text-gray-600">
-                    Don't have a code? Contact Support{" "}
-                    <a href="https://t.me/Scorepte_explains"
-                      className="text-blue-300 hover:text-blue-400 transition inline-flex items-center gap-1"
-                    >
-                      <svg
-                        width="15"
-                        height="15"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="text-blue-300"
-                      >
-                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-                      </svg>
-                      Telegram
-                    </a>
-                  </div>
-                </>
-              )}
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8"
+          >
+            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <Award className="text-blue-400" /> Accepted Worldwide
+            </h3>
+            <p className="text-white/60 mb-6">
+              PTE Academic is trusted by thousands of institutions globally:
+            </p>
+            <div className="grid grid-cols-1 gap-2">
+              {acceptedBy.map((institution, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-blue-400" />
+                  <span className="text-sm text-white/80">{institution}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Scoring Information */}
+      <section className=" min-w-full px-[5%] xs:px-[2%]   mx-auto  mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center"
+        >
+          <h3 className="text-3xl font-bold mb-6">Scoring & Results</h3>
+          <div className="grid  xs:grid-cols-1 grid-cols-3  gap-8">
+            <div>
+              <div className="text-3xl font-bold text-blue-400 mb-2">10-90</div>
+              <p className="text-white/60">Score Range</p>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-green-400 mb-2">24-48h</div>
+              <p className="text-white/60">Results Available</p>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-purple-400 mb-2">2 Years</div>
+              <p className="text-white/60">Score Validity</p>
             </div>
           </div>
-        </div>
-      )}
+        </motion.div>
+      </section>
+
+      {/* Decorative Elements */}
+      <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay -z-10" />
     </div>
   )
 }

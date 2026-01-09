@@ -1,222 +1,246 @@
-import React from 'react';
+import React from "react";
 import { openRazorpayCheckout } from '../lib/razorpay';
-import image15 from '../assets/image 15.png';
-import image16 from '../assets/image 16.png';
-import mapImage from '../assets/map.png';
 
-const PricingCard = ({ plan, price, features, isPopular = false, buttonColor = 'black' }) => {
-  // Keep display in AUD for all users
-  const getDisplayPrice = () => {
-    return price;
+const PricingCard = ({ plan, price, currency, subtitle, description, features, highlight }) => {
+  const openTelegram = () => {
+    window.open("https://t.me/Scorepte_explains", "_blank");
   };
 
-  const getCurrency = () => {
-    return 'AUD';
-  };
-
-  const handleTelegramClick = () => {
-    window.open('https://t.me/Scorepte_explains', '_blank');
-  };
-  const handleStartNow = async () => {
+  const handlePayment = async () => {
     try {
-      const numericAmount = Number(String(price).replace(/[^0-9.]/g, ''));
+      const numericAmount = Number(String(price).replace(/[^0-9.]/g, ""));
       if (!numericAmount || Number.isNaN(numericAmount)) {
-        console.error('Invalid amount:', price);
+        openTelegram();
         return;
       }
 
-      // Always charge in AUD (amount in cents)
-      const amountPaise = Math.round(numericAmount * 100); // AUD cents
-      const currency = 'AUD';
-
-      // Frontend-only Razorpay Checkout
+      const amountPaise = Math.round(numericAmount * 100);
       await openRazorpayCheckout({
         amountPaise,
-        currency,
-        name: 'Score PTE',
-        description: `Purchase ${plan} plan`,
-        // For test purposes, orderId is optional; remove or set if you have pre-created order
+        currency: currency || "AUD",
+        name: "Score PTE",
+        description: `${plan} Plan Purchase`,
         notes: { plan },
-        themeColor: '#000000',
-        onSuccess: (resp) => console.log('Payment successful', resp),
-        onError: (err) => {
-          console.error('Payment failed', err);
-          alert('Payment failed');
+        themeColor: "#0D2440",
+        onSuccess: () => {
+          alert("Payment successful! Our team will contact you shortly.");
+        },
+        onError: () => {
+          openTelegram();
         },
       });
-    } catch (e) {
-      console.error('Razorpay init error', e);
-      alert(e?.message || 'Payment init failed');
-    }
-  };
-
-  const getButtonStyles = (color) => {
-    const styles = {
-      black: 'bg-blue-500 hover:bg-blue-600 text-white',
-      purple: 'bg-gradient-to-r from-gray-300 via-gray-400 to-gray-200 hover:from-gray-400 hover:to-gray-300 text-white',
-      orange: 'bg-yellow-400 hover:bg-yellow-300 text-white',
-      yellow: 'bg-gradient-to-br from-gray-200 via-gray-400 to-gray-100 hover:from-gray-300 hover:to-white text-gray-800',
-      bronze: 'bg-[#8D6E63] hover:bg-[#795548] text-white',
-    };
-    return styles[color] || styles.black;
-  };
-
-  return (
-    <div className={`relative flex flex-col items-center justify-between w-72 h-96 p-8 rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1
-      ${isPopular ? 'border-blue-500 shadow-blue-100 ring-2 ring-blue-500 ring-opacity-20' : 'border-gray-200 hover:border-gray-300'}
-      ${plan === 'platinum' ? 'bg-gradient-to-br from-gray-100 via-gray-300 to-white' : 'bg-white'}
-    `}>
-      <h3 className={`text-3xl font-extrabold mb-6 capitalize flex items-center justify-center relative ${plan === 'gold' ? 'text-yellow-500' : 'text-gray-800'}`}
-        style={{ alignSelf: 'flex-start', width: '100%', textAlign: 'center' }}>
-        <span className="flex flex-col items-center w-full">
-          {plan}
-          {plan === 'gold' && <span className="text-sm font-semibold text-black mt-1">79+</span>}
-        </span>
-        {plan === 'gold' && <img src={image16} alt="VIP" className="absolute right-4 -top-8 h-16 w-14 object-contain" style={{ zIndex: 1 }} />}
-      </h3>
-
-      <div className="text-center mb-8 flex-1 flex flex-col justify-center">
-        <div className="text-4xl font-extrabold text-gray-900 mb-4 flex items-center justify-center gap-2">
-          {getDisplayPrice()}
-          <span className="text-xs font-medium text-gray-500" style={{ position: 'relative', top: '0.5em' }}>{getCurrency()}</span>
-        </div>
-        <p className="text-gray-600 text-sm leading-relaxed">{features}</p>
-      </div>
-
-      <div className="w-full space-y-3">
-        <button
-          onClick={handleStartNow}
-          className={`w-full py-2 px-3 sm:py-3 sm:px-6 rounded-lg font-semibold text-xs sm:text-sm uppercase tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${getButtonStyles(buttonColor)}`}
-        >
-          Purchase Now
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const PTEConsultationCTA = () => {
-  const handleTelegramClick = () => {
-    window.open('https://t.me/Scorepte_explains', '_blank');
-  };
-  const handleConsultationPayment = async () => {
-    try {
-      const amountPaise = Math.round(100 * 100); // $100 in AUD cents
-      const currency = 'AUD';
-
-      // Frontend-only Razorpay Checkout
-      await openRazorpayCheckout({
-        amountPaise,
-        currency,
-        name: 'Score PTE',
-        description: 'PTE Consultation - Expert guidance session',
-        notes: { plan: 'consultation' },
-        themeColor: '#000000',
-        onSuccess: (resp) => {
-          console.log('Consultation payment successful', resp);
-          alert('Payment successful! We will contact you soon to schedule your consultation.');
-        },
-        onError: (err) => {
-          console.error('Consultation payment failed', err);
-          alert('Payment failed. Please try again.');
-        },
-      });
-    } catch (e) {
-      console.error('Razorpay init error', e);
-      alert(e?.message || 'Payment init failed');
+    } catch (err) {
+      openTelegram();
     }
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-4">
-      <div className="bg-amber-800 rounded-2xl px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-16">
-        <div className="max-w-4xl">
-          <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 leading-tight">
-            Not ready yet? Book your free PTE Consultation today .
-          </h2>
-          <p className="text-white text-base md:text-lg lg:text-xl mb-6 md:mb-8 leading-relaxed opacity-95">
-            Receive expert advice on your current skills, personalized guidance on achieving your target score, and a
-            clear roadmap to better prepare for your PTE exam. Why wait? Take the first step towards success now!
-          </p>
-          <button
-            className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 md:px-8 md:py-4 text-base md:text-lg rounded-lg transition-colors duration-200 cursor-pointer"
-            onClick={handleTelegramClick}
-          >
-            Book Consultation
-          </button>
+    <div
+      className={`relative bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
+        highlight ? "ring-2 ring-purple-500/30 shadow-xl" : ""
+      }`}
+    >
+      {highlight && (
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-4 py-1 rounded-full">
+          MOST POPULAR
         </div>
+      )}
+
+      <h3 className="text-2xl font-bold text-white mb-2">{plan}</h3>
+      <p className="text-white/60 text-sm mb-6">{subtitle}</p>
+
+      <div className="text-center mb-6">
+        <span className="text-4xl font-black text-white">{price}</span>
+        <span className="text-white/60 ml-2">{currency}</span>
       </div>
+
+      <p className="text-white/80 text-sm mb-6 leading-relaxed">{description}</p>
+
+      <ul className="space-y-3 mb-8">
+        {features.map((feature, idx) => (
+          <li key={idx} className="flex items-start gap-3 text-sm text-white/80">
+            <span className="text-green-400 mt-0.5">✓</span>
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+
+      <button
+        onClick={handlePayment}
+        className={`w-full py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+          highlight
+            ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600"
+            : "bg-white/10 border border-white/20 text-white hover:bg-white/20"
+        }`}
+      >
+        Get Started
+      </button>
+
+      <button
+        onClick={openTelegram}
+        className="mt-3 w-full text-xs text-white/60 hover:text-white transition-colors"
+      >
+        Need help? Chat on Telegram
+      </button>
     </div>
   );
 };
+
+const ConsultationCTA = () => (
+  <div className="w-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-10 text-white mt-16 backdrop-blur-sm">
+    <h2 className="xs:text-3xl text-4xl font-bold mb-4">
+      Not sure which plan is right for you?
+    </h2>
+    <p className="text-lg text-white/80 mb-6 max-w-3xl">
+      Get expert evaluation, personalized strategy, and a clear roadmap
+      to reach your desired PTE score faster.
+    </p>
+    <button
+      onClick={() => window.open("https://t.me/Scorepte_explains", "_blank")}
+      className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300"
+    >
+      Book Free Consultation
+    </button>
+  </div>
+);
 
 const PricingCards = () => {
-  const plans = [
-    { plan: "bronze", price: "399", features: "Strong; Error Analysis, Skill Building, Impact-driven training & More.", buttonColor: "bronze" },
-    { plan: "silver", price: "599", features: "Refined; Predication Files, Score-Driven Tips, Daily Insights & More.", buttonColor: "purple" },
-    { plan: "gold", price: "899", features: "Unmissable; Surety Files, Live classes, Expert support & More.", buttonColor: "orange", isPopular: true },
-    { plan: "platinum", price: "4,799", features: "Confidential, Customized, Credible", buttonColor: "yellow" },
+  const resourcePlans = [
+    {
+      plan: "Quick Revision",
+      price: "159",
+      currency: "AUD",
+      subtitle: "Last-minute prep? This is your perfect guide!",
+      description: "From 50s to 90s – we make it happen.",
+      features: [
+        "Ideal for limited preparation time",
+        "Super tips and smart strategies",
+        "Boost confidence and stay focused",
+        "Designed to help aim for 79+ scores",
+        "Last-minute file to maximize performance",
+        "Includes 10% high-yield prediction files",
+        "Covers only high-repeat exam content",
+        "Learn quickly, feel ready, perform confidently",
+      ],
+    },
+    {
+      plan: "Prediction Files",
+      price: "299",
+      currency: "AUD",
+      subtitle: "Based on Exam Date, Center & Time Slot",
+      description: "Created from real test-taker experience.",
+      features: [
+        "Highest repeat-rate questions included",
+        "Limited and focused (not 400+ pages)",
+        "Designed to maximize scores quickly",
+        "Easy to follow under exam pressure",
+        "Regularly updated with latest trends",
+        "Center-tested and slot-specific",
+        "Original content – no copies",
+        "Boosts confidence and reduces stress",
+      ],
+    },
+    {
+      plan: "Signature Templates",
+      price: "199",
+      currency: "AUD",
+      subtitle: "Original Templates for Maximum Scoring",
+      description: "Customized templates designed to avoid AI-detected repetition.",
+      features: [
+        "Expert-created original templates",
+        "Center-tested for real exams",
+        "No repeated or overused formats",
+        "Designed specifically for 79+ scores",
+        "Aligned with latest PTE AI scoring",
+        "Updated with recent exam trends",
+        "Easy to learn and apply confidently",
+        "Trusted by high-scoring candidates",
+        "Built for superior maximum performance",
+      ],
+    },
+  ];
+
+  const personalTrainingPlans = [
+    {
+      plan: "Premium Package",
+      price: "799",
+      currency: "AUD",
+      subtitle: "Refined & Score-Driven Preparation",
+      description: "Prediction files, score-driven tips, daily insights & more.",
+      highlight: true,
+      features: [
+        "AI scoring for instant feedback",
+        "Human review of speaking and writing",
+        "Score prediction for exam readiness",
+        "Practice tests with detailed analysis",
+        "Personalized improvement tips",
+        "Progress tracking with performance dashboard",
+        "Sample answers for reference",
+        "Recorded video sessions for self-review",
+      ],
+    },
+    {
+      plan: "Premium Plus",
+      price: "1499",
+      currency: "AUD",
+      subtitle: "Confidential, Customized, Credible",
+      description: "All Premium features included.",
+      highlight: true,
+      features: [
+        "Confidential one-on-one expert coaching",
+        "Advanced AI scoring analytics",
+        "Priority human evaluation",
+        "Customized study plan",
+        "Exclusive high-level mock tests",
+        "Personal templates for speaking and writing",
+        "Detailed error analysis for improvement",
+        "24/7 expert support",
+        "Confidential score improvement strategies",
+      ],
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-18 flex flex-col items-center justify-center">
-          <div className="flex items-center justify-center gap-3 mb-5">
-            <img src={image15} alt="Guarantee" className="h-20 w-20 object-contain inline-block align-middle" />
-            <h1 className="text-4xl font-bold text-gray-900 mb-0">
-              <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-300 bg-clip-text text-transparent">'SCORE MUST GROW'</span>{' '}
-              <span className="text-gray-700">GUARANTEE</span>
-            </h1>
-          </div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mt-2">
-            Score PTE delivers more than promises. Join with Bronze, Silver, Gold, or Platinum and experience smart tips, powerful materials, premium content and undeniable improvement that ensures your score must grow.
+    <section className="min-h-screen bg-[#0D2440] relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)] pointer-events-none" />
+      
+      <div className="py-20 px-6 relative z-10">
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <h1 className="xs:text-4xl text-6xl font-black text-white mb-4">
+            SCORE MUST GROW <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">GUARANTEE</span>
+          </h1>
+          <p className="text-lg text-white/80">
+            Choose a plan that fits your goal and start your PTE success journey today.
           </p>
-          <p className="text-center max-w-3xl mx-auto mt-4 leading-relaxed">
-            <span className="block text-2xl md:text-3xl lg:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] via-[#B22222] to-[#CD5C5C] tracking-wide">
-              If you face any difficulty with online payment, our team is available to help you instantly on
-            </span>
-            <span
-              className="inline-flex items-center gap-2 text-blue-600 font-semibold cursor-pointer hover:text-blue-700 hover:underline transition-colors duration-200 text-2xl md:text-3xl lg:text-4xl mt-2"
-              onClick={() => window.open('https://t.me/Scorepte_explains', '_blank')}
-            >
-              <svg
-                width="28"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="text-blue-600"
-              >
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-              </svg>
-              Telegram
-            </span>
-          </p>
-
-
         </div>
 
-        <div className="w-full flex flex-col items-center">
-          <div className="bg-white rounded-2xl shadow-2xl p-10 w-full max-w-none flex flex-col items-center">
-            <div className="w-full flex justify-start mb-10">
-              <div className="bg-red-800 text-white px-8 py-4 rounded-t-2xl text-2xl font-bold tracking-wide shadow-md flex items-center">
-                PTE Academic / UKVI / CORE
-              </div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-8 lg:flex-nowrap lg:justify-center w-full">
-              {plans.map((planData, index) => (
-                <PricingCard key={index} {...planData} />
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">Resources</h2>
+            <div className="grid xs:grid-cols-1  grid-cols-3 gap-8">
+              {resourcePlans.map((plan, i) => (
+                <PricingCard key={i} {...plan} />
               ))}
             </div>
+          </div>
 
-            <div className="flex justify-center mt-8 w-full">
-              <PTEConsultationCTA />
+          <div>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">Personal Training</h2>
+            <div className="grid xs:grid-cols-1 grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {personalTrainingPlans.map((plan, i) => (
+                <PricingCard key={i} {...plan} />
+              ))}
             </div>
           </div>
         </div>
+
+        <div className="max-w-6xl mx-auto">
+          <ConsultationCTA />
+        </div>
       </div>
-    </div>
+      
+      <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay -z-10" />
+    </section>
   );
 };
 

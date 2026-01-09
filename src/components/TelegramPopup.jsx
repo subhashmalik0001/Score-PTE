@@ -20,16 +20,16 @@ const TelegramPopup = () => {
     if (!isVisible) return null;
 
     return (
-        <div className="fixed bottom-6 right-6 z-50">
+        <div className="fixed bottom-6 xs:right-0 right-6 z-50">
             {/* Tooltip */}
             <div
-                className={`absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg shadow-lg transition-all duration-300 whitespace-nowrap ${isHovered
+                className={`absolute bottom-full  right-0 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg shadow-lg transition-all duration-300 whitespace-nowrap ${isHovered
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-2 pointer-events-none'
                     }`}
             >
                 Join our Telegram for instant support!
-                <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+                <div className="absolute top-full right-4 xs:right-0 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
             </div>
 
             {/* Telegram Button */}

@@ -1,54 +1,130 @@
 import React from "react";
+import { motion } from 'framer-motion';
+import { Target, TrendingUp, Award, Sparkles } from 'lucide-react';
 
 const Page5 = () => {
   return (
-    <div className="w-full bg-white flex flex-col justify-center items-center px-4 py-12 md:px-6">
-      <p className="uppercase tracking-[0.25em] text-gray-400 text-base md:text-lg mb-4">
-        What we are working on
-      </p>
-
-      <div className="text-center space-y-4 leading-snug max-w-6xl">
-        {/* Most bold & dark */}
-        <p
-          className="text-2xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent"
-          style={{
-            display: "inline-block",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
+    <div className="w-full bg-[#0D2440] relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.15),transparent_70%)] pointer-events-none" />
+      
+      <div className="flex flex-col justify-center items-center px-4 py-20 md:px-6 relative z-10">
+        {/* Header Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
         >
-          At Score PTE, we blend advanced technology
-        </p>
-
-        {/* Second in hierarchy */}
-        <p className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-900">
-          elite training methodologies,
-        </p>
-
-        {/* Third in hierarchy */}
-        <p className="text-base sm:text-xl md:text-2xl font-medium text-gray-800">
-          and deep exam insight to deliver results that speak for themselves
-        </p>
-        <p className="text-base sm:text-xl md:text-2xl font-medium text-gray-800">
-          With every tool tailored for your success
-        </p>
-        <p className="text-base sm:text-xl md:text-2xl font-medium text-gray-800">
-          we're not just preparing you for the test — we're preparing you to
-          excel.
-        </p>
-
-        {/* Highlighted result line */}
-        <p className="text-3xl sm:text-5xl md:text-7xl font-semibold text-gray-900">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-300 font-extrabold">
-            Just Results.
+          <Sparkles className="w-4 h-4 text-blue-400" />
+          <span className="uppercase tracking-[0.3em] text-blue-400 text-xs font-black">
+            What we are working on
           </span>
-        </p>
+        </motion.div>
 
-        {/* Closing line */}
-        <p className="text-lg sm:text-2xl md:text-3xl font-semibold text-gray-900">
-          Because here, your score must grow.
-        </p>
+        {/* Main Content Grid */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Side - Text Content */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="space-y-6"
+          >
+            <h1 className="text-4xl md:text-6xl font-black text-white leading-tight">
+              At <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Score PTE</span>, we blend
+            </h1>
+            
+            <div className="space-y-4">
+              <p className="text-xl md:text-2xl font-bold text-white/90">
+                advanced technology
+              </p>
+              <p className="text-lg md:text-xl font-medium text-white/80">
+                elite training methodologies,
+              </p>
+              <p className="text-lg md:text-xl font-medium text-white/80">
+                and deep exam insight to deliver results that speak for themselves
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-2xl p-6 mt-8">
+              <p className="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">
+                Just Results.
+              </p>
+              <p className="text-lg font-semibold text-white/90 mt-2">
+                Because here, your score must grow.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Right Side - Feature Cards */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+          >
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm"
+            >
+              <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                <Target className="w-6 h-6 text-blue-400" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">Advanced Technology</h3>
+              <p className="text-white/60 text-sm">AI-powered tools and cutting-edge methods</p>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm"
+            >
+              <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+                <TrendingUp className="w-6 h-6 text-green-400" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">Elite Training</h3>
+              <p className="text-white/60 text-sm">Proven methodologies for guaranteed success</p>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm"
+            >
+              <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                <Award className="w-6 h-6 text-purple-400" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">Deep Insights</h3>
+              <p className="text-white/60 text-sm">Comprehensive exam analysis and strategies</p>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 rounded-2xl p-6 backdrop-blur-sm"
+            >
+              <div className="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center mb-4">
+                <Sparkles className="w-6 h-6 text-yellow-400" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">Tailored Success</h3>
+              <p className="text-white/60 text-sm">Every tool designed for your excellence</p>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Bottom CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-lg md:text-xl font-medium text-white/80 mb-4">
+            With every tool tailored for your success
+          </p>
+          <p className="text-xl md:text-2xl font-bold text-white">
+            we're not just preparing you for the test — we're preparing you to excel.
+          </p>
+        </motion.div>
       </div>
+      
+      {/* Decorative Elements */}
+      <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay -z-10" />
     </div>
   );
 };

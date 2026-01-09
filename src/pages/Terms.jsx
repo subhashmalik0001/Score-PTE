@@ -5,7 +5,7 @@ const Terms = ({ onBack }) => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
-        <div className="max-w-4xl mx-auto px-6 py-4">
+        <div className=" max-w-full px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]   mx-auto px-6 py-4">
           <button
             onClick={onBack}
             className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 transition-colors mb-4"
@@ -19,7 +19,7 @@ const Terms = ({ onBack }) => {
       </div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-6 py-8">
+      <div className=" max-w-full px-[5%] xs:px-[2%]   mx-auto px-6 py-8">
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           {/* Consumer Protection Section */}
           <div className="p-8 border-b border-gray-200">

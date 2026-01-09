@@ -1,376 +1,130 @@
-"use client"
-import logo from "../assets/image.png";
-import image17 from '../assets/image 17.png';
+import React, { useState } from "react";
+import { openRazorpayCheckout } from '../lib/razorpay';
+import logo from '../assets/image.png'
 
-import { useState } from "react"
-import { Menu, X, Info } from "lucide-react"
-import { Dialog } from '@headlessui/react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { FaTelegramPlane, FaInstagram, FaFacebook, FaPhone } from 'react-icons/fa'
-import { CheckCircle, Lock } from 'lucide-react'
-import PricingCards from './PricingCards'
+const navItems = [
+  { label: "Home", key: "home" },
+  { label: "PTE Practice", key: "pte-practice" },
+  { label: "Courses", key: "course" },
+  { label: "Hand Outs", key: "hand-outs" },
+];
 
-const Navbar = ({ onNavigate }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [supportModalOpen, setSupportModalOpen] = useState(false)
-  const [handoutsModalOpen, setHandoutsModalOpen] = useState(false)
-  const [selectedHandout, setSelectedHandout] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [validationStatus, setValidationStatus] = useState('')
-  const [selectedItem, setSelectedItem] = useState(null)
-  const [accessCode, setAccessCode] = useState("")
-  const [isValidating, setIsValidating] = useState(false)
-  const [errorMessage, setErrorMessage] = useState("")
-  const [infoOpen, setInfoOpen] = useState(false)
+const Navbar = ({ onNavigate, active, onActionClick }) => {
+  const [open, setOpen] = useState(false);
 
-  const handoutResources = [
-    "Templates",
-    "Prediction Files",
-    "Surety Files",
+  const handleNavigate = (key) => {
+    onNavigate && onNavigate(key);
+    setOpen(false); // close menu after click
+  };
 
-  ]
-
-  const navigationItems = [
-    "Home",
-    "PTE Practice",
-    "Courses",
-    "Hand Outs",
-    "Support Team",
-
-  ]
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
-  // Navigation click handler
-  const handleNavClick = (item) => {
-    if (item === "PTE Practice" && onNavigate) {
-      onNavigate("pte-practice")
-    } else if (item === "Home" && onNavigate) {
-      onNavigate("home")
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    } else if (item === "Support Team") {
-      setSupportModalOpen(true)
-    } else if (item === "Hand Outs") {
-      setHandoutsModalOpen(true)
-    } else if (item === "Courses" && onNavigate) {
-      onNavigate("course")
-    }
-    setIsMenuOpen(false)
-  }
-
-  // Handouts modal logic
-  const handleHandoutClick = (resource) => {
-    setHandoutsModalOpen(false)
-    setSelectedHandout(resource)
-    setIsModalOpen(true)
-    setAccessCode("")
-    setValidationStatus("")
-    setSelectedItem({ name: resource })
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsValidating(true)
-    setErrorMessage("")
-
+  const handleEnrollNow = async () => {
     try {
-      // Simulate a validation process
-      const isValid = accessCode === "1234"
-      if (isValid) {
-        setValidationStatus('success')
-        setSelectedItem({ name: selectedHandout })
-      } else {
-        setValidationStatus('error')
-        setErrorMessage("Invalid code. Please try again.")
-      }
-    } catch (error) {
-      setValidationStatus('error')
-      setErrorMessage("An error occurred. Please try again later.")
-    } finally {
-      setIsValidating(false)
+      await openRazorpayCheckout({
+        amountPaise: 79900,
+        currency: "AUD",
+        name: "Score PTE",
+        description: "Premium Package Enrollment",
+        notes: { plan: "Premium Package" },
+        themeColor: "#0D2440",
+        onSuccess: () => {
+          alert("Payment successful! Our team will contact you shortly.");
+        },
+        onError: () => {
+          window.open("https://t.me/Scorepte_explains", "_blank");
+        },
+      });
+    } catch (err) {
+      window.open("https://t.me/Scorepte_explains", "_blank");
     }
-  }
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleSubmit(e)
-    }
-  }
-
-  const closeModal = () => {
-    setIsModalOpen(false)
-    setAccessCode("")
-    setValidationStatus('')
-    setSelectedItem(null)
-  }
+  };
 
   return (
-    <header className="w-full bg-white shadow-sm">
-      {/* Top section with logo and university info */}
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center gap-4">
-          {/* University Logo */}
-          <div className="flex-shrink-0">
-            <img src={logo} alt="ScorePTE Logo" className="w-24 h-24 md:w-32 md:h-32" />
-          </div>
+    <nav className="bg-[#ffffff] border-b border-white/10 sticky top-0 z-50 backdrop-blur-md">
+      <div className="min-w-full px-[5%] xs:px-[2%]">
+        {/* TOP BAR */}
+        <div className="flex  items-center justify-between h-16">
+          
+          {/* LOGO */}
+          <img src={logo} alt="ScorePTE Logo" className="w-16 h-16" />
 
-          {/* University Name and Info */}
-          <div className="flex-1">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-red-800 tracking-wide">Score PTE</h1>
-            <p className="text-base md:text-lg mt-1 text-[#676767]">
-              Established by Experts
-              <br />-Score Must Grow
-            </p>
+          {/* DESKTOP MENU */}
+          <ul className="xs:hidden flex items-center gap-8">
+            {navItems.map((item) => {
+              const isActive = active === item.key;
 
-
-          </div>
-        </div>
-      </div>
-
-      {/* Navigation Menu */}
-      <nav className="bg-red-800">
-        <div className="container mx-auto">
-          <ul className="flex">
-            {navigationItems.map((item, index) => (
-              <li key={item} className="flex-1">
-                <a
-                  href="#"
-                  className={`block px-4 py-3 text-center text-sm font-medium transition-colors duration-200 ${item === "Support Team" ? "bg-red text-white" : "text-white hover:bg-red-700"
-                    }`}
-                  onClick={e => {
-                    e.preventDefault();
-                    handleNavClick(item);
-                  }}
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </nav>
-
-      {/* Handouts Modal */}
-      <AnimatePresence>
-        {handoutsModalOpen && (
-          <Dialog as="div" className="fixed inset-0 z-50 flex items-center justify-center" open={handoutsModalOpen} onClose={() => setHandoutsModalOpen(false)}>
-            <motion.div
-              key="handout-modal-bg"
-              className="fixed inset-0 bg-black/300 backdrop-blur"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            />
-            <motion.div
-              key="handout-modal-content"
-              initial={{ scale: 0.95, opacity: 0, y: 40 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 40 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative z-10 bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 p-6 flex flex-col items-center"
-            >
-              <button
-                className="absolute top-3 right-3 text-gray-400 hover:text-gray-700"
-                onClick={() => setHandoutsModalOpen(false)}
-                aria-label="Close"
-              >
-                <X size={24} />
-              </button>
-              <div className="text-xl font-bold mb-4 text-center flex items-center justify-center gap-2">
-                <img src={image17} alt="Handouts Icon" className="h-8 w-8 object-contain inline-block" />
-                Hand Outs
-                <span
-                  className={`relative group ml-1 select-none`}
-                  onClick={() => setInfoOpen((open) => !open)}
-                  onMouseLeave={() => setInfoOpen(false)}
-                  tabIndex={0}
-                  onBlur={() => setInfoOpen(false)}
-                  role="button"
-                  aria-label="Show handouts info"
-                >
-                  <Info className="w-5 h-5 text-blue-500 cursor-pointer" />
-                  <span className={`absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white text-gray-700 text-xs rounded shadow-lg px-3 py-2 z-20 transition-opacity pointer-events-none group-hover:opacity-100 ${infoOpen ? 'opacity-100' : 'opacity-0'}`}
-                  >
-                    Center-Specific Templates, Prediction Files and Surety Files crafted by experts.
-                  </span>
-                </span>
-              </div>
-              <div className="w-full space-y-3">
-                {handoutResources.map((resource) => (
+              return (
+                <li key={item.key} className="relative  group">
                   <button
-                    key={resource}
-                    onClick={() => handleHandoutClick(resource)}
-                    className="w-full flex items-center justify-between px-4 py-3 rounded-lg border hover:bg-gray-50 transition-colors font-medium text-gray-800"
+                    onClick={() => handleNavigate(item.key)}
+                    className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
+                      isActive
+                        ? "text-blue-400"
+                        : "text-blue/80 hover:text-blue-400"
+                    }`}
                   >
-                    <span>{resource}</span>
-                    <span className="text-gray-400">&rarr;</span>
+                    {item.label}
                   </button>
-                ))}
-              </div>
-            </motion.div>
-          </Dialog>
-        )}
-      </AnimatePresence>
 
-      {/* Support Modal */}
-      <AnimatePresence>
-        {supportModalOpen && (
-          <Dialog as="div" className="fixed inset-0 z-50 flex items-center justify-center" open={supportModalOpen} onClose={() => setSupportModalOpen(false)}>
-            <motion.div
-              key="modal-bg"
-              className="fixed inset-0 bg-black/200 backdrop-blur-sm"
-              initial={{ opacity: 3 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            />
-            <motion.div
-              key="modal-content"
-              initial={{ scale: 0.95, opacity: 0, y: 40 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 40 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative z-10 bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 p-6 flex flex-col items-center"
-            >
-              {/* Close button */}
-              <button
-                className="absolute top-3 right-3 text-gray-400 hover:text-gray-700"
-                onClick={() => setSupportModalOpen(false)}
-                aria-label="Close"
-              >
-                <X size={24} />
-              </button>
-              {/* Modal Content */}
-              <div className="text-2xl mb-2"></div>
-              <div className="text-xl font-bold mb-4 text-center">💬 Get in Touch With Our Support Team</div>
-              <div className="w-full space-y-4">
-                <a href="https://t.me/Scorepte_explains" className="flex items-center gap-3 p-3 rounded-lg border hover:bg-gray-50 transition-colors">
-                  <FaTelegramPlane className="text-blue-500 text-2xl" />
-                  <span className="font-medium text-gray-800">Join our community</span>
-                </a>
-                <a href="https://www.instagram.com/scorepte_explains" className="flex items-center gap-3 p-3 rounded-lg border hover:bg-gray-50 transition-colors">
-                  <FaInstagram className="text-pink-500 text-2xl" />
-                  <span className="font-medium text-gray-800">Follow us on Instagram</span>
-                </a>
+                  <span
+                    className={`absolute left-0 -bottom-1  w-full bg-blue-400 transform origin-left transition-transform duration-300 ${
+                      isActive
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  />
+                </li>
+              );
+            })}
+          </ul>
 
-
-              </div>
-            </motion.div>
-          </Dialog>
-        )}
-      </AnimatePresence>
-
-      {/* Modal Popup */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop */}
-          <div
-            className="absolute inset-0 backdrop-blur-sm transition-opacity duration-300"
-            onClick={closeModal}
-          />
-
-          {/* Modal */}
-          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 scale-100 animate-in zoom-in-95">
-            {/* Close Button */}
+          {/* RIGHT ACTIONS */}
+          <div className="flex items-center gap-4">
             <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+              onClick={handleEnrollNow}
+              className="xs:hidden block rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-2 text-sm font-medium text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              <X className="h-6 w-6" />
+              Enroll Now
             </button>
 
-            {/* Modal Content */}
-            <div className="text-center">
-              {validationStatus === 'success' ? (
-                <div className="mb-4 animate-in fade-in-50 duration-500">
-                  <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4 animate-pulse" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">
-                    Access Granted! 🎉
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    You can now access <strong>{selectedItem?.name}</strong>
-                  </p>
-                </div>
-              ) : (
-                <>
-                  {/* Lock Icon */}
-                  <div className="mb-4">
-                    <Lock className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-2xl md:text-3xl font-bold mb-2">
-                      <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-                        Premium
-                      </span>{' '}
-                      <span className="text-black">Starts Here.</span>
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-6">
-                      Enter your access code to unlock <strong>{selectedItem?.name}</strong>.
-                    </p>
-                  </div>
-
-                  {/* Input Section */}
-                  <div className="space-y-4">
-                    <input
-                      type="text"
-                      value={accessCode}
-                      onChange={(e) => setAccessCode(e.target.value)}
-                      onKeyDown={handleKeyDown}
-                      placeholder="Enter code"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-center font-mono"
-                      disabled={isValidating}
-                      autoFocus
-                    />
-                    {validationStatus === 'error' && (
-                      <div className="text-red-500 text-sm mt-2 animate-pulse bg-red-50 p-2 rounded border border-red-200">
-                        {errorMessage}
-                      </div>
-                    )}
-
-                    <button
-                      onClick={handleSubmit}
-                      disabled={isValidating}
-                      className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium transform hover:scale-105"
-                    >
-                      {isValidating ? (
-                        <div className="flex items-center justify-center">
-                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                          Validating...
-                        </div>
-                      ) : (
-                        'Submit'
-                      )}
-                    </button>
-                  </div>
-
-                  {/* Telegram Link */}
-                  <div className="mt-6 pt-4 border-t border-gray-200">
-                    <p className="text-sm text-gray-600">
-                      Don't have a code? Contact Support{' '}
-                      <a href="https://t.me/Scorepte_explains"
-                        className="text-blue-700  transition inline-flex items-center gap-1"
-                      >
-                        <svg
-                          width="20"
-                          height="17"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="text-blue-700"
-                        >
-                          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-                        </svg>
-                        Telegram
-                      </a>{' '}
-
-                    </p>
-                  </div>
-                </>
-              )}
-            </div>
+            {/* HAMBURGER */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="hidden xs:flex text-gray-600 text-2xl hover:text-gray-800 transition-colors"
+            >
+              ☰
+            </button>
           </div>
         </div>
-      )}
-    </header>
-  )
-}
 
-export default Navbar
+        {/* MOBILE MENU */}
+        {open && (
+          <div className="hidden xs:flex xs:flex-col border-t border-gray-200 py-4 space-y-2 bg-white">
+            {navItems.map((item) => (
+              <button
+                key={item.key}
+                onClick={() => handleNavigate(item.key)}
+                className={`block w-full text-left px-4 py-2 rounded-md text-sm font-medium transition ${
+                  active === item.key
+                    ? "bg-blue-500/20 text-blue-600 border border-blue-500/30"
+                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+
+            <button
+              onClick={handleEnrollNow}
+              className="w-full mt-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-2 text-sm font-medium text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
+            >
+              Enroll Now
+            </button>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
+

@@ -1,54 +1,143 @@
 import React from "react";
+import { motion } from 'framer-motion';
+import { Star, Heart, MessageCircle, Send, Award, Users } from 'lucide-react';
 
 const Page7 = () => {
+  const testimonialCards = [
+    {
+      score: "79+",
+      name: "Sarah M.",
+      message: "Score PTE changed my life! Got my dream score in first attempt.",
+      gradient: "from-green-500/20 to-emerald-500/20",
+      border: "border-green-500/30"
+    },
+    {
+      score: "85+",
+      name: "Raj P.",
+      message: "Amazing support and strategies. Highly recommend to everyone!",
+      gradient: "from-blue-500/20 to-cyan-500/20",
+      border: "border-blue-500/30"
+    },
+    {
+      score: "90",
+      name: "Emma L.",
+      message: "Perfect preparation materials. Exceeded my expectations completely.",
+      gradient: "from-purple-500/20 to-pink-500/20",
+      border: "border-purple-500/30"
+    }
+  ];
+
   return (
-    <div className="w-full h-[50vh] bg-[#2b2b2b] text-white flex flex-col items-center justify-center px-6 space-y-4 text-center">
-      {/* Section Heading */}
-      <p className="uppercase tracking-widest text-gray-400 text-xs md:text-sm">
-        Ink & Pixels
-      </p>
-
-      {/* Main Title */}
-      <h1 className="text-3xl md:text-5xl font-light">
-        Seen Score PTE Lately?
-        <span 
-          className="font-extrabold bg-gradient-to-r from-gray-800 via-gray-100 to-gray-800 bg-clip-text text-transparent"
-          style={{
-            display: 'inline-block',
-           
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
+    <div className="w-full bg-[#0D2440] relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)] pointer-events-none" />
+      
+      <div className="flex flex-col items-center justify-center px-6 py-20 relative z-10">
+        
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-center mb-16"
         >
+          {/* Badge */}
+          <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
+            <Heart className="w-4 h-4 text-pink-400" />
+            <span className="uppercase tracking-[0.3em] text-pink-400 text-xs font-black">
+              Ink & Pixels
+            </span>
+          </div>
+
+          {/* Main Title */}
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+            Seen <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Score PTE</span> Lately?
+          </h1>
+
+          {/* Description */}
+          <p className="max-w-3xl text-lg md:text-xl text-white/80 leading-relaxed">
+            As a rising brand built on passion, trust, and student success — your love means everything to us.
+            <br className="hidden md:block" />
+            Each score shared reminds us why we started.
+          </p>
+        </motion.div>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 w-full max-w-4xl"
+        >
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center backdrop-blur-sm">
+            <Users className="w-8 h-8 text-blue-400 mx-auto mb-4" />
+            <h3 className="text-3xl font-bold text-white mb-2">1000+</h3>
+            <p className="text-white/60">Happy Students</p>
+          </div>
           
-        </span> 
-      </h1>
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center backdrop-blur-sm">
+            <Award className="w-8 h-8 text-green-400 mx-auto mb-4" />
+            <h3 className="text-3xl font-bold text-white mb-2">85%</h3>
+            <p className="text-white/60">Success Rate</p>
+          </div>
+          
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center backdrop-blur-sm">
+            <Star className="w-8 h-8 text-yellow-400 mx-auto mb-4" />
+            <h3 className="text-3xl font-bold text-white mb-2">4.9/5</h3>
+            <p className="text-white/60">Average Rating</p>
+          </div>
+        </motion.div>
 
-      {/* Description */}
-      <p className="max-w-xl text-sm md:text-lg text-gray-300 leading-relaxed">
-      As a rising brand built on passion, trust, and student success — your love means everything to us.
-Each score shared reminds us why we started.
-
-      </p>
-
-      {/* Email Link */}
-      <div className="flex flex-wrap items-center justify-center gap-2">
-        <span>Drop your Score Card with Reviews on</span>
-        <a href="https://t.me/Scorepte_explains"
-          className="text-blue-300 hover:text-blue-400 transition inline-flex items-center gap-1"
+        {/* Testimonial Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 w-full max-w-6xl"
         >
-          <svg 
-            width="20" 
-            height="20" 
-            viewBox="0 0 24 24" 
-            fill="currentColor"
-            className="text-blue-300"
+          {testimonialCards.map((card, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05 }}
+              className={`bg-gradient-to-br ${card.gradient} border ${card.border} rounded-2xl p-6 backdrop-blur-sm`}
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <span className="text-2xl font-bold text-white">{card.score}</span>
+              </div>
+              <p className="text-white/80 mb-4 italic">"{card.message}"</p>
+              <p className="text-white/60 font-semibold">- {card.name}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8 text-center max-w-2xl backdrop-blur-sm"
+        >
+          <MessageCircle className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+          <h3 className="text-2xl font-bold text-white mb-4">Share Your Success Story</h3>
+          <p className="text-white/80 mb-6">
+            Drop your Score Card with Reviews and inspire others on their PTE journey
+          </p>
+          
+          {/* Telegram Link */}
+          <motion.a 
+            href="https://t.me/Scorepte_explains"
+            whileHover={{ scale: 1.05 }}
+            className="inline-flex items-center gap-3 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-          </svg>
-          Telegram
-        </a>
+            <Send className="w-5 h-5" />
+            Join Our Telegram Community
+          </motion.a>
+        </motion.div>
       </div>
+      
+      {/* Decorative Elements */}
+      <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay -z-10" />
     </div>
   );
 };

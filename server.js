@@ -6,15 +6,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const keyId = process.env.VITE_RAZORPAY_KEY_ID || process.env.RAZORPAY_KEY_ID;
-const keySecret = process.env.VITE_RAZORPAY_KEY_SECRET || process.env.RAZORPAY_KEY_SECRET;
-const keySource = process.env.VITE_RAZORPAY_KEY_ID ? 'VITE_RAZORPAY_*' : (process.env.RAZORPAY_KEY_ID ? 'RAZORPAY_*' : 'missing');
+const keyId = process.env.RAZORPAY_KEY_ID;
+const keySecret = process.env.RAZORPAY_KEY_SECRET;
 
 if (!keyId || !keySecret) {
-  console.error('Razorpay keys missing. Ensure .env has RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET (or VITE_ variants)');
+  console.error('Razorpay keys missing. Ensure .env has RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET');
 } else {
   const masked = keyId.length > 6 ? `${keyId.slice(0, 6)}...${keyId.slice(-4)}` : keyId;
-  console.log(`Using Razorpay key: ${masked} (source: ${keySource})`);
+  console.log(`Using Razorpay key: ${masked}`);
 }
 
 const razorpay = new Razorpay({ key_id: keyId, key_secret: keySecret });
@@ -38,12 +37,11 @@ app.get('/api/health', (_req, res) => {
   res.json({
     ok: true,
     razorpayKeyId: masked,
-    keySource,
     secretPresent: Boolean(keySecret),
   });
 });
 
 const PORT = process.env.PORT || 5174;
-app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`Server listening on http://0.0.0.0:${PORT}`));
 
 

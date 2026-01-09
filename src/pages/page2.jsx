@@ -1,788 +1,160 @@
-import React, { useState } from "react";
-import speak from "../assets/image 4.png";
-import write from "../assets/image 9.png";
-import read from "../assets/image 5.png";
-import listen from "../assets/image 8.png";
-import { Button } from "../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
-import { Badge } from "../components/ui/badge";
-import { Separator } from "../components/ui/separator";
-import { CheckCircle2, Clock, Sparkles, Check, Target, CheckCircle, BarChart3, BookOpen, Headphones } from "lucide-react";
+"use client"
+import React, { useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { Sparkles, ArrowUpRight } from "lucide-react";
+import { FaMicrophoneAlt, FaPenFancy, FaBookReader, FaHeadphonesAlt } from "react-icons/fa";
 
 const categories = [
-  { title: "Speaking", img: speak },
-  { title: "Writing", img: write },
-  { title: "Reading", img: read },
-  { title: "Listening", img: listen },
+  { title: "Speaking", icon: <FaMicrophoneAlt size={22} />, desc: "Master oral fluency & pronunciation.", img: "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=400&h=300&fit=crop&crop=center", delay: 0.1 },
+  { title: "Writing", icon: <FaPenFancy size={22} />, desc: "Precision grammar & essay structuring.", img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=300&fit=crop&crop=center", delay: 0.2 },
+  { title: "Reading", icon: <FaBookReader size={22} />, desc: "Speed comprehension & vocabulary.", img: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop&crop=center", delay: 0.3 },
+  { title: "Listening", icon: <FaHeadphonesAlt size={22} />, desc: "Audio retention & note-taking.", img: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop&crop=center", delay: 0.4 },
 ];
 
-const testData = {
-  "About PTE": {
-    title: "PTE: Pearson Test of English - Complete Guide",
-    content: (
-      <div className="h-[600px] bg-gray-50 py-4  overflow-y-auto">
-        <div className="max-w-6xl mx-auto space-y-6 px-4">
-          {/* Header */}
-          <div className="text-center space-y-4">
-            <div className="flex items-center justify-center gap-2">
-              <CheckCircle className="w-8 h-8 text-green-600" />
-              <h1 className="text-3xl font-bold text-gray-900">PTE: Pearson Test of English</h1>
-            </div>
-            <p className="text-base text-gray-600">Complete Guide to PTE Exam Types</p>
-          </div>
+const CategoryCard = ({ item }) => {
+  const cardRef = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-          {/* PTE Overview & Academic */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <BookOpen className="w-5 h-5" />
-                PTE Overview & Academic Exam
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <p className="text-base text-gray-700">
-                  <span className="font-semibold">PTE Academic</span> is a fully computerized English proficiency test 
-                  accepted for study, work, and migration across countries like Australia, Canada, the UK, and more.
-                </p>
-                <div className="relative">
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-nvF1zmuaUPFlk3hhEVMvEYjp4tiUyZ.png"
-                    alt="PTE Introduction and Academic Exam Information"
-                    className="w-full h-auto rounded-md"
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+  // Smooth spring physics for the 3D tilt
+  const mouseX = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseY = useSpring(y, { stiffness: 300, damping: 30 });
 
-          {/* PTE Academic UKVI & PTE Home */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <BookOpen className="w-5 h-5" />
-                PTE Academic UKVI & PTE Home
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <p className="text-base text-gray-700">
-                  <span className="font-semibold">PTE Academic UKVI</span> and <span className="font-semibold">PTE Home</span> are 
-                  specialized versions designed for UK visa applications and family visa requirements respectively.
-                </p>
-                <div className="relative">
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-iIIOrvy8LYfLi0Atk72zxoBe73zwar.png"
-                    alt="PTE Academic UKVI and PTE Home Exam Information"
-                    className="w-full h-auto rounded-md"
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+  const rotateX = useTransform(mouseY, [-0.5, 0.5], [7, -7]);
+  const rotateY = useTransform(mouseX, [-0.5, 0.5], [-7, 7]);
 
-          {/* PTE Core */}
-          <Card>
-            <CardHeader >
-              <CardTitle className="flex items-center gap-2  text-lg">
-                <BookOpen className="w-5 h-5" />
-                PTE Core (2024 Launch)
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <p className="text-base text-gray-700">
-                  <span className="font-semibold">PTE Core</span> is the newest addition, designed specifically for 
-                  Canadian economic immigration and workplace communication, launched in 2024.
-                </p>
-                <div className="relative">
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-txFqCm2kN5kf2FhIrrfyed3OKCQZlU.png"
-                    alt="PTE Core Exam Information"
-                    className="w-full h-auto rounded-md"
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+  const handleMouseMove = (e) => {
+    const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseXRelative = e.clientX - rect.left;
+    const mouseYRelative = e.clientY - rect.top;
+    x.set(mouseXRelative / width - 0.5);
+    y.set(mouseYRelative / height - 0.5);
+  };
 
-          {/* Footer */}
-          <div className="text-center py-4">
-            <p className="text-gray-600 text-sm">
-              This comprehensive overview covers all PTE exam types and their specific purposes.
-            </p>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  
-  "PTE Academic": {
-    title: "PTE Academic - Pearson Test of English Academic",
-    content: (
-      <div className="h-[700px] bg-gray-50 py-4 overflow-y-auto">
-        <div className="max-w-6xl mx-auto space-y-6 px-4">
-          {/* Header */}
-          <div className="text-center space-y-4">
-            <div className="flex items-center justify-center gap-2">
-              <CheckCircle className="w-8 h-8 text-green-600" />
-              <h1 className="text-3xl font-bold text-gray-900">What is PTE Academic?</h1>
-            </div>
-          </div>
-
-          {/* PTE Academic Overview */}
-          <Card>
-            <CardContent className="p-6">
-              <div className="space-y-4">
-                <p className="text-base text-gray-700">
-                  <span className="font-semibold">PTE Academic (Pearson Test of English Academic)</span> is a fully computerized English proficiency
-                  test accepted for study, work, and migration across countries like Australia, Canada, the UK, and more. It
-                  evaluates your real-world English skills in academic and professional contexts.
-                </p>
-
-                <div className="grid md:grid-cols-2 gap-4 mt-6">
-                  <div className="space-y-2">
-                    <div className="flex items-start gap-2">
-                      <span className="font-semibold text-gray-900">• Duration:</span>
-                      <span className="text-gray-700">Approximately 2 hours</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="font-semibold text-gray-900">• Format:</span>
-                      <span className="text-gray-700">Computer-based with microphone and headset</span>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-start gap-2">
-                      <span className="font-semibold text-gray-900">• Scoring:</span>
-                      <span className="text-gray-700">AI-automated scoring system (10–90 scale)</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="font-semibold text-gray-900">• Acceptance:</span>
-                      <span className="text-gray-700">Universities, employers, and governments worldwide</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Exam Sections Overview */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Target className="w-5 h-5" />
-                PTE Exam Sections Overview
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <p className="text-base text-gray-700">
-                  PTE Academic is divided into <span className="font-semibold">three integrated parts</span>. Each part evaluates multiple
-                  skills through academic and professional tasks.
-                </p>
-
-                <div className="overflow-x-auto">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr className="border-b-2 border-gray-200">
-                        <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Module</th>
-                        <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Skills Tested</th>
-                        <th className="text-left py-2 px-3 font-semibold text-gray-900 text-sm">Time</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="border-b border-gray-100">
-                        <td className="py-2 px-3 font-medium text-gray-900 text-sm">1. Speaking & Writing</td>
-                        <td className="py-2 px-3 text-gray-700 text-sm">Speaking + Writing</td>
-                        <td className="py-2 px-3 text-gray-700 text-sm">54–67 minutes</td>
-                      </tr>
-                      <tr className="border-b border-gray-100">
-                        <td className="py-2 px-3 font-medium text-gray-900 text-sm">2. Reading</td>
-                        <td className="py-2 px-3 text-gray-700 text-sm">Reading</td>
-                        <td className="py-2 px-3 text-gray-700 text-sm">29–30 minutes</td>
-                      </tr>
-                      <tr className="border-b border-gray-100">
-                        <td className="py-2 px-3 font-medium text-gray-900 text-sm">3. Listening</td>
-                        <td className="py-2 px-3 text-gray-700 text-sm">Listening</td>
-                        <td className="py-2 px-3 text-gray-700 text-sm">30–43 minutes</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
-                  <div className="flex items-center gap-2">
-                    <span className="text-green-600 text-lg">✅</span>
-                    <span className="font-semibold text-green-800 text-sm">Total Duration:</span>
-                    <span className="text-green-700 text-sm">~2 hours (including optional introduction and breaks)</span>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Key Features */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Sparkles className="w-5 h-5" />
-                Key Features
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <div className="flex items-start gap-2">
-                  <span className="font-semibold text-gray-900 text-sm">• Computer-based:</span>
-                  <span className="text-gray-700 text-sm">Fully computerized test with AI scoring</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="font-semibold text-gray-900 text-sm">• Academic Focus:</span>
-                  <span className="text-gray-700 text-sm">Designed for university and professional environments</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="font-semibold text-gray-900 text-sm">• Global Recognition:</span>
-                  <span className="text-gray-700 text-sm">Accepted by thousands of institutions worldwide</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="font-semibold text-gray-900 text-sm">• Quick Results:</span>
-                  <span className="text-gray-700 text-sm">Results typically available within 48 hours</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Footer */}
-          <div className="text-center py-4">
-            <p className="text-gray-600 text-sm">
-              PTE Academic provides a comprehensive assessment of your English language skills for academic and professional success.
-            </p>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  "PTE Core": {
-    title: "TOEFL - Test of English as a Foreign Language",
-    content: (
-      <div className="space-y-6">
-        <div className="flex items-center gap-2 mb-4">
-          <Badge variant="secondary">English Proficiency</Badge>
-          <Badge variant="outline">Internet-based</Badge>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold mb-3">About TOEFL</h3>
-          <p className="text-muted-foreground mb-4">
-            The Test of English as a Foreign Language (TOEFL) is a standardized test to measure the English language
-            ability of non-native speakers wishing to enroll in English-speaking universities.
-          </p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Test Sections</h4>
-          <ul className="space-y-2 text-sm">
-            <li>• Reading (54-72 minutes)</li>
-            <li>• Listening (41-57 minutes)</li>
-            <li>• Speaking (17 minutes)</li>
-            <li>• Writing (50 minutes)</li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Duration</h4>
-          <p className="text-sm text-muted-foreground">Approximately 3 hours</p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Score Range</h4>
-          <p className="text-sm text-muted-foreground">0-120 total score</p>
-        </div>
-      </div>
-    ),
-  },
-  IELTS: {
-    title: "IELTS - International English Language Testing System",
-    content: (
-      <div className="space-y-6">
-        <div className="flex items-center gap-2 mb-4">
-          <Badge variant="secondary">English Proficiency</Badge>
-          <Badge variant="outline">Paper & Computer</Badge>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold mb-3">About IELTS</h3>
-          <p className="text-muted-foreground mb-4">
-            The International English Language Testing System (IELTS) is an international standardized test of English
-            language proficiency for non-native English language speakers.
-          </p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Test Sections</h4>
-          <ul className="space-y-2 text-sm">
-            <li>• Listening (30 minutes)</li>
-            <li>• Reading (60 minutes)</li>
-            <li>• Writing (60 minutes)</li>
-            <li>• Speaking (11-14 minutes)</li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Duration</h4>
-          <p className="text-sm text-muted-foreground">Approximately 2 hours and 45 minutes</p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Score Range</h4>
-          <p className="text-sm text-muted-foreground">0-9 band score</p>
-        </div>
-      </div>
-    ),
-  },
-  SAT: {
-    title: "SAT - Scholastic Assessment Test",
-    content: (
-      <div className="space-y-6">
-        <div className="flex items-center gap-2 mb-4">
-          <Badge variant="secondary">Undergraduate</Badge>
-          <Badge variant="outline">Paper & Digital</Badge>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold mb-3">About SAT</h3>
-          <p className="text-muted-foreground mb-4">
-            The SAT is a standardized test widely used for college admissions in the United States. It measures
-            literacy, numeracy and writing skills that are needed for academic success in college.
-          </p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Test Sections</h4>
-          <ul className="space-y-2 text-sm">
-            <li>• Reading and Writing (64 minutes)</li>
-            <li>• Math (70 minutes)</li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Duration</h4>
-          <p className="text-sm text-muted-foreground">Approximately 2 hours and 14 minutes</p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-2">Score Range</h4>
-          <p className="text-sm text-muted-foreground">400-1600 total score</p>
-        </div>
-      </div>
-    ),
-  },
-  "PTE Core": {
-    title: "PTE Core - Canadian Immigration & Workplace Test",
-    content: (
-      <div className="h-[700px] bg-gray-50 py-4 overflow-y-auto">
-        <div className="max-w-6xl mx-auto space-y-6 px-4">
-          {/* Header */}
-          <div className="text-center space-y-4">
-            <div className="flex items-center justify-center gap-2">
-              <CheckCircle className="w-8 h-8 text-green-600" />
-              <h1 className="text-3xl font-bold text-gray-900">What is PTE Core?</h1>
-            </div>
-          </div>
-
-          {/* PTE Core Overview */}
-          <Card>
-            <CardContent className="p-6">
-              <div className="space-y-4">
-                <p className="text-base text-gray-700">
-                  <span className="font-semibold">PTE Core</span> is a fully computer-based English language proficiency
-                  test by <span className="font-semibold">Pearson</span>, designed for{" "}
-                  <span className="font-semibold">Canadian economic immigration and workplace communication</span>.
-                </p>
-
-                <p className="text-base text-gray-700">
-                  It evaluates your <span className="font-semibold">real-world English skills</span> across{" "}
-                  <span className="font-semibold">Speaking, Writing, Reading, and Listening</span> using everyday
-                  scenarios, not academic contexts.
-                </p>
-
-                <div className="grid md:grid-cols-2 gap-4 mt-6">
-                  <div className="space-y-2">
-                    <div className="flex items-start gap-2">
-                      <span className="font-semibold text-gray-900">• Accepted by:</span>
-                      <span className="text-gray-700">IRCC (Canada Immigration)</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="font-semibold text-gray-900">• Purpose:</span>
-                      <span className="text-gray-700">Canadian Permanent Residency, work, and citizenship</span>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-start gap-2">
-                      <span className="font-semibold text-gray-900">• Delivery:</span>
-                      <span className="text-gray-700">Pearson VUE centers worldwide</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="font-semibold text-gray-900">• Scoring:</span>
-                      <span className="text-gray-700">AI-based scoring system (10–90 scale, CLB aligned)</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Test Format Overview */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Clock className="w-5 h-5" />
-                Test Format Overview
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-base text-gray-900 mb-4">
-                PTE Core is divided into <span className="font-semibold">three integrated parts</span>. Each part assesses
-                multiple skills through real-life tasks.
-              </p>
-
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="border-b-2 border-gray-200">
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Module</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Skills Tested</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Time</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">1. Speaking & Writing</td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Speaking + Writing</td>
-                      <td className="py-2 px-3 text-gray-700 text-base">~50 mins</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">2. Reading</td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Reading + Writing</td>
-                      <td className="py-2 px-3 text-gray-700 text-base">~30 mins</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">3. Listening</td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Listening + Reading + Writing</td>
-                      <td className="py-2 px-3 text-gray-700 text-base">~30 mins</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="mt-4 p-3 bg-red-50 rounded-lg border border-red-200">
-                <div className="flex items-center gap-2">
-                  <span className="text-red-600 text-lg">🚀</span>
-                  <span className="font-semibold text-red-800 text-base">Total Duration:</span>
-                  <span className="text-red-700 text-base">~2 hours (including breaks and intro)</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Scoring System */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <BarChart3 className="w-5 h-5" />
-                Scoring System
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <div className="flex items-start gap-2">
-                  <span className="font-semibold text-gray-900 text-base">• Score Range:</span>
-                  <span className="text-gray-700 text-base">
-                    10 to 90 (aligned with <span className="font-semibold">Canadian Language Benchmarks - CLB</span>)
-                  </span>
-                </div>
-
-                <div>
-                  <span className="font-semibold text-gray-900 text-base">• Components:</span>
-                  <div className="ml-4 mt-1 space-y-1">
-                    <div className="text-gray-700 text-base">
-                      • <span className="font-medium">Overall Score</span>
-                    </div>
-                    <div className="text-gray-700 text-base">
-                      • <span className="font-medium">Communicative Skills:</span> Listening, Reading, Speaking, Writing
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <span className="font-semibold text-gray-900 text-base">• Scoring Method:</span>
-                  <div className="ml-4 mt-1 space-y-1">
-                    <div className="text-gray-700 text-base">• AI-driven, 100% automated and unbiased</div>
-                    <div className="text-gray-700 text-base">
-                      • No negative marking (except in specific multiple-answer questions)
-                    </div>
-                    <div className="text-gray-700 text-base">• Partial credit awarded for partially correct responses</div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Reading Section */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <BookOpen className="w-5 h-5" />
-                2. Reading (~30 minutes)
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="border-b-2 border-gray-200">
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Task</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Skills Tested</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">What You Do</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Reading & Writing: Fill in the Blanks</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Reading + Writing
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Drag words to fill gaps in a text</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Multiple Choice (Single Answer)</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Reading
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Choose one correct response</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Re-order Paragraphs</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Reading
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Arrange text boxes in correct order</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Fill in the Blanks (Drag & Drop)</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Reading
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-base">Drag correct words to complete the passage</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Multiple Choice (Multiple Answers)</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Reading
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Select all correct answers</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Listening Section */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Headphones className="w-5 h-5" />
-                3. Listening (~30 minutes)
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="border-b-2 border-gray-200">
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Task</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">Skills Tested</th>
-                      <th className="text-left py-2 px-3 font-semibold text-gray-900 text-base">What You Do</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Summarize Spoken Text</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Listening + Writing
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Write a 50–70 word summary of an audio recording</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Multiple Choice (Multiple)</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Listening
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Choose all correct responses from an audio clip</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Fill in the Blanks</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Listening + Writing
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Type missing words from the recording</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Highlight Correct Summary</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Listening + Reading
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Pick the summary that matches the audio</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Multiple Choice (Single)</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Listening
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Choose one best answer based on an audio clip</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Select Missing Word</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Listening
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Predict the final word in an audio</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Highlight Incorrect Words</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Listening + Reading
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Spot and select incorrect words in the transcript</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-2 px-3 font-medium text-gray-900 text-base">Write from Dictation</td>
-                      <td className="py-2 px-3">
-                        <Badge variant="secondary" className="text-sm">
-                          Listening + Writing
-                        </Badge>
-                      </td>
-                      <td className="py-2 px-3 text-gray-700 text-base">Type exactly what you hear in a sentence</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Footer */}
-          <div className="text-center py-4">
-            <p className="text-gray-600 text-base">
-              This comprehensive overview covers all aspects of the PTE Core test format and requirements.
-            </p>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-};
-
-const testButtons = ["About PTE", "PTE Academic", "PTE Core"];
-
-const Page2 = () => {
-  const [activeTest, setActiveTest] = useState("About PTE");
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   return (
-    <div className="w-full bg-white pt-20 px-6 flex flex-col items-center text-center min-h-screen">
-      <h2 className="text-6xl sm:text-7xl font-light mb-20 tracking-tight leading-tight">
-        <span className="bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">Ready to</span>{' '}
-        <span className="font-extrabold text-black">level </span>
-        <span className="bg-gradient-to-r from-gray-400 via-gray-600 to-gray-800 bg-clip-text text-transparent">up ?</span>{' '}
-      </h2>
-
-      <div className="flex flex-wrap justify-center gap-16 mb-20">
-        {categories.map((item, index) => (
-          <div key={index} className="flex flex-col items-center">
-            <img src={item.img} alt={item.title} className="h-28 w-28 object-contain" />
-            <p className="mt-6 text-md sm:text-lg text-gray-700 tracking-wide font-light">
-              {item.title}
-            </p>
-          </div>
-        ))}
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: item.delay, duration: 0.8 }}
+      className="group relative p-8 rounded-[2.5rem] bg-[#E7F0FA]/5 border border-[#E7F0FA]/10 backdrop-blur-xl overflow-hidden cursor-pointer"
+    >
+      {/* MAGNETIC SPOTLIGHT: Follows the mouse for a lens-flare effect */}
+      <motion.div 
+        className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition duration-300"
+        style={{
+          background: useTransform(
+            [mouseX, mouseY],
+            ([mx, my]) => `radial-gradient(400px circle at ${mx * 100 + 50}% ${my * 100 + 50}%, rgba(59, 130, 246, 0.15), transparent 80%)`
+          )
+        }}
+      />
+      
+      <div className="relative z-10" style={{ transform: "translateZ(30px)" }}>
+        <div className="mb-6 text-blue-400 p-3 bg-blue-500/10 w-fit rounded-2xl border border-blue-500/20 group-hover:scale-110 transition-transform duration-500">
+          {item.icon}
+        </div>
+        <h3 className="text-2xl font-bold mb-2 tracking-tight">{item.title}</h3>
+        <p className="text-sm text-[#E7F0FA]/50 font-medium leading-relaxed mb-8">{item.desc}</p>
         
-      </div>
-      <div className="w-full border-b border-black/5 bg-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-8">
-          <div className="text-center">
-            <div className="text-5xl font-light tracking-[0.2em] text-black mb-2 font-microgramma">SPECIALLY</div>
-            <div className="text-1xl font-light tracking-[0.5em] text-black mb-8 font-microgramma">M · A · D · E</div>
-            <div className="text-1xl font-light  text-black mb-2 ">A basic insight into the test</div>
-          </div>
+        <div className="relative h-40 w-full flex justify-center">
+          <motion.img 
+            src={item.img} 
+            alt={item.title} 
+            className="h-[120px] w-full object-cover rounded-2xl filter saturate-[0.8] group-hover:saturate-100 group-hover:scale-110 transition-all duration-700 shadow-2xl"
+          />
         </div>
       </div>
 
-      <div className="w-full max-w-7xl flex flex-col lg:flex-row mb-20">
-        <div className="w-full lg:w-80 mb-6 lg:mb-0 lg:min-h-full px-4">
-          <Card className="w-full">
-            <CardContent className="p-4">
-              <div className="flex flex-col space-y-3">
-                {testButtons.map((test) => (
-                  <Button
-                    key={test}
-                    variant="outline"
-                    className={`justify-start text-left h-12 rounded-full font-medium text-base px-4 ${
-                      activeTest === test
-                        ? test === "PTE"
-                          ? "bg-yellow-500 text-white border-yellow-500 hover:bg-yellow-600"
-                          : "bg-red-800 text-white border-red-800 hover:bg-red-900"
-                        : "bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200"
-                    }`}
-                    onClick={() => setActiveTest(test)}
-                  >
-                    {test}
-                  </Button>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="flex-1 px-4">
-          <Card className="w-full mt-8">
-            <CardHeader>
-              <CardTitle className="text-xl lg:text-2xl xl:text-3xl">
-                {testData[activeTest] && testData[activeTest].title}
-              </CardTitle>
-              <Separator />
-            </CardHeader>
-            <CardContent className="pt-6">
-              {testData[activeTest] && testData[activeTest].content}
-            </CardContent>
-          </Card>
-        </div>
+      <div className="absolute top-8 right-8 xs:right-0 p-2 rounded-full bg-white/5 border border-white/10 text-[#E7F0FA]/40 group-hover:text-white group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-500">
+        <ArrowUpRight size={20} />
       </div>
+    </motion.div>
+  );
+};
 
-      <div className="text-center px-4 max-w-3xl pb-12">
-        <p className="uppercase text-sm text-gray-500 tracking-widest mb-4">
-          <span className="relative top-[-4px]">.</span> Polished   
-          <span className="relative top-[-4px]">.</span> Prepared   
-          <span className="relative top-[-4px]">.</span> PowerFull 
-        </p>
-        <h1 className="text-6xl sm:text-7xl font-extrabold tracking-tight leading-tight">
-          <span className="bg-gradient-to-r from-gray-200 via-gray-800 to-gray-700 bg-clip-text text-transparent">
-            From Practice to Perfection
+const Page2 = () => {
+  return (
+    <div className="min-h-screen  bg-[#0D2440] text-[#E7F0FA] py-24 px-6 relative selection:bg-blue-500 selection:text-white">
+      
+      {/* BACKGROUND DECORATION: Cinematic Light Leaks */}
+      <div className="absolute xs:left-0 top-0 left-1/4 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 xs:right-0 w-96 h-96 bg-fuchsia-600/10 blur-[120px] rounded-full pointer-events-none" />
+
+      {/* 1. HERO SECTION */}
+      <div className=" min-w-full px-[5%]  xs:px-[2%]   flex flex-col items-center text-center mb-32 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8"
+        >
+          <Sparkles size={14} className="text-blue-400" />
+          <span className="text-[10px]   font-black uppercase tracking-[0.4em] text-blue-100/70">Neural Matrix v2.0</span>
+        </motion.div>
+
+        <motion.h2 
+          initial={{ opacity: 0, filter: "blur(15px)" }}
+          whileInView={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 1.2 }}
+          className="xs:text-6xl text-9xl font-black tracking-tighter leading-[0.85] uppercase"
+        >
+          READY TO <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#E7F0FA] via-[#E7F0FA] to-[#E7F0FA]/20">
+            LEVEL UP?
           </span>
+        </motion.h2>
+      </div>
+
+      {/* 2. CATEGORY BENTO GRID */}
+      <div className=" min-w-full px-[2%] xs:px-[2%]   grid xs:grid-cols-1   grid-cols-3   gap-8 mb-40 relative z-10">
+        {categories.map((item, index) => (
+          <CategoryCard key={index} item={item} />
+        ))}
+      </div>
+
+      {/* 3. TRANSITION STRIP */}
+      <div className="w-full relative py-28 border-y border-white/5 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent" />
+        <div className=" min-w-full px-[5%] xs:px-[2%]   mx-auto flex flex-col items-center relative z-10">
+          <span className="text-[11px] font-bold tracking-[0.8em] text-blue-400/60 mb-6 uppercase">
+            Architectural Insights
+          </span>
+          <h4 className="text-3xl md:text-6xl font-extralight text-[#E7F0FA] text-center tracking-tight  max-w-full px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]   leading-tight">
+            A surgical approach to the <br />
+            <span className="font-bold italic text-white underline decoration-blue-500/30 underline-offset-8">test environment</span>
+          </h4>
+        </div>
+      </div>
+
+      {/* 4. FOOTER QUOTE */}
+      <div className="mt-48 text-center flex flex-col items-center relative z-10">
+        <div className="flex items-center gap-6 mb-12 text-[10px] font-black uppercase tracking-[0.5em] text-[#E7F0FA]/30">
+          <span>Polished</span>
+          <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+          <span>Prepared</span>
+          <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+          <span>Powerful</span>
+        </div>
+        <h1 className="max-w-5xl text-5xl md:text-[7rem] font-black leading-[0.9] tracking-tighter uppercase italic">
+          FROM PRACTICE <br /> 
+          <span className="text-blue-500">TO</span> PERFECTION
         </h1>
       </div>
+
+      {/* Background Noise Texture */}
+      <div className="fixed inset-0 pointer-events-none opacity-[0.04] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
     </div>
-    
   );
 };
 
