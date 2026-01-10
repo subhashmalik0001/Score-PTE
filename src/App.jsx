@@ -11,10 +11,10 @@ import Footer from "./pages/page10";
 import Navbar from "./components/Navbar";
 import TelegramPopup from "./components/TelegramPopup";
 import Page4 from "./pages/page4";
-
+import  Pratice from "./pages/Pratice"
 // Lazy load heavy components
 const Terms = lazy(() => import("./pages/Terms"));
-const PTEAcademic = lazy(() => import("./pages/PTEAcademic"));
+const PTEAcademic = lazy(() => import("./pages/Pratice"));
 const PricingCards = lazy(() => import("./components/PricingCards"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -37,13 +37,13 @@ function App() {
         <TelegramPopup />
         <Routes>
           {/* Terms page */}
-          <Route path="/term" element={<Suspense fallback={<div>Loading...</div>}><Terms /><Footer onTermsClick={handleTermsClick} /></Suspense>} />
           <Route path="/terms" element={<Suspense fallback={<div>Loading...</div>}><Terms /><Footer onTermsClick={handleTermsClick} /></Suspense>} />
           
           {/* Other pages with footer */}
           <Route path="/contact" element={<Suspense fallback={<div>Loading...</div>}><Contact /><Footer onTermsClick={handleTermsClick} /></Suspense>} />
           <Route path="/about" element={<Suspense fallback={<div>Loading...</div>}><About /><Footer onTermsClick={handleTermsClick} /></Suspense>} />
           <Route path="/about-pte" element={<Suspense fallback={<div>Loading...</div>}><AboutPTE /><Footer onTermsClick={handleTermsClick} /></Suspense>} />
+          <Route path="/practice" element={<Suspense fallback={<div>Loading...</div>}><Pratice /><Footer onTermsClick={handleTermsClick} /></Suspense>} />
           <Route path="/pte-academic" element={<Suspense fallback={<div>Loading...</div>}><PTEAcademic /><Footer onTermsClick={handleTermsClick} /></Suspense>} />
           <Route path="/ielts" element={<Suspense fallback={<div>Loading...</div>}><IELTS /><Footer onTermsClick={handleTermsClick} /></Suspense>} />
           <Route path="/sat" element={<Suspense fallback={<div>Loading...</div>}><SAT /><Footer onTermsClick={handleTermsClick} /></Suspense>} />
@@ -81,6 +81,11 @@ function App() {
                 ) : currentPage === "hand-outs" ? (
                   <Suspense fallback={<div>Loading...</div>}>
                     <HandOuts />
+                    <Footer onTermsClick={handleTermsClick} />
+                  </Suspense>
+                ) : currentPage === "practice" ? (
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <Pratice />
                     <Footer onTermsClick={handleTermsClick} />
                   </Suspense>
                 ) : null}

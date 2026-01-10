@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from 'framer-motion';
 import { Instagram, Send, Mail, MapPin, Phone, ExternalLink, Heart } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const Page10 = ({ onTermsClick }) => {
   const footerLinks = [
@@ -32,10 +33,10 @@ const Page10 = ({ onTermsClick }) => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)] pointer-events-none" />
       
       <div className="text-white px-6 py-20 relative z-10">
-        <div className="max-w-7xl mx-auto">
+        <div className="min-w-full px-[5%] xs:px-[2%]">
           
           {/* Main Footer Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+          <div className="grid xs:grid-cols-1 grid-cols-3 gap-12 mb-16">
             
             {/* Brand Section */}
             <motion.div
@@ -44,10 +45,10 @@ const Page10 = ({ onTermsClick }) => {
               className="lg:col-span-1"
             >
               <div className="mb-8">
-                <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-4">
+                <h1 className="xs:text-5xl text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-4">
                   Invest
                 </h1>
-                <h2 className="text-3xl md:text-4xl font-light text-white/80">
+                <h2 className="xs:text-3xl text-4xl font-light text-white/80">
                   In Scores
                 </h2>
               </div>
@@ -64,7 +65,7 @@ const Page10 = ({ onTermsClick }) => {
                 </div>
                 <div className="flex items-center gap-3 text-white/60">
                   <MapPin className="w-5 h-5 text-green-400" />
-                  <span>India</span>
+                  <span>Australia</span>
                 </div>
               </div>
             </motion.div>
@@ -160,16 +161,16 @@ const Page10 = ({ onTermsClick }) => {
             whileInView={{ opacity: 1, y: 0 }}
             className="border-t border-white/10 pt-8"
           >
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex xs:flex-col flex-row justify-between items-center gap-4">
               
               
               <div className="flex xs:flex-col items-center gap-6 text-sm text-white/60">
-                <span
-                  // onClick={onTermsClick}
+                <Link to="/terms"
+                 
                   className="cursor-pointer hover:text-white transition-colors duration-300"
                 >
                   Terms & Conditions
-                </span>
+                </Link>
                 <span>Privacy Policy</span>
                 <span>@Scorepte_explains</span>
               </div>

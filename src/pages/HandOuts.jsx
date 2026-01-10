@@ -57,7 +57,7 @@ const HandOuts = () => {
       
       <div className="py-20 px-6 relative z-10">
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-4">
+          <h1 className="xs:text-4xl text-6xl font-black text-white mb-4">
             FREE <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">HAND OUTS</span>
           </h1>
           <p className="text-lg text-white/80">
@@ -66,7 +66,7 @@ const HandOuts = () => {
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid xs:grid-cols-1 grid-cols-3 gap-8">
             {handouts.map((handout, index) => (
               <div
                 key={index}
@@ -95,7 +95,7 @@ const HandOuts = () => {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
-                  Download Free
+                  Download 
                 </button>
               </div>
             ))}

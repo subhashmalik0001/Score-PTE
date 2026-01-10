@@ -8,7 +8,7 @@ const Page5 = () => {
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.15),transparent_70%)] pointer-events-none" />
       
-      <div className="flex flex-col justify-center items-center px-4 py-20 md:px-6 relative z-10">
+      <div className="flex flex-col justify-center items-center px-4 py-20 px-6 relative z-10">
         {/* Header Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -22,7 +22,7 @@ const Page5 = () => {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="min-w-full px-[5%] xs:px-[2%] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Side - Text Content */}
           <motion.div 
@@ -30,24 +30,24 @@ const Page5 = () => {
             whileInView={{ opacity: 1, x: 0 }}
             className="space-y-6"
           >
-            <h1 className="text-4xl md:text-6xl font-black text-white leading-tight">
+            <h1 className="xs:text-4xl text-6xl font-black text-white leading-tight">
               At <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Score PTE</span>, we blend
             </h1>
             
             <div className="space-y-4">
-              <p className="text-xl md:text-2xl font-bold text-white/90">
+              <p className="xs:text-xl text-2xl font-bold text-white/90">
                 advanced technology
               </p>
-              <p className="text-lg md:text-xl font-medium text-white/80">
+              <p className="xs:text-lg text-xl font-medium text-white/80">
                 elite training methodologies,
               </p>
-              <p className="text-lg md:text-xl font-medium text-white/80">
+              <p className="xs:text-lg text-xl font-medium text-white/80">
                 and deep exam insight to deliver results that speak for themselves
               </p>
             </div>
 
             <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-2xl p-6 mt-8">
-              <p className="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">
+              <p className="xs:text-2xl text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">
                 Just Results.
               </p>
               <p className="text-lg font-semibold text-white/90 mt-2">
@@ -60,7 +60,7 @@ const Page5 = () => {
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+            className="grid xs:grid-cols-1 grid-cols-4 gap-6"
           >
             <motion.div 
               whileHover={{ scale: 1.05 }}
@@ -114,10 +114,10 @@ const Page5 = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className="mt-16 text-center"
         >
-          <p className="text-lg md:text-xl font-medium text-white/80 mb-4">
+          <p className="xs:text-lg text-xl font-medium text-white/80 mb-4">
             With every tool tailored for your success
           </p>
-          <p className="text-xl md:text-2xl font-bold text-white">
+          <p className="xs:text-xl text-2xl font-bold text-white">
             we're not just preparing you for the test — we're preparing you to excel.
           </p>
         </motion.div>

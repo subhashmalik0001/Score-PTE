@@ -76,9 +76,9 @@ const CategoryCard = ({ item }) => {
         </div>
       </div>
 
-      <div className="absolute top-8 right-8 xs:right-0 p-2 rounded-full bg-white/5 border border-white/10 text-[#E7F0FA]/40 group-hover:text-white group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-500">
+      {/* <div className="absolute top-8 right-8 xs:right-0 p-2 rounded-full bg-white/5 border border-white/10 text-[#E7F0FA]/40 group-hover:text-white group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-500">
         <ArrowUpRight size={20} />
-      </div>
+      </div> */}
     </motion.div>
   );
 };
@@ -117,7 +117,7 @@ const Page2 = () => {
       </div>
 
       {/* 2. CATEGORY BENTO GRID */}
-      <div className=" min-w-full px-[2%] xs:px-[2%]   grid xs:grid-cols-1   grid-cols-3   gap-8 mb-40 relative z-10">
+      <div className=" min-w-full px-[2%] xs:px-[2%]   grid xs:grid-cols-1   grid-cols-4   gap-8 mb-40 relative z-10">
         {categories.map((item, index) => (
           <CategoryCard key={index} item={item} />
         ))}
@@ -127,10 +127,10 @@ const Page2 = () => {
       <div className="w-full relative py-28 border-y border-white/5 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent" />
         <div className=" min-w-full px-[5%] xs:px-[2%]   mx-auto flex flex-col items-center relative z-10">
-          <span className="text-[11px] font-bold tracking-[0.8em] text-blue-400/60 mb-6 uppercase">
+          <span className="text-[11px]  font-bold tracking-[0.8em] text-blue-400/60 mb-6 uppercase">
             Architectural Insights
           </span>
-          <h4 className="text-3xl md:text-6xl font-extralight text-[#E7F0FA] text-center tracking-tight  max-w-full px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]   leading-tight">
+          <h4 className="xs:text-3xl text-7xl font-extralight text-[#E7F0FA] text-center tracking-tight  max-w-full px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]   leading-tight">
             A surgical approach to the <br />
             <span className="font-bold italic text-white underline decoration-blue-500/30 underline-offset-8">test environment</span>
           </h4>
@@ -146,7 +146,7 @@ const Page2 = () => {
           <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
           <span>Powerful</span>
         </div>
-        <h1 className="max-w-5xl text-5xl md:text-[7rem] font-black leading-[0.9] tracking-tighter uppercase italic">
+        <h1 className="max-w-5xl xs:text-5xl text-[7rem] font-black leading-[0.9] tracking-tighter uppercase italic">
           FROM PRACTICE <br /> 
           <span className="text-blue-500">TO</span> PERFECTION
         </h1>

@@ -39,7 +39,7 @@ const PTECore = () => {
               </span>
             </div>
             
-            <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+            <h1 className="xs:text-6xl text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
               PTE <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">Core</span>
             </h1>
             
@@ -154,7 +154,7 @@ const PTECore = () => {
               <h2 className="text-3xl font-bold text-white">Scoring System</h2>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid xs:grid-cols-1 grid-cols-3 gap-6">
               <div>
                 <span className="font-semibold text-blue-400">Score Range:</span>
                 <p className="text-white/80">10–90 (CLB aligned)</p>

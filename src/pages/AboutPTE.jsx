@@ -98,11 +98,11 @@ const AboutPTE = () => {
               </span>
             </div>
             
-            <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+            <h1 className="xs:text-6xl text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
               About <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">PTE</span>
             </h1>
             
-            <p className=" max-w-full px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]   mx-auto text-[#E7F0FA]/50 text-lg font-medium leading-relaxed">
+            <p className=" max-w-full px-[5%]  xs:px-[2%]  text-[#E7F0FA]/50 text-lg font-medium leading-relaxed">
               PTE is a computer-based English language test that assesses the English proficiency of non-native speakers. 
               Developed by Pearson PLC, it's trusted by thousands of institutions worldwide for academic admissions, 
               visa applications, and professional certification.
@@ -111,7 +111,7 @@ const AboutPTE = () => {
         </div>
       </section>
 
-      <div className=" min-w-full px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]   mx-auto px-6">
+      <div className=" min-w-full px-[5%] xs:px-[2%]  ">
         {/* Test Formats Comparison */}
         <section className="mb-20">
           <motion.div

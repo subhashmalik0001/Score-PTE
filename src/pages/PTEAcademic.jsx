@@ -143,7 +143,7 @@ const PTEAcademic = () => {
               </span>
             </div>
             
-            <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+            <h1 className="xs:text-6xl text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
               PTE <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">Academic</span>
             </h1>
             
@@ -155,7 +155,7 @@ const PTEAcademic = () => {
       </section>
 
       {/* Quick Stats */}
-      <section className=" min-w-full  xs:px-[2%]  ll px-[5%] xs:px-[2%]   mx-auto  mb-20">
+      <section className=" min-w-full  xs:px-[2%]    mx-auto  mb-20">
         <div className="grid   xs:grid-cols-2 grid-cols-4  gap-4">
           <FeaturePill icon={Clock} label="Duration" value="~2 Hours" />
           <FeaturePill icon={Cpu} label="Scoring" value="AI Automated" />

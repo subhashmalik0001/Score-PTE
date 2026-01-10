@@ -76,7 +76,7 @@ const LIVE_IMAGE_URL =
     <motion.img
       src={main}
       alt="PTE Exam Environment"
-      className="w-full h-full object-cover"
+      className="w-full h-full xs:object-contain object-cover"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 2 }}
     />

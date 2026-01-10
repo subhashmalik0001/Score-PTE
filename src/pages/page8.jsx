@@ -77,7 +77,7 @@ export default function DiagonalFlagsAnimation() {
                 {row.flags.map((flag, index) => (
                   <motion.div
                     key={`flag-${index}`}
-                    className="flex-shrink-0 w-12 h-8 xs:w-16 xs:h-12 sm:w-20 sm:h-16 bg-gray-800 rounded-lg flex items-center justify-center border border-gray-700 overflow-hidden"
+                    className="flex-shrink-0  xs:w-16 xs:h-12 w-32 h-32 bg-gray-800 rounded-lg flex items-center justify-center border border-gray-700 overflow-hidden"
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >

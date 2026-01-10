@@ -123,24 +123,7 @@ const PricingCards = () => {
         "Learn quickly, feel ready, perform confidently",
       ],
     },
-    {
-      plan: "Prediction Files",
-      price: "299",
-      currency: "AUD",
-      subtitle: "Based on Exam Date, Center & Time Slot",
-      description: "Created from real test-taker experience.",
-      features: [
-        "Highest repeat-rate questions included",
-        "Limited and focused (not 400+ pages)",
-        "Designed to maximize scores quickly",
-        "Easy to follow under exam pressure",
-        "Regularly updated with latest trends",
-        "Center-tested and slot-specific",
-        "Original content – no copies",
-        "Boosts confidence and reduces stress",
-      ],
-    },
-    {
+     {
       plan: "Signature Templates",
       price: "199",
       currency: "AUD",
@@ -158,12 +141,30 @@ const PricingCards = () => {
         "Built for superior maximum performance",
       ],
     },
+    {
+      plan: "Prediction Files",
+      price: "299",
+      currency: "AUD",
+      subtitle: "Based on Exam Date, Center & Time Slot",
+      description: "Created from real test-taker experience.",
+      features: [
+        "Highest repeat-rate questions included",
+        "Limited and focused (not 400+ pages)",
+        "Designed to maximize scores quickly",
+        "Easy to follow under exam pressure",
+        "Regularly updated with latest trends",
+        "Center-tested and slot-specific",
+        "Original content – no copies",
+        "Boosts confidence and reduces stress",
+      ],
+    },
+   
   ];
 
   const personalTrainingPlans = [
     {
       plan: "Premium Package",
-      price: "799",
+      price: "695",
       currency: "AUD",
       subtitle: "Refined & Score-Driven Preparation",
       description: "Prediction files, score-driven tips, daily insights & more.",
@@ -181,7 +182,7 @@ const PricingCards = () => {
     },
     {
       plan: "Premium Plus",
-      price: "1499",
+      price: "1395",
       currency: "AUD",
       subtitle: "Confidential, Customized, Credible",
       description: "All Premium features included.",
@@ -209,12 +210,15 @@ const PricingCards = () => {
           <h1 className="xs:text-4xl text-6xl font-black text-white mb-4">
             SCORE MUST GROW <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">GUARANTEE</span>
           </h1>
+          <p className="text-lg text-white/80 mb-6">
+            Score PTE delivers more than promises. Join Premium or Premium Plus and experience personal training, smart tips, powerful materials, and premium content. Our Premium resources, including quick revision guides, signature templates, and prediction files, make your preparation smarter, faster, and more effective – ensuring your score must grow.
+          </p>
           <p className="text-lg text-white/80">
             Choose a plan that fits your goal and start your PTE success journey today.
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto space-y-16">
+        <div className="min-w-full px-[5%] xs:px-[2%] space-y-16">
           <div>
             <h2 className="text-3xl font-bold text-white mb-8 text-center">Resources</h2>
             <div className="grid xs:grid-cols-1  grid-cols-3 gap-8">
@@ -236,6 +240,28 @@ const PricingCards = () => {
 
         <div className="max-w-6xl mx-auto">
           <ConsultationCTA />
+        </div>
+        
+        {/* Payment Help Warning */}
+        <div className="max-w-4xl mx-auto mt-8">
+          <div className="bg-yellow-500/10 border border-yellow-400/30 rounded-2xl p-6 backdrop-blur-sm">
+            <div className="flex items-start gap-3">
+              <div className="w-6 h-6 rounded-full bg-yellow-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-yellow-900 text-sm font-bold">!</span>
+              </div>
+              <div>
+                <p className="text-yellow-200 text-sm leading-relaxed">
+                  If you face any difficulty with online payment, our team is available to help you instantly on telegram
+                </p>
+                <button
+                  onClick={() => window.open("https://t.me/Scorepte_explains", "_blank")}
+                  className="mt-3 text-yellow-400 hover:text-yellow-300 text-sm font-medium underline transition-colors"
+                >
+                  Get Payment Help →
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       

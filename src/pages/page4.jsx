@@ -19,6 +19,13 @@ const cards = [
     route: "/pte-academic"
   },
   {
+    title: "PTE Core",
+    description: "PTE Core test preparation and practice",
+    icon: <Target size={24} />,
+    glowColor: "rgba(239, 68, 68, 0.5)", // Red
+    route: "/pte-core"
+  },
+  {
     title: "IELTS",
     description: "IELTS preparation materials and practice tests",
     icon: <Globe size={24} />,
@@ -32,13 +39,6 @@ const cards = [
     glowColor: "rgba(249, 115, 22, 0.5)", // Orange
     route: "/sat"
   },
-  {
-    title: "PTE Core",
-    description: "PTE Core test preparation and practice",
-    icon: <Target size={24} />,
-    glowColor: "rgba(239, 68, 68, 0.5)", // Red
-    route: "/pte-core"
-  }
 ]
 
 const Page4 = () => {
@@ -49,9 +49,9 @@ const Page4 = () => {
   return (
     <div className="min-h-screen bg-[#0D2440] py-24 px-6 relative overflow-hidden">
       {/* Dynamic Background Light Leaks */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0  h-[500px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className=" min-w-full px-[5%]  xs:px-[2%]   mx-auto relative z-10">
+      <div className=" min-w-full px-[5%]  xs:px-[2%]   relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ const Page4 = () => {
           <span className="text-[11px] font-black uppercase tracking-[0.6em] text-blue-400 mb-6 block">
             Preparation Tracks
           </span>
-          <h2 className="text-5xl md:text-7xl font-black text-[#E7F0FA] mb-6 tracking-tighter">
+          <h2 className="xs:text-5xl text-7xl font-black text-[#E7F0FA] mb-6 tracking-tighter">
             CHOOSE YOUR <span className="italic font-light opacity-60">PATH.</span>
           </h2>
           <p className="text-[#E7F0FA]/50 max-w-2xl mx-auto text-lg font-medium leading-relaxed">
@@ -69,7 +69,7 @@ const Page4 = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1  xs:grid-cols-1 grid-cols-2 1 grid-cols-2  lg:grid-cols-3 gap-8">
+        <div className="grid xs:grid-cols-1 grid-cols-3 gap-8">
           {cards.map((card, index) => (
             <motion.div
               key={card.title}

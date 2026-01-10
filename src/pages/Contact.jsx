@@ -62,7 +62,7 @@ export default function ContactPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="w-full  max-w-full px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]  ll px-[5%] xs:px-[2%]   mx-auto"
+        className="w-full  max-w-full px-[5%] xs:px-[2%]  "
       >
         {/* Header Section */}
         <motion.div
@@ -71,7 +71,7 @@ export default function ContactPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
+          <h1 className="xs:text-4xl text-5xl font-bold text-foreground mb-4 text-balance">
             Get in Touch <span className="text-red-700">With Us</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
