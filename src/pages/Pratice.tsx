@@ -115,9 +115,9 @@ const Practice = () => {
 
   const Section = ({ title, items }: { title: keyof typeof sectionIcons; items: Array<{ label: string; ai?: boolean; badge?: string; disabled?: boolean }> }) => {
     const Icon = sectionIcons[title];
-    
+
     return (
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/10 transition-all"
@@ -139,18 +139,15 @@ const Practice = () => {
               )}
 
               <button
-                className={`text-left text-sm leading-5 transition ${
-                  item.disabled
-                    ? "text-white/30 cursor-not-allowed"
-                    : "text-white/80 hover:text-white"
-                }`}
+                className={`text-left text-sm leading-5 transition ${item.disabled
+                  ? "text-white/30 cursor-not-allowed"
+                  : "text-white/80 hover:text-white"
+                  }`}
                 disabled={item.disabled}
                 onClick={() => {
                   if (item.disabled) return;
                   if (item.ai) {
                     setShowModal(true);
-                  } else {
-                    window.open('https://t.me/Scorepte_explains', '_blank');
                   }
                 }}
               >
@@ -172,7 +169,7 @@ const Practice = () => {
     <div className="min-h-screen bg-[#0D2440] text-[#E7F0FA] relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)] pointer-events-none" />
-      
+
       {/* Hero Section */}
       <section className="relative pt-14 pb-12 px-6">
         <div className="max-w-full px-[5%] xs:px-[2%] mx-auto text-center">
@@ -187,11 +184,11 @@ const Practice = () => {
                 AI-POWERED PRACTICE
               </span>
             </div>
-            
+
             <h1 className="xs:text-5xl text-7xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
               PTE <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">Practice</span>
             </h1>
-            
+
             <p className="max-w-2xl mx-auto text-[#E7F0FA]/50 text-lg font-medium leading-relaxed">
               Master all PTE question types with AI-powered scoring and comprehensive practice materials.
             </p>
@@ -205,11 +202,10 @@ const Practice = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             onClick={() => setActiveTab("academic")}
-            className={`px-8 py-3 rounded-xl font-semibold text-sm transition-all ${
-              activeTab === "academic"
-                ? "bg-blue-500 text-white shadow-lg"
-                : "bg-white/10 text-white/60 hover:bg-white/20 hover:text-white"
-            }`}
+            className={`px-8 py-3 rounded-xl font-semibold text-sm transition-all ${activeTab === "academic"
+              ? "bg-blue-500 text-white shadow-lg"
+              : "bg-white/10 text-white/60 hover:bg-white/20 hover:text-white"
+              }`}
           >
             {current.tab1}
           </motion.button>
@@ -217,11 +213,10 @@ const Practice = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             onClick={() => setActiveTab("core")}
-            className={`px-8 py-3 rounded-xl font-semibold text-sm transition-all ${
-              activeTab === "core"
-                ? "bg-blue-500 text-white shadow-lg"
-                : "bg-white/10 text-white/60 hover:bg-white/20 hover:text-white"
-            }`}
+            className={`px-8 py-3 rounded-xl font-semibold text-sm transition-all ${activeTab === "core"
+              ? "bg-blue-500 text-white shadow-lg"
+              : "bg-white/10 text-white/60 hover:bg-white/20 hover:text-white"
+              }`}
           >
             {current.tab2}
           </motion.button>
@@ -238,10 +233,10 @@ const Practice = () => {
           <Section title="More" items={current.more} />
         </div>
       </section>
-      
+
       {/* Decorative Elements */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay -z-10" />
-      
+
       {/* Premium Modal */}
       <AnimatePresence>
         {showModal && (
@@ -268,7 +263,7 @@ const Practice = () => {
                   <X className="w-6 h-6" />
                 </button>
               </div>
-              
+
               <div className="space-y-4">
                 <input
                   type="text"
@@ -277,7 +272,7 @@ const Practice = () => {
                   onChange={(e) => setCode(e.target.value)}
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-blue-500 transition-colors"
                 />
-                
+
                 <button
                   onClick={() => {
                     if (code.trim()) {
@@ -290,6 +285,18 @@ const Practice = () => {
                 >
                   Submit Code
                 </button>
+
+                <p className="text-center text-sm text-white/80">
+                  If you don't have code{" "}
+                  <a
+                    href="https://t.me/Scorepte_explains"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-300 underline underline-offset-4"
+                  >
+                    join Telegram
+                  </a>
+                </p>
               </div>
             </motion.div>
           </motion.div>

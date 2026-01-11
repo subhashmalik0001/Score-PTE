@@ -36,9 +36,8 @@ const PricingCard = ({ plan, price, currency, subtitle, description, features, h
 
   return (
     <div
-      className={`relative bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:scale-105 ${
-        highlight ? "ring-2 ring-purple-500/30 shadow-xl" : ""
-      }`}
+      className={`relative bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:scale-105 ${highlight ? "ring-2 ring-purple-500/30 shadow-xl" : ""
+        }`}
     >
       {highlight && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-4 py-1 rounded-full">
@@ -65,16 +64,17 @@ const PricingCard = ({ plan, price, currency, subtitle, description, features, h
         ))}
       </ul>
 
-      <button
-        onClick={handlePayment}
-        className={`w-full py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
-          highlight
-            ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600"
-            : "bg-white/10 border border-white/20 text-white hover:bg-white/20"
-        }`}
-      >
-        Get Started
-      </button>
+    <button
+  onClick={handlePayment}
+  className={`w-full py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+    highlight
+      ? "bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-600 text-black hover:from-yellow-500 hover:via-amber-500 hover:to-yellow-700 shadow-lg shadow-yellow-500/30"
+      : "bg-white/10 border border-yellow-400/40 text-yellow-300 hover:bg-yellow-400/10"
+  }`}
+>
+  Purchase Now
+</button>
+
 
       <button
         onClick={openTelegram}
@@ -123,7 +123,7 @@ const PricingCards = () => {
         "Learn quickly, feel ready, perform confidently",
       ],
     },
-     {
+    {
       plan: "Signature Templates",
       price: "199",
       currency: "AUD",
@@ -158,7 +158,7 @@ const PricingCards = () => {
         "Boosts confidence and reduces stress",
       ],
     },
-   
+
   ];
 
   const personalTrainingPlans = [
@@ -204,7 +204,7 @@ const PricingCards = () => {
   return (
     <section className="min-h-screen bg-[#0D2440] relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)] pointer-events-none" />
-      
+
       <div className="py-20 px-6 relative z-10">
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h1 className="xs:text-4xl text-6xl font-black text-white mb-4">
@@ -241,7 +241,7 @@ const PricingCards = () => {
         <div className="max-w-6xl mx-auto">
           <ConsultationCTA />
         </div>
-        
+
         {/* Payment Help Warning */}
         <div className="max-w-4xl mx-auto mt-8">
           <div className="bg-yellow-500/10 border border-yellow-400/30 rounded-2xl p-6 backdrop-blur-sm">
@@ -264,7 +264,7 @@ const PricingCards = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay -z-10" />
     </section>
   );
