@@ -3,12 +3,12 @@ import React, { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Sparkles, ArrowUpRight } from "lucide-react";
 import { FaMicrophoneAlt, FaPenFancy, FaBookReader, FaHeadphonesAlt } from "react-icons/fa";
-
+import img from "../assets/listing.JPG"
 const categories = [
   { title: "Speaking", icon: <FaMicrophoneAlt size={22} />, desc: "Master oral fluency & pronunciation.", img: "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=400&h=300&fit=crop&crop=center", delay: 0.1 },
   { title: "Writing", icon: <FaPenFancy size={22} />, desc: "Precision grammar & essay structuring.", img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=300&fit=crop&crop=center", delay: 0.2 },
   { title: "Reading", icon: <FaBookReader size={22} />, desc: "Speed comprehension & vocabulary.", img: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop&crop=center", delay: 0.3 },
-  { title: "Listening", icon: <FaHeadphonesAlt size={22} />, desc: "Audio retention & note-taking.", img: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop&crop=center", delay: 0.4 },
+  { title: "Listening", icon: <FaHeadphonesAlt size={22} />, desc: "Audio retention & note-taking.", img: img, delay: 0.4 },
 ];
 
 const CategoryCard = ({ item }) => {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { openRazorpayCheckout } from '../lib/razorpay';
-import logo from '../assets/image.png'
+import logo from '../assets/logo.PNG'
+import { Link } from "react-router-dom";
 
 const navItems = [
   { label: "Home", key: "home" },
@@ -45,7 +46,9 @@ const Navbar = ({ onNavigate, active, onActionClick }) => {
         <div className="flex  items-center justify-between h-16">
           
           {/* LOGO */}
+          <Link to="/" onClick={() => handleNavigate("home")}>
           <img src={logo} alt="ScorePTE Logo" className="w-16 h-16" />
+          </Link>
 
           {/* DESKTOP MENU */}
           <ul className="xs:hidden flex items-center gap-8">

@@ -22,7 +22,7 @@ const Page5 = () => {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="min-w-full px-[5%] xs:px-[2%] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="min-w-full px-[5%] xs:px-[2%] grid grid-cols-1  gap-12 items-center">
           
           {/* Left Side - Text Content */}
           <motion.div 

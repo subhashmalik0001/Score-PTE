@@ -174,47 +174,48 @@ const Page7 = () => {
         </motion.div>
 
         {/* Marquee Reviews Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="w-full mb-16 overflow-hidden"
-        >
-          <h2 className="text-3xl font-bold text-white text-center mb-8">What Our Students Say</h2>
-          
-          <div className="relative">
-            <div className="flex gap-6 animate-marquee">
-              {[...testimonialCards, ...testimonialCards].map((card, index) => (
-                <div
-                  key={index}
-                  className={`bg-gradient-to-br ${card.gradient} border ${card.border} rounded-2xl p-6 backdrop-blur-sm min-w-[300px] flex-shrink-0`}
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                      ))}
-                    </div>
-                    <span className="text-2xl font-bold text-white">{card.score}</span>
-                  </div>
-                  <p className="text-white/80 mb-4 italic text-sm">"{card.message}"</p>
-                  <p className="text-white/60 font-semibold">- {card.name}</p>
-                </div>
-              ))}
-            </div>
+     <div className="relative pb-12 overflow-hidden">
+  <div className="flex gap-6  marquee-track">
+    {[...testimonialCards, ...testimonialCards].map((card, index) => (
+      <div
+        key={index}
+        className={`bg-gradient-to-br ${card.gradient} border ${card.border} rounded-2xl p-6 backdrop-blur-sm min-w-[300px] flex-shrink-0`}
+      >
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+            ))}
           </div>
-        </motion.div>
+          <span className="text-2xl font-bold text-white">{card.score}</span>
+        </div>
+        <p className="text-white/80 mb-4 italic text-sm">"{card.message}"</p>
+        <p className="text-white/60 font-semibold">- {card.name}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
         
         <style>
-          {`
-            @keyframes marquee {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-            .animate-marquee {
-              animation: marquee 10s linear infinite;
-            }
-          `}
-        </style>
+  {`
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-track {
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+
+    /* Optional: pause on hover */
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+  `}
+</style>
+
 
         {/* CTA Section */}
         <motion.div

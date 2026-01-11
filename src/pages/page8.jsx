@@ -57,7 +57,7 @@ export default function DiagonalFlagsAnimation() {
   ]
 
   return (
-    <div className="min-h-screen xs:max-h-[400px] w-full bg-gray-900 relative">
+    <div className="h-screen xs:max-h-[50vh]  w-full bg-gray-900 relative">
       <div className="absolute inset-0 overflow-hidden">
         <div className="transform rotate-12 xs:scale-30 scale-110 origin-center h-full w-full">
           <div className="flex flex-col gap-4 xs:mt-0 -mt-20">

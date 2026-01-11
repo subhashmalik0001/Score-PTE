@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Sparkles, Mic, PenTool, Eye, Headphones, BookOpen } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles, Mic, PenTool, Eye, Headphones, BookOpen, X } from "lucide-react";
 
 const Practice = () => {
   const [activeTab, setActiveTab] = useState("academic"); // "academic" | "core"
+  const [showModal, setShowModal] = useState(false);
+  const [code, setCode] = useState("");
 
   const data = {
     academic: {
@@ -143,7 +145,14 @@ const Practice = () => {
                     : "text-white/80 hover:text-white"
                 }`}
                 disabled={item.disabled}
-                onClick={() => !item.disabled && window.open('https://t.me/Scorepte_explains', '_blank')}
+                onClick={() => {
+                  if (item.disabled) return;
+                  if (item.ai) {
+                    setShowModal(true);
+                  } else {
+                    window.open('https://t.me/Scorepte_explains', '_blank');
+                  }
+                }}
               >
                 {item.label}{" "}
                 {item.ai && (
@@ -232,6 +241,60 @@ const Practice = () => {
       
       {/* Decorative Elements */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay -z-10" />
+      
+      {/* Premium Modal */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setShowModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-[#0D2440] border border-white/10 rounded-2xl p-8 max-w-md w-full backdrop-blur-sm"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-white">Premium Start Here</h2>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              
+              <div className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Enter code here"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-blue-500 transition-colors"
+                />
+                
+                <button
+                  onClick={() => {
+                    if (code.trim()) {
+                      console.log('Code submitted:', code);
+                      setShowModal(false);
+                      setCode("");
+                    }
+                  }}
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-xl transition-colors"
+                >
+                  Submit Code
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
