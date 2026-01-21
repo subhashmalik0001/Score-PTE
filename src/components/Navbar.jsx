@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { openRazorpayCheckout } from '../lib/razorpay';
+// Razorpay import removed
+import PayPalModal from "./PayPalModal";
 import logo from '../assets/logo.PNG'
 import { Link } from "react-router-dom";
 
@@ -12,31 +13,21 @@ const navItems = [
 
 const Navbar = ({ onNavigate, active, onActionClick }) => {
   const [open, setOpen] = useState(false);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const handleNavigate = (key) => {
     onNavigate && onNavigate(key);
     setOpen(false); // close menu after click
   };
 
-  const handleEnrollNow = async () => {
-    try {
-      await openRazorpayCheckout({
-        amountPaise: 79900,
-        currency: "AUD",
-        name: "Score PTE",
-        description: "Premium Package Enrollment",
-        notes: { plan: "Premium Package" },
-        themeColor: "#0D2440",
-        onSuccess: () => {
-          alert("Payment successful! Our team will contact you shortly.");
-        },
-        onError: () => {
-          window.open("https://t.me/Scorepte_explains", "_blank");
-        },
-      });
-    } catch (err) {
-      window.open("https://t.me/Scorepte_explains", "_blank");
-    }
+  const handleEnrollNow = () => {
+    // Open PayPal modal for Premium Package (799 AUD)
+    setIsPaymentModalOpen(true);
+  };
+
+  const handlePaymentSuccess = (details) => {
+    setIsPaymentModalOpen(false);
+    alert(`Payment successful! Thank you ${details.payer.name.given_name}. Our team will contact you shortly.`);
   };
 
   return (
@@ -44,10 +35,10 @@ const Navbar = ({ onNavigate, active, onActionClick }) => {
       <div className="min-w-full px-[5%] xs:px-[2%]">
         {/* TOP BAR */}
         <div className="flex  items-center justify-between h-16">
-          
+
           {/* LOGO */}
           <Link to="/" onClick={() => handleNavigate("home")}>
-          <img src={logo} alt="ScorePTE Logo" className="w-16 h-16" />
+            <img src={logo} alt="ScorePTE Logo" className="w-16 h-16" />
           </Link>
 
           {/* DESKTOP MENU */}
@@ -59,21 +50,19 @@ const Navbar = ({ onNavigate, active, onActionClick }) => {
                 <li key={item.key} className="relative  group">
                   <button
                     onClick={() => handleNavigate(item.key)}
-                    className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
-                      isActive
+                    className={`text-sm font-medium tracking-wide transition-colors duration-200 ${isActive
                         ? "text-white"
                         : "text-blue/80 hover:text-white"
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </button>
 
                   <span
-                    className={`absolute left-0 -bottom-1  w-full bg-blue-400 transform origin-left transition-transform duration-300 ${
-                      isActive
+                    className={`absolute left-0 -bottom-1  w-full bg-blue-400 transform origin-left transition-transform duration-300 ${isActive
                         ? "scale-x-100"
                         : "scale-x-0 group-hover:scale-x-100"
-                    }`}
+                      }`}
                   />
                 </li>
               );
@@ -106,11 +95,10 @@ const Navbar = ({ onNavigate, active, onActionClick }) => {
               <button
                 key={item.key}
                 onClick={() => handleNavigate(item.key)}
-                className={`block w-full text-left px-4 py-2 rounded-md text-sm font-medium transition ${
-                  active === item.key
+                className={`block w-full text-left px-4 py-2 rounded-md text-sm font-medium transition ${active === item.key
                     ? "bg-blue-500/20 text-blue-600 border border-blue-500/30"
                     : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                }`}
+                  }`}
               >
                 {item.label}
               </button>
@@ -123,6 +111,15 @@ const Navbar = ({ onNavigate, active, onActionClick }) => {
               Enroll Now
             </button>
           </div>
+        )}
+
+        {/* PayPal Modal */}
+        {isPaymentModalOpen && (
+          <PayPalModal
+            amount={799}
+            onClose={() => setIsPaymentModalOpen(false)}
+            onSuccess={handlePaymentSuccess}
+          />
         )}
       </div>
     </nav>
