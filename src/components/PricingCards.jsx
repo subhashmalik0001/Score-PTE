@@ -29,8 +29,8 @@ const PricingCard = ({ plan, price, currency, subtitle, description, features, h
         }`}
     >
       {highlight && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-4 py-1 rounded-full">
-          MOST POPULAR
+        <div >
+        
         </div>
       )}
 

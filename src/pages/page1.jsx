@@ -14,7 +14,7 @@ const LIVE_IMAGE_URL =
   "https://integrio.net/static/398e62fe7c80d242601374fb5272f391/best-enterprise-software-development-company.png";
 
   return (
-    <section className="relative xs:py-10 min-h-screen w-full bg-[#0D2440] overflow-hidden flex xs:flex-col flex-row items-center">
+    <section className="relative xs:py-10 xs:h-auto xs:min-h-0 min-h-screen w-full bg-[#0D2440] overflow-hidden flex xs:flex-col flex-row items-center">
       
       {/* SECTION 1: THE TEXT NARRATIVE (Left) */}
       <motion.div 
@@ -62,7 +62,7 @@ const LIVE_IMAGE_URL =
   initial={{ scale: 1.15, opacity: 0 }}
   animate={{ scale: 1, opacity: 1 }}
   transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-  className="xs:w-full w-[55%] h-full relative"
+  className="xs:hidden xs:w-full w-[55%] h-full relative"
 >
   {/* Decorative Ring */}
   <div className="absolute -left-20 top-1/2 -translate-y-1/2 w-40 h-40 border border-[#E7F0FA]/10 rounded-full z-10 xs:hidden block" />
