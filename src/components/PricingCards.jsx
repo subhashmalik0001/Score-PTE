@@ -1,26 +1,37 @@
-import { useState } from "react";
-// Removed Razorpay import
-import PayPalModal from "./PayPalModal";
+import React from "react";
+import { openRazorpayCheckout } from '../lib/razorpay';
 
 const PricingCard = ({ plan, price, currency, subtitle, description, features, highlight }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const openTelegram = () => {
     window.open("https://t.me/Scorepte_explains", "_blank");
   };
 
-  const handlePayment = () => {
-    const numericAmount = Number(String(price).replace(/[^0-9.]/g, ""));
-    if (!numericAmount || Number.isNaN(numericAmount)) {
-      openTelegram();
-      return;
-    }
-    setIsModalOpen(true);
-  };
+  const handlePayment = async () => {
+    try {
+      const numericAmount = Number(String(price).replace(/[^0-9.]/g, ""));
+      if (!numericAmount || Number.isNaN(numericAmount)) {
+        openTelegram();
+        return;
+      }
 
-  const handleSuccess = (details) => {
-    setIsModalOpen(false);
-    alert(`Payment successful! Thank you ${details.payer.name.given_name}. Our team will contact you shortly.`);
+      const amountPaise = Math.round(numericAmount * 100);
+      await openRazorpayCheckout({
+        amountPaise,
+        currency: currency || "AUD",
+        name: "Score PTE",
+        description: `${plan} Plan Purchase`,
+        notes: { plan },
+        themeColor: "#0D2440",
+        onSuccess: () => {
+          alert("Payment successful! Our team will contact you shortly.");
+        },
+        onError: () => {
+          openTelegram();
+        },
+      });
+    } catch (err) {
+      openTelegram();
+    }
   };
 
   return (
@@ -30,7 +41,7 @@ const PricingCard = ({ plan, price, currency, subtitle, description, features, h
     >
       {highlight && (
         <div >
-        
+         
         </div>
       )}
 
@@ -53,15 +64,16 @@ const PricingCard = ({ plan, price, currency, subtitle, description, features, h
         ))}
       </ul>
 
-      <button
-        onClick={handlePayment}
-        className={`w-full py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${highlight
-            ? "bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-600 text-black hover:from-yellow-500 hover:via-amber-500 hover:to-yellow-700 shadow-lg shadow-yellow-500/30"
-            : "bg-white/10 border border-yellow-400/40 text-yellow-300 hover:bg-yellow-400/10"
-          }`}
-      >
-        Purchase Now
-      </button>
+    <button
+  onClick={handlePayment}
+  className={`w-full py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+    highlight
+      ? "bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-600 text-black hover:from-yellow-500 hover:via-amber-500 hover:to-yellow-700 shadow-lg shadow-yellow-500/30"
+      : "bg-white/10 border border-yellow-400/40 text-yellow-300 hover:bg-yellow-400/10"
+  }`}
+>
+  Purchase Now
+</button>
 
 
       <button
@@ -70,14 +82,6 @@ const PricingCard = ({ plan, price, currency, subtitle, description, features, h
       >
         Need help? Chat on Telegram
       </button>
-
-      {isModalOpen && (
-        <PayPalModal
-          amount={price}
-          onClose={() => setIsModalOpen(false)}
-          onSuccess={handleSuccess}
-        />
-      )}
     </div>
   );
 };
